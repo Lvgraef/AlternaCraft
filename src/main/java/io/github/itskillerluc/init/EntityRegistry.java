@@ -14,6 +14,6 @@ public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, AlternaCraft.MODID);
 
     public static final Supplier<EntityType<Magmatyrannus>> MAGMATYRANNUS = ENTITY_TYPES.register("magmatyrannus",
-            () -> EntityType.Builder.of(Magmatyrannus::new, MobCategory.CREATURE).sized(2, 2) //8 5
+            () -> EntityType.Builder.of(Magmatyrannus::new, MobCategory.CREATURE).sized(2, 4.7f)
                     .build(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magmatyrannus").toString()));
 }

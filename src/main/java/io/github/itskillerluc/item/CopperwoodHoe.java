@@ -1,7 +1,7 @@
 package io.github.itskillerluc.item;
 
 import io.github.itskillerluc.AlternaCraft;
-import io.github.itskillerluc.init.ToolActions;
+import io.github.itskillerluc.init.ItemAbilities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -10,12 +10,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -56,8 +54,8 @@ public class CopperwoodHoe extends HoeItem {
     }
 
     @Override
-    public boolean canPerformAction(@NotNull ItemStack stack, @NotNull ToolAction toolAction) {
-        return super.canPerformAction(stack, toolAction) || toolAction.equals(ToolActions.CROP_HARVEST);
+    public boolean canPerformAction(@NotNull ItemStack stack, @NotNull ItemAbility toolAction) {
+        return super.canPerformAction(stack, toolAction) || toolAction.equals(ItemAbilities.CROP_HARVEST);
     }
 
     @Override

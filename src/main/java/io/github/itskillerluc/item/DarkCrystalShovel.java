@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -27,16 +28,17 @@ public class DarkCrystalShovel extends ShovelItem {
     }
 
     public static void darkCrystalMine(Level pLevel, BlockPos pPos, LivingEntity pEntityLiving) {
+        Block block = pLevel.getBlockState(pPos).getBlock();
         for (int x = -1; x < 2; x++) {
             for (int z = -1; z < 2; z++) {
                 var vec3 = Vec3.directionFromRotation(pEntityLiving.getRotationVector());
                 var direction = Direction.getNearest(((float) vec3.x), (float) vec3.y, (float) vec3.z);
                 if (direction.getAxis().isHorizontal()) {
-                    if (pLevel.getBlockState(pPos.relative(direction.getClockWise(), x).relative(Direction.UP, z)).is(pLevel.getBlockState(pPos).getBlock())) {
+                    if (pLevel.getBlockState(pPos.relative(direction.getClockWise(), x).relative(Direction.UP, z)).is(block)) {
                         pLevel.destroyBlock(pPos.relative(direction.getClockWise(), x).relative(Direction.UP, z), true, pEntityLiving);
                     }
                 } else {
-                    if (pLevel.getBlockState(pPos.north(x).east(z)).is(pLevel.getBlockState(pPos).getBlock())) {
+                    if (pLevel.getBlockState(pPos.north(x).east(z)).is(block)) {
                         pLevel.destroyBlock(pPos.north(x).east(z), true, pEntityLiving);
                     }
                 }

@@ -2,23 +2,22 @@ package io.github.itskillerluc.item;
 
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.DataComponentRegistry;
+import io.github.itskillerluc.init.ItemAbilities;
 import io.github.itskillerluc.init.SoundEventRegistry;
-import io.github.itskillerluc.init.ToolActions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.component.PatchedDataComponentMap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -28,8 +27,8 @@ public class DarkCrystalPickaxe extends PickaxeItem {
     }
 
     @Override
-    public boolean canPerformAction(@NotNull ItemStack stack, @NotNull ToolAction toolAction) {
-        return super.canPerformAction(stack, toolAction) || toolAction.equals(ToolActions.SONAR);
+    public boolean canPerformAction(@NotNull ItemStack stack, @NotNull ItemAbility toolAction) {
+        return super.canPerformAction(stack, toolAction) || toolAction.equals(ItemAbilities.SONAR);
     }
 
     @Override

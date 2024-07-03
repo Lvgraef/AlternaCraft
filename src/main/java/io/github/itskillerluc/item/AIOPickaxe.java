@@ -1,7 +1,7 @@
 package io.github.itskillerluc.item;
 
 import io.github.itskillerluc.AlternaCraft;
-import io.github.itskillerluc.init.ToolActions;
+import io.github.itskillerluc.init.ItemAbilities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -14,9 +14,8 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -26,8 +25,8 @@ public class AIOPickaxe extends PickaxeItem {
     }
 
     @Override
-    public boolean canPerformAction(@NotNull ItemStack stack, @NotNull ToolAction toolAction) {
-        return super.canPerformAction(stack, toolAction) || toolAction.equals(ToolActions.PLACE_LIGHT) || toolAction.equals(ToolActions.SONAR);
+    public boolean canPerformAction(@NotNull ItemStack stack, @NotNull ItemAbility toolAction) {
+        return super.canPerformAction(stack, toolAction) || toolAction.equals(ItemAbilities.PLACE_LIGHT) || toolAction.equals(ItemAbilities.SONAR);
     }
 
     @Override

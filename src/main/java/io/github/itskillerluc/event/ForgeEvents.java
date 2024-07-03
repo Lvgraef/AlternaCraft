@@ -10,14 +10,14 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.TieredItem;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingAttackEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.apache.commons.lang3.stream.Streams;
 
 @EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ForgeEvents {
     @SubscribeEvent
-    public static void livingAttackEvent(final LivingAttackEvent event) {
+    public static void livingAttackEvent(final LivingIncomingDamageEvent event) {
         if (event.getSource().is(DamageTypes.FALL)) {
             if (Streams.of(event.getEntity().getArmorSlots().iterator()).allMatch(stack ->
                     stack.getItem() instanceof ArmorItem armorItem && (armorItem.getMaterial().value().equals(ArmorMaterialRegistry.MAGNET.value()) || armorItem.getMaterial().value().equals(ArmorMaterialRegistry.AIO.value())))) {
