@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "copperwood_crystal",
+  "ingredient": {
+    "item": "alternacraft:copperwood_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "alternacraft:copperwood_crystal"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "alternacraft:aio_crystal"
+    },
+    "p": {
+      "item": "alternacraft:prisma_stick"
+    },
+    "s": {
+      "item": "alternacraft:mini_star"
+    }
+  },
+  "pattern": [
+    "aa ",
+    " p ",
+    "sps"
+  ],
+  "result": {
+    "count": 1,
+    "id": "alternacraft:aio_scythe"
+  }
+}

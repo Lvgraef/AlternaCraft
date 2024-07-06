@@ -13,15 +13,23 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.util.LandRandomPos;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -36,7 +44,10 @@ import java.util.UUID;
 public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatable<MagmatyrannusModel>, VariantHolder<Magmatyrannus.Variant> {
     public static final ResourceLocation LOCATION = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magmatyrannus");
     public static final DucAnimation ANIMATION = DucAnimation.create(LOCATION);
+
+    public static final EntityDataAccessor<Boolean> RUNNING = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Variant> VARIANT = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerailizerRegistry.MAGMA_TYRANNUS_VARIANT_SERIALIZER.get());
+
     private final Lazy<Map<String, AnimationState>> animations = Lazy.of(() -> MagmatyrannusModel.createStateMap(getAnimation()));
     private final List<DinoPart<Magmatyrannus>> subEntities;
 
@@ -50,6 +61,18 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         this.setId(ENTITY_COUNTER.getAndAdd(this.subEntities.size() + 1) + 1);
     }
 
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        super.defineSynchedData(pBuilder);
+        pBuilder.define(VARIANT, Variant.values()[random.nextInt(Variant.values().length)]);
+        pBuilder.define(RUNNING, false);
+    }
+
+    @Nullable
+    @Override
+    public LivingEntity getLastHurtByMob() {
+        return super.getLastHurtByMob() != null ? super.getLastHurtByMob() : lastHurtByPlayer;
+    }
 
     @Nullable
     @Override
@@ -58,9 +81,14 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-        super.defineSynchedData(pBuilder);
-        pBuilder.define(VARIANT, Variant.values()[random.nextInt(Variant.values().length)]);
+    public void setTarget(@Nullable LivingEntity target) {
+        super.setTarget(target);
+        entityData.set(RUNNING, target != null);
+    }
+
+    @Override
+    int hungerDecreaseSpeed() {
+        return 60;
     }
 
     @Override
@@ -84,6 +112,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         return AgeableMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 120)
                 .add(Attributes.ATTACK_DAMAGE, 12D)
+                .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.FOLLOW_RANGE, 3);
     }
 
@@ -93,23 +122,64 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     }
 
     @Override
+    protected AABB getAttackBoundingBox() {
+        Entity entity = this.getVehicle();
+        AABB aabb;
+        if (entity != null) {
+            AABB aabb1 = entity.getBoundingBox();
+            AABB aabb2 = getBoundingBoxForCulling();
+            aabb = new AABB(
+                    Math.min(aabb2.minX, aabb1.minX),
+                    aabb2.minY,
+                    Math.min(aabb2.minZ, aabb1.minZ),
+                    Math.max(aabb2.maxX, aabb1.maxX),
+                    aabb2.maxY,
+                    Math.max(aabb2.maxZ, aabb1.maxZ)
+            );
+        } else {
+            aabb = getBoundingBoxForCulling();
+        }
+
+        return aabb.inflate(0.8, 0.0, 0.8);
+    }
+
+    @Override
     protected void registerGoals() {
         super.registerGoals();
-        targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().is(Tags.EntityTypes.DINOS)) {
+        goalSelector.addGoal(0, new FloatGoal(this));
+        goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0, false));
+        goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.005f) {
+            @Nullable
+            @Override
+            protected Vec3 getPosition() {
+                if (this.mob.isInWaterOrBubble()) {
+                    Vec3 vec3 = LandRandomPos.getPos(this.mob, 30, 7);
+                    return vec3 == null ? super.getPosition() : vec3;
+                } else {
+                    return this.mob.getRandom().nextFloat() >= this.probability ? LandRandomPos.getPos(this.mob, 30, 7) : super.getPosition();
+                }
+            }
+        });
+
+        targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().is(Tags.EntityTypes.DINOS)) {
             @Override
             public boolean canUse() {
+                targetConditions.range(getFollowDistance());
                 return getHunger() < 100 && super.canUse();
             }
         });
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity instanceof Enemy) {
+        targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity instanceof Enemy) {
             @Override
             public boolean canUse() {
+                targetConditions.range(getFollowDistance());
                 return getHunger() < 50 && super.canUse();
             }
         });
-        targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true) {
+        targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true) {
             @Override
             public boolean canUse() {
+                targetConditions.range(getFollowDistance());
                 return getHunger() < 25 && super.canUse();
             }
         });
@@ -118,8 +188,21 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     @Override
     public void tick() {
         super.tick();
+        var followRange = getAttributes().getInstance(Attributes.FOLLOW_RANGE);
+        if (followRange != null) {
+            if (getHunger() < 25) {
+                followRange.setBaseValue(25);
+            } else if (getHunger() < 50) {
+                followRange.setBaseValue(10);
+            } else {
+                followRange.setBaseValue(3);
+            }
+            if (lastHurtByPlayerTime - tickCount() < 20 * 60) {
+                followRange.setBaseValue(40);
+            }
+        }
         if (level().isClientSide) {
-            animateWhen("idle", true);
+            animateWhen("idle", !isMoving(this));
         }
     }
 
@@ -216,6 +299,11 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         }
     }
 
+    @Override
+    public void swing(InteractionHand hand) {
+        replayAnimation("attack");
+        super.swing(hand);
+    }
 
     public enum Variant {
         PINK(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "textures/entity/magmatyrannus_pink.png")),

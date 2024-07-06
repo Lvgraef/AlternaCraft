@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "alternacraft:electree_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "alternacraft:electree_planks"
+  }
+}

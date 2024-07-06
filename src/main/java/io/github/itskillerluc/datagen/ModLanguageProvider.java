@@ -2,8 +2,10 @@ package io.github.itskillerluc.datagen;
 
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.BlockRegistry;
+import io.github.itskillerluc.init.EntityRegistry;
 import io.github.itskillerluc.init.ItemRegistry;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -29,6 +31,9 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
     );
 
     private static final List<Supplier<? extends Block>> EXCLUDED_BLOCKS = List.of(
+    );
+
+    private static final List<Supplier<? extends EntityType<?>>> EXCLUDED_ENTITIES = List.of(
     );
 
     public ModLanguageProvider(PackOutput output) {
@@ -117,6 +122,14 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
             if (EXCLUDED_BLOCKS.contains(entry)) continue;
             var input = entry.getKey().location().getPath();
             addBlock(entry, Arrays.stream(input.split("_"))
+                    .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
+                    .collect(Collectors.joining(" ")));
+        }
+
+        for (DeferredHolder<EntityType<?>, ? extends EntityType<?>> entry : EntityRegistry.ENTITY_TYPES.getEntries()) {
+            if (EXCLUDED_ENTITIES.contains(entry)) continue;
+            var input = entry.getKey().location().getPath();
+            addEntityType(entry, Arrays.stream(input.split("_"))
                     .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
                     .collect(Collectors.joining(" ")));
         }

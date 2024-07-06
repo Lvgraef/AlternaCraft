@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "copperwood_crystal",
+  "ingredient": {
+    "item": "alternacraft:deepslate_copperwood_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "alternacraft:copperwood_crystal"
+  }
+}

@@ -24,11 +24,14 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal implements NeutralMob {
-    private int hunger = 120000;
+    private int maxHunger = hungerDecreaseSpeed() * 20 * 100;
+    private int hunger = maxHunger;
 
     protected DinoEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
+
+    abstract int hungerDecreaseSpeed();
 
     @Override
     public void setId(int id) {
@@ -36,8 +39,6 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
         for (int i = 0; i < getSubEntities().size(); i++)
             getSubEntities().get(i).setId(id + i + 1);
     }
-
-
 
 
     @Override
@@ -76,16 +77,14 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
     @Override
     protected void registerGoals() {
         super.registerGoals();
-
-        goalSelector.addGoal(1, new MeleeAttackGoal(this, 1, false));
     }
 
     public float getHunger() {
-        return hunger / 1200f;
+        return hunger / (hungerDecreaseSpeed() * 20f);
     }
 
     public void feed(float hunger) {
-        this.hunger = Math.max(120000, this.hunger + (int) hunger * 1200);
+        this.hunger = (int) Math.min(maxHunger, this.hunger + (maxHunger/hunger));
     }
 
     @Override
@@ -158,7 +157,9 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
 
     @Override
     protected Vec3 collide(Vec3 vec) {
-        return Stream.concat(Stream.of(getBoundingBox()), getSubEntities().stream().map(Entity::getBoundingBox)).map(aabb -> collide(aabb, vec)).reduce((vec1, vec2) -> new Vec3(Util.closestToZero(vec1.x, vec2.x), Util.closestToZero(vec1.y, vec2.y), Util.closestToZero(vec1.z, vec2.z))).orElse(Vec3.ZERO);
+        var mainCollision = collide(getBoundingBox(), vec);
+        var sideCollisions = getSubEntities().stream().map(Entity::getBoundingBox).map(aabb -> collide(aabb, vec)).reduce((vec1, vec2) -> new Vec3(Util.closestToZero(vec1.x, vec2.x), Util.closestToZero(vec1.y, vec2.y), Util.closestToZero(vec1.z, vec2.z))).orElse(Vec3.ZERO);
+        return new Vec3(Util.closestToZero(mainCollision.x, sideCollisions.x), mainCollision.y, Util.closestToZero(mainCollision.z, sideCollisions.z));
     }
 
     private Vec3 collide(AABB aabb, Vec3 vec) {

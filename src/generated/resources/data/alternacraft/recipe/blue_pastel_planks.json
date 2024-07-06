@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "alternacraft:blue_pastel_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "alternacraft:blue_pastel_planks"
+  }
+}

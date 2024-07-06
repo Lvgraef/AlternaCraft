@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "alternacraft:magnetic_crystal"
+    },
+    {
+      "item": "alternacraft:painite_crystal"
+    },
+    {
+      "item": "alternacraft:copperwood_crystal"
+    },
+    {
+      "item": "alternacraft:dark_crystal"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "alternacraft:aio_crystal"
+  }
+}

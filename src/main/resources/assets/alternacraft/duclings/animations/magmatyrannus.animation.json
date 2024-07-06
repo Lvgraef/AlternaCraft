@@ -461,7 +461,6 @@
 			}
 		},
 		"animation.magmatyrannus.attack": {
-			"loop": true,
 			"animation_length": 1,
 			"bones": {
 				"neck": {

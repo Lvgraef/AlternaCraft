@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": {
+      "item": "alternacraft:aio_crystal"
+    },
+    "s": {
+      "item": "alternacraft:mini_star"
+    }
+  },
+  "pattern": [
+    "isi",
+    "i i"
+  ],
+  "result": {
+    "count": 1,
+    "id": "alternacraft:aio_boots"
+  }
+}

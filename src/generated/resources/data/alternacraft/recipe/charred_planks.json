@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "alternacraft:charred_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "alternacraft:charred_planks"
+  }
+}
