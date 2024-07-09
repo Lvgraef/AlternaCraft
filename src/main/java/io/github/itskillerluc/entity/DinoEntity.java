@@ -1,14 +1,13 @@
 package io.github.itskillerluc.entity;
 
-import io.github.itskillerluc.entity.ai.SleepingPattern;
+import io.github.itskillerluc.entity.ai.Sleeping;
 import io.github.itskillerluc.util.Util;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.boss.EnderDragonPart;
-import net.minecraft.world.entity.boss.enderdragon.phases.EnderDragonPhase;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -21,14 +20,27 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.stream.Stream;
 
-public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal implements NeutralMob {
+public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal implements NeutralMob, Sleeping {
+    private static final EntityDataAccessor<Boolean> SLEEPING = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerializers.BOOLEAN);
+
+
     private int maxHunger = hungerDecreaseSpeed() * 20 * 100;
     private int hunger = maxHunger;
 
     protected DinoEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(SLEEPING, false);
+    }
+
+    @Override
+    public boolean isSleeping() {
+        return entityData.get(SLEEPING) || super.isSleeping();
     }
 
     abstract int hungerDecreaseSpeed();
@@ -40,15 +52,26 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
             getSubEntities().get(i).setId(id + i + 1);
     }
 
+    @Override
+    public void setSleeping(boolean sleeping) {
+        entityData.set(SLEEPING, sleeping);
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || isSleeping();
+    }
 
     @Override
     public void aiStep() {
         super.aiStep();
         for (DinoPart<T> subEntity : getSubEntities()) {
             setPartPos(subEntity, Math.sin(Math.toRadians(-getRotationVector().y)) * subEntity.getXOffset() + position().x,
-                    position().y + subEntity.getYOffset(), Math.cos(Math.toRadians(-getRotationVector().y)) * subEntity.getZOffset() + position().z);
+                    position().y + subEntity.getYOffset() - sleepingOffset(), Math.cos(Math.toRadians(-getRotationVector().y)) * subEntity.getZOffset() + position().z);
         }
     }
+
+    abstract float sleepingOffset();
 
     private void setPartPos(DinoPart<T> part, double x, double y, double z) {
         part.setPos(x, y, z);
@@ -64,6 +87,7 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
     public void addAdditionalSaveData(@NotNull CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("hunger", hunger);
+        pCompound.putBoolean("sleeping", isSleeping());
     }
 
     @Override
@@ -72,6 +96,7 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
         if (pCompound.contains("hunger")) {
             hunger = pCompound.getInt("hunger");
         }
+        setSleeping(pCompound.getBoolean("sleeping"));
     }
 
     @Override
@@ -109,7 +134,6 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
         return true;
     }
 
-    abstract SleepingPattern getSleepingPattern();
     abstract List<DinoPart<T>> getSubEntities();
 
     @Override

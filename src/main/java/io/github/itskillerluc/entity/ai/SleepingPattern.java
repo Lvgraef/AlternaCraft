@@ -15,4 +15,13 @@ public enum SleepingPattern {
     SleepingPattern(List<Pair<Integer, Integer>> sleepingHours) {
         this.sleepingHours = sleepingHours;
     }
+
+    public boolean shouldSleep(long ticks) {
+        for (Pair<Integer, Integer> sleepingHour : sleepingHours) {
+            if (sleepingHour.getFirst() <= ticks / 1000 && ticks / 1000 <= sleepingHour.getSecond()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

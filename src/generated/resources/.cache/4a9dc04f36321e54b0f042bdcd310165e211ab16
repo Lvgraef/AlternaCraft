@@ -1,6 +1,6 @@
-// 1.20.4	2024-06-03T16:19:15.5737631	Tags for minecraft:entity_type mod id alternacraft
-e40d6da5769c53b6c211501331bf68c6378ff876 data/alternacraft/tags/entity_types/dinos.json
-fc291a161cfadbd4bf7e5ca580ec7ba1ec70bf7b data/alternacraft/tags/entity_types/large_dinos.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/entity_types/medium_dinos.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/entity_types/mini_dinos.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/entity_types/small_dinos.json
+// 1.21	2024-07-05T12:06:00.2465406	Tags for minecraft:entity_type mod id alternacraft
+e40d6da5769c53b6c211501331bf68c6378ff876 data/alternacraft/tags/entity_type/dinos.json
+fc291a161cfadbd4bf7e5ca580ec7ba1ec70bf7b data/alternacraft/tags/entity_type/large_dinos.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/entity_type/medium_dinos.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/entity_type/mini_dinos.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/entity_type/small_dinos.json

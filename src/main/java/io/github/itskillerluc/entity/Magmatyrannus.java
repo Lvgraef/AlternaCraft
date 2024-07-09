@@ -9,6 +9,7 @@ import io.github.itskillerluc.init.EntityDataSerailizerRegistry;
 import io.github.itskillerluc.init.EntityRegistry;
 import io.github.itskillerluc.init.Tags;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -89,6 +90,16 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     @Override
     int hungerDecreaseSpeed() {
         return 60;
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile();
+    }
+
+    @Override
+    float sleepingOffset() {
+        return isSleeping() ? 2 : 0;
     }
 
     @Override
@@ -185,6 +196,8 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         });
     }
 
+
+
     @Override
     public void tick() {
         super.tick();
@@ -202,8 +215,14 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
             }
         }
         if (level().isClientSide) {
-            animateWhen("idle", !isMoving(this));
+            animateWhen("idle", !isMoving(this) && !isSleeping());
+            animateWhen("sleep", isSleeping());
         }
+    }
+
+    @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        return super.getDefaultDimensions(pose);
     }
 
     @Override
@@ -268,9 +287,10 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     }
 
     @Override
-    SleepingPattern getSleepingPattern() {
+    public SleepingPattern getSleepingPattern() {
         return SleepingPattern.DIURNAL;
     }
+
 
     public List<DinoPart<Magmatyrannus>> getSubEntities() {
         return subEntities;
@@ -300,9 +320,16 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     }
 
     @Override
-    public void swing(InteractionHand hand) {
-        replayAnimation("attack");
-        super.swing(hand);
+    public void setSleeping(boolean sleeping) {
+        //todo synchronize to client.
+        if (isSleeping()) {
+            if (!sleeping) {
+                setBoundingBox(getDimensions(Pose.STANDING).scale(1f, 2f).makeBoundingBox(position()));
+            }
+        } else if (sleeping) {
+            setBoundingBox(getDimensions(Pose.STANDING).scale(1f, 0.5f).makeBoundingBox(position()));
+        }
+        super.setSleeping(sleeping);
     }
 
     public enum Variant {
