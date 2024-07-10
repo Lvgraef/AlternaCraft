@@ -28,7 +28,9 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
+import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
@@ -36,11 +38,9 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.util.Lazy;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix2f;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatable<MagmatyrannusModel>, VariantHolder<Magmatyrannus.Variant> {
     public static final ResourceLocation LOCATION = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magmatyrannus");
@@ -83,6 +83,9 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
 
     @Override
     public void setTarget(@Nullable LivingEntity target) {
+        if (!Objects.equals(target, getTarget())) {
+            level().broadcastEntityEvent(this, (byte) 2);
+        }
         super.setTarget(target);
         entityData.set(RUNNING, target != null);
     }
@@ -173,7 +176,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         });
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().is(Tags.EntityTypes.DINOS)) {
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().is(Tags.EntityTypes.DINOS) || entity instanceof Player) {
             @Override
             public boolean canUse() {
                 targetConditions.range(getFollowDistance());
@@ -187,7 +190,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
                 return getHunger() < 50 && super.canUse();
             }
         });
-        targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true) {
+        targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().getCategory() != MobCategory.WATER_CREATURE && entity.getType().getCategory() != MobCategory.WATER_AMBIENT ) {
             @Override
             public boolean canUse() {
                 targetConditions.range(getFollowDistance());
@@ -195,7 +198,6 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
             }
         });
     }
-
 
 
     @Override
@@ -217,6 +219,17 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         if (level().isClientSide) {
             animateWhen("idle", !isMoving(this) && !isSleeping());
             animateWhen("sleep", isSleeping());
+            if (random.nextFloat() < 0.005 && !isMoving(this)) {
+                if (random.nextFloat() < 0.25) {
+                    replayAnimation("scratch");
+                } else if (random.nextFloat() < 0.25) {
+                    replayAnimation("sniff");
+                } else if (random.nextFloat() < 0.25) {
+                    replayAnimation("yawn");
+                } else if (random.nextFloat() < 0.25) {
+                    replayAnimation("look_around");
+                }
+            }
         }
     }
 
@@ -321,15 +334,34 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
 
     @Override
     public void setSleeping(boolean sleeping) {
-        //todo synchronize to client.
         if (isSleeping()) {
             if (!sleeping) {
-                setBoundingBox(getDimensions(Pose.STANDING).scale(1f, 2f).makeBoundingBox(position()));
+                dimensions = dimensions.scale(1f, 2f);
+                level().broadcastEntityEvent(this, (byte) 0);
             }
         } else if (sleeping) {
-            setBoundingBox(getDimensions(Pose.STANDING).scale(1f, 0.5f).makeBoundingBox(position()));
+            dimensions = dimensions.scale(1f, 0.5f);
+            level().broadcastEntityEvent(this, (byte) 1);
         }
         super.setSleeping(sleeping);
+    }
+
+    @Override
+    public void swing(InteractionHand hand) {
+        super.swing(hand);
+        replayAnimation("attack");
+    }
+
+    @Override
+    public void handleEntityEvent(byte id) {
+        super.handleEntityEvent(id);
+        if (id == 0) {
+            dimensions = dimensions.scale(1f, 2f);
+        } else if (id == 1) {
+            dimensions = dimensions.scale(1f, 0.5f);
+        } else if (id == 2) {
+            replayAnimation("roar");
+        }
     }
 
     public enum Variant {

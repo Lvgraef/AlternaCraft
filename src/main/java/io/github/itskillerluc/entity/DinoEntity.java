@@ -27,6 +27,7 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
 
     private int maxHunger = hungerDecreaseSpeed() * 20 * 100;
     private int hunger = maxHunger;
+    private int timer = 0;
 
     protected DinoEntity(EntityType<? extends TamableAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -118,6 +119,25 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
         if (hunger > 0) {
             hunger--;
         }
+        if (!level().isClientSide) {
+            if (timer <= 0) {
+                if (getTarget() == null) {
+                    setSleeping(getSleepingPattern().shouldSleep(level().getDayTime()));
+                }
+                timer = 500;
+            }
+            timer--;
+            if (timer % 5 == 0) {
+                Player player = level().getNearestPlayer(this, 3);
+                if (player != null) {
+                    setTarget(player);
+                }
+            }
+            if (getTarget() != null && isSleeping()) {
+                setSleeping(false);
+            }
+        }
+
     }
 
     public boolean hurt(DinoPart<? extends DinoEntity> part, DamageSource source, float damage) {

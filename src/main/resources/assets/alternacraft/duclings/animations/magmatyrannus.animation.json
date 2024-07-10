@@ -491,7 +491,6 @@
 			}
 		},
 		"animation.magmatyrannus.roar": {
-			"loop": true,
 			"animation_length": 1.5,
 			"bones": {
 				"neck": {
@@ -752,7 +751,6 @@
 			}
 		},
 		"animation.magmatyrannus.scratch": {
-			"loop": true,
 			"animation_length": 4,
 			"bones": {
 				"middle_body": {
@@ -840,7 +838,6 @@
 			}
 		},
 		"animation.magmatyrannus.yawn": {
-			"loop": true,
 			"animation_length": 3.5,
 			"bones": {
 				"neck": {
@@ -873,7 +870,6 @@
 			}
 		},
 		"animation.magmatyrannus.sniff": {
-			"loop": true,
 			"animation_length": 1.5,
 			"bones": {
 				"body": {
@@ -888,7 +884,6 @@
 			}
 		},
 		"animation.magmatyrannus.look_around": {
-			"loop": true,
 			"animation_length": 4,
 			"bones": {
 				"body": {
