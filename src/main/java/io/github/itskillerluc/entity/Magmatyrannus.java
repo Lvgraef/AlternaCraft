@@ -4,12 +4,15 @@ import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.client.model.MagmatyrannusModel;
 import io.github.itskillerluc.duclib.client.animation.DucAnimation;
 import io.github.itskillerluc.duclib.entity.Animatable;
+import io.github.itskillerluc.entity.ai.BreathAttackGoal;
 import io.github.itskillerluc.entity.ai.SleepingPattern;
 import io.github.itskillerluc.init.EntityDataSerailizerRegistry;
 import io.github.itskillerluc.init.EntityRegistry;
 import io.github.itskillerluc.init.Tags;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -47,14 +50,16 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     public static final DucAnimation ANIMATION = DucAnimation.create(LOCATION);
 
     public static final EntityDataAccessor<Boolean> RUNNING = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> BREATHING_FIRE = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Variant> VARIANT = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerailizerRegistry.MAGMA_TYRANNUS_VARIANT_SERIALIZER.get());
 
     private final Lazy<Map<String, AnimationState>> animations = Lazy.of(() -> MagmatyrannusModel.createStateMap(getAnimation()));
+    private final DinoPart<Magmatyrannus> head;
     private final List<DinoPart<Magmatyrannus>> subEntities;
 
     public Magmatyrannus(EntityType<? extends Magmatyrannus> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        var head = new DinoPart<>(this, "head", 1.5F, 1.3F, 1.7f, new Vec3(4, 3.3, 4));
+        head = new DinoPart<>(this, "head", 1.5F, 1.3F, 1.7f, new Vec3(4, 3.3, 4));
         var chest = new DinoPart<>(this, "body", 2.0F, 2.0F, 1.2f, new Vec3(2.1, 2.3, 2.1));
         var tail = new DinoPart<>(this, "tail", 2.0F, 2.0F, 0.8f, new Vec3(-2.1, 2.1, -2.1));
         var tailEnd = new DinoPart<>(this, "tail", 1.5F, 1.5F, 0.5f, new Vec3(-4.8, 2.5, -4.8));
@@ -67,6 +72,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         super.defineSynchedData(pBuilder);
         pBuilder.define(VARIANT, Variant.values()[random.nextInt(Variant.values().length)]);
         pBuilder.define(RUNNING, false);
+        pBuilder.define(BREATHING_FIRE, false);
     }
 
     @Nullable
@@ -98,6 +104,11 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     @Override
     protected boolean isImmobile() {
         return super.isImmobile();
+    }
+
+    @Override
+    public DinoPart<Magmatyrannus> getHead() {
+        return head;
     }
 
     @Override
@@ -174,6 +185,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
                 }
             }
         });
+        goalSelector.addGoal(3, new BreathAttackGoal(this, 1, 1, ParticleTypes.FLAME, 65, 100, 300, 20, 1, 5, 30, 20, new Vec3(0, -0.4, 1), 20, 1));
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
         targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().is(Tags.EntityTypes.DINOS) || entity instanceof Player) {
@@ -219,7 +231,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         if (level().isClientSide) {
             animateWhen("idle", !isMoving(this) && !isSleeping());
             animateWhen("sleep", isSleeping());
-            if (random.nextFloat() < 0.005 && !isMoving(this)) {
+            if (random.nextFloat() < 0.005 && !isMoving(this) && !entityData.get(BREATHING_FIRE) && !isSleeping()) {
                 if (random.nextFloat() < 0.25) {
                     replayAnimation("scratch");
                 } else if (random.nextFloat() < 0.25) {
@@ -230,6 +242,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
                     replayAnimation("look_around");
                 }
             }
+            animateWhen("breath_attack", entityData.get(BREATHING_FIRE));
         }
     }
 

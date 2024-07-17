@@ -63,12 +63,14 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
         return super.isImmobile() || isSleeping();
     }
 
+    public abstract DinoPart<T> getHead();
+
     @Override
     public void aiStep() {
         super.aiStep();
         for (DinoPart<T> subEntity : getSubEntities()) {
-            setPartPos(subEntity, Math.sin(Math.toRadians(-getRotationVector().y)) * subEntity.getXOffset() + position().x,
-                    position().y + subEntity.getYOffset() - sleepingOffset(), Math.cos(Math.toRadians(-getRotationVector().y)) * subEntity.getZOffset() + position().z);
+            setPartPos(subEntity, Math.sin(Math.toRadians(-yBodyRot)) * subEntity.getXOffset() + position().x,
+                    position().y + subEntity.getYOffset() - sleepingOffset(), Math.cos(Math.toRadians(-yBodyRot)) * subEntity.getZOffset() + position().z);
         }
     }
 
