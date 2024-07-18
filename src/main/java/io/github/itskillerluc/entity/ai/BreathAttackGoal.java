@@ -6,17 +6,25 @@ import io.github.itskillerluc.entity.Magmatyrannus;
 import io.github.itskillerluc.networking.ParticlePayload;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix3f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 import java.util.EnumSet;
+import java.util.function.Consumer;
 
 public class BreathAttackGoal extends Goal {
     private final DinoEntity<?> dino;
@@ -39,10 +47,12 @@ public class BreathAttackGoal extends Goal {
     private final int spread;
     private final int particleCount;
     private final int animationDelay;
+    private final int damageCooldown;
     private final Vec3 offset;
+    private final Consumer<Entity> effect;
     private final float distance;
 
-    public BreathAttackGoal(DinoEntity<?> dinoEntity, double speedModifier, int damage, ParticleOptions particle, int maxAttackingTime, int attackIntervalMin, int attackIntervalMax, float attackRadius, float particleSpeed, int spread, int particleCount, int animationDelay, Vec3 offset, float distance, float maxFireAngle) {
+    public BreathAttackGoal(DinoEntity<?> dinoEntity, double speedModifier, int damage, ParticleOptions particle, int maxAttackingTime, int attackIntervalMin, int attackIntervalMax, float attackRadius, float particleSpeed, int spread, int particleCount, int animationDelay, Vec3 offset, float distance, float maxFireAngle, int damageCooldown, Consumer<Entity> effect) {
         this.dino = dinoEntity;
         this.speedModifier = speedModifier;
         this.damage = damage;
@@ -59,6 +69,8 @@ public class BreathAttackGoal extends Goal {
         this.offset = offset;
         this.distance = distance;
         this.maxFireAngle = maxFireAngle;
+        this.damageCooldown = damageCooldown;
+        this.effect = effect;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
     }
 
@@ -83,6 +95,7 @@ public class BreathAttackGoal extends Goal {
         this.target = null;
         this.seeTime = 0;
         this.attackTime = -1;
+        dino.getEntityData().set(Magmatyrannus.BREATHING_FIRE, false);
     }
 
     @Override
@@ -98,6 +111,7 @@ public class BreathAttackGoal extends Goal {
 
     @Override
     public void tick() {
+        if (this.target == null) return;
         double d0 = this.dino.distanceToSqr(this.target);
         boolean flag = this.dino.getSensing().hasLineOfSight(this.target);
         if (flag) {
@@ -105,11 +119,10 @@ public class BreathAttackGoal extends Goal {
         } else {
             this.seeTime = 0;
         }
-
         if (!(d0 > (double) this.attackRadiusSqr) && this.seeTime >= 5) {
             this.dino.getNavigation().stop();
-            var rotation = dino.getLookAngle().toVector3f().angle(target.position().toVector3f());
-            if (!(rotation < maxFireAngle || 2 * Math.PI - rotation < maxFireAngle)) {
+            var rotation = Vec3.directionFromRotation(dino.getRotationVector().x, dino.yBodyRot).toVector3f().angle(target.position().subtract(dino.position()).toVector3f());
+            if (rotation >= maxFireAngle) {
                 flag = false;
                 this.dino.getLookControl().setLookAt(target);
             }
@@ -138,6 +151,8 @@ public class BreathAttackGoal extends Goal {
                 this.attackTime = Mth.floor(f * (float) (this.attackIntervalMax - this.attackIntervalMin) + (float) this.attackIntervalMin);
                 animationTimer = 0;
             }
+        } else if (attackTime < 0) {
+            attackTime = 1;
         } else {
             dino.getEntityData().set(Magmatyrannus.BREATHING_FIRE, false);
         }
@@ -150,5 +165,16 @@ public class BreathAttackGoal extends Goal {
         Vector3f targetVector = originVec.vectorTo(target.position()).toVector3f();
 
         PacketDistributor.sendToPlayersTrackingEntity(this.dino, new ParticlePayload(targetVector.mul(particleSpeed), particle, originVec.toVector3f(), spread, particleCount));
+
+        if (dino.level().getGameTime() % damageCooldown == 0) {
+            for (Entity entity : dino.level().getEntities(dino, AABB.ofSize(dino.position(), distance, distance, distance))) {
+                if (ArrayUtils.contains(dino.getParts(), entity) || entity.is(dino)) continue;
+                var rotation = Vec3.directionFromRotation(dino.getRotationVector().x, dino.yBodyRot).toVector3f().angle(entity.position().subtract(dino.position()).toVector3f());
+                if (rotation < maxFireAngle) {
+                    entity.hurt(dino.damageSources().mobAttack(dino), damage);
+                    effect.accept(entity);
+                }
+            }
+        }
     }
 }

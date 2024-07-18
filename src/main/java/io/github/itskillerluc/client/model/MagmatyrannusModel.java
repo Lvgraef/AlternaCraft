@@ -30,7 +30,7 @@ public class MagmatyrannusModel extends AnimatableDucModel<Magmatyrannus> {
     public void setupAnim(@NotNull Magmatyrannus pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
         super.setupAnim(pEntity, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
         if (pEntity.getEntityData().get(Magmatyrannus.RUNNING)) {
-            float maxAnimationSpeed = 1;
+            float maxAnimationSpeed = 1.125f;
             synchronizeDummyState(pEntity, pLimbSwing, maxAnimationSpeed, "run");
             animateWalk(pEntity.getAnimation().getAnimations().get("animation.magmatyrannus.run").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1f);
         } else {

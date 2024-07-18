@@ -172,7 +172,12 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     protected void registerGoals() {
         super.registerGoals();
         goalSelector.addGoal(0, new FloatGoal(this));
-        goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0, false));
+        goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0, false) {
+            @Override
+            public boolean canUse() {
+                return super.canUse() && distanceToSqr(getTarget()) < 55;
+            }
+        });
         goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.005f) {
             @Nullable
             @Override
@@ -185,7 +190,12 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
                 }
             }
         });
-        goalSelector.addGoal(3, new BreathAttackGoal(this, 1, 1, ParticleTypes.FLAME, 65, 100, 300, 20, 1, 5, 30, 20, new Vec3(0, -0.4, 1), 20, 1));
+        goalSelector.addGoal(4, new BreathAttackGoal(this, 1, 1, ParticleTypes.FLAME, 65, 100, 300, 20, 1, 5, 30, 20, new Vec3(0, -0.4, 1), 30, 1, 1, entity -> entity.setRemainingFireTicks(240)) {
+            @Override
+            public boolean canUse() {
+                return super.canUse() && distanceToSqr(getTarget()) >= 55;
+            }
+        });
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
         targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().is(Tags.EntityTypes.DINOS) || entity instanceof Player) {
@@ -362,7 +372,9 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     @Override
     public void swing(InteractionHand hand) {
         super.swing(hand);
-        replayAnimation("attack");
+        if (level().isClientSide()) {
+            replayAnimation("attack");
+        }
     }
 
     @Override
