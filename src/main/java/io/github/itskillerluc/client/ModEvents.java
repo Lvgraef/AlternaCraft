@@ -17,8 +17,8 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 @EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEvents {
     @SubscribeEvent
-    public static void clientSetup(final FMLClientSetupEvent event) {
-        EntityRenderers.register(EntityRegistry.MAGMATYRANNUS.get(), MagmatyrannusRenderer::new);
+    public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(EntityRegistry.MAGMATYRANNUS.get(), MagmatyrannusRenderer::new);
     }
 
     @SubscribeEvent
