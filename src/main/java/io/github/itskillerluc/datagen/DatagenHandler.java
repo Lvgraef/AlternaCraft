@@ -2,6 +2,7 @@ package io.github.itskillerluc.datagen;
 
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.BiomeInit;
+import io.github.itskillerluc.init.ConfiguredFeatureInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -24,6 +25,7 @@ import java.util.concurrent.CompletableFuture;
 @EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class DatagenHandler {
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+            .add(Registries.CONFIGURED_FEATURE, ConfiguredFeatureInit::bootstrap)
             .add(Registries.BIOME, BiomeInit::bootstrap);
 
     @SubscribeEvent

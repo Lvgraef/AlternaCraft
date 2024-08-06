@@ -1,5 +1,6 @@
-// 1.21	2024-07-29T19:35:15.8869617	Registries
+// 1.21	2024-08-06T15:52:55.1853821	Registries
 62ff16e1616aaa95efc3bf957cb546d45085be60 data/alternacraft/worldgen/biome/colorful_forest.json
 2e83fafa08949c899cab6405e167e5a96c736b23 data/alternacraft/worldgen/biome/electric_swamp.json
 c636c6ae43a321ac4f44300a6732393fa79a3002 data/alternacraft/worldgen/biome/frozen_desert.json
 ac25bbdafbc473fffa1af974eb06aca2e1078f42 data/alternacraft/worldgen/biome/volcanic_wasteland.json
+38679a46aa756e60cc6ae42d50086fa0a546c3d2 data/alternacraft/worldgen/configured_feature/electree.json
