@@ -138,6 +138,7 @@ public class ItemRegistry {
     public static final Supplier<BlockItem> DEEPSLATE_DARK_CRYSTAL_ORE = ITEMS.registerSimpleBlockItem(BlockRegistry.DEEPSLATE_DARK_CRYSTAL_ORE);
     public static final Supplier<BlockItem> DARK_CRYSTAL_ORE = ITEMS.registerSimpleBlockItem(BlockRegistry.DARK_CRYSTAL_ORE);
     public static final Supplier<BlockItem> STRIPPED_ELECTREE_LOG = ITEMS.registerSimpleBlockItem(BlockRegistry.STRIPPED_ELECTREE_LOG);
+    public static final Supplier<BlockItem> ELECTREE_SAPLING = ITEMS.registerSimpleBlockItem(BlockRegistry.ELECTREE_SAPLING);
     public static final Supplier<BlockItem> ORANGE_BULB = ITEMS.registerSimpleBlockItem(BlockRegistry.ORANGE_BULB);
     public static final Supplier<BlockItem> GREEN_ROSE_BULB = ITEMS.registerSimpleBlockItem(BlockRegistry.GREEN_ROSE_BULB);
     public static final Supplier<BlockItem> ELECTREE_PLANKS = ITEMS.registerSimpleBlockItem(BlockRegistry.ELECTREE_PLANKS);

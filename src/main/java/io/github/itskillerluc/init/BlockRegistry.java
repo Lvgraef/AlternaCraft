@@ -70,6 +70,7 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> RED_PASTEL_LEAVES = BLOCKS.registerSimpleBlock("red_pastel_leaves", BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LEAVES).mapColor(MapColor.COLOR_RED));
     public static final DeferredBlock<RotatedPillarBlock> RED_PASTEL_LOG = BLOCKS.registerBlock("red_pastel_log", props -> new LogBlock(props, BlockRegistry.STRIPPED_RED_PASTEL_LOG), BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_RED : MapColor.COLOR_BROWN));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_RED_PASTEL_LOG = BLOCKS.registerBlock("stripped_red_pastel_log", RotatedPillarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_LOG).mapColor(MapColor.TERRACOTTA_RED));
+    public static final DeferredBlock<SaplingBlock> ELECTREE_SAPLING = BLOCKS.registerBlock("electree_sapling", props -> new SaplingBlock(TreeGrowers.ELECTREE, props), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING));
 
     public static final DeferredBlock<Block> RED_PASTEL_PETALS = BLOCKS.registerBlock("red_pastel_petals", PinkPetalsBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.PINK_PETALS).mapColor(MapColor.COLOR_RED));
     public static final Holder<Block> RED_PASTEL_PLANKS = BLOCKS.registerSimpleBlock("red_pastel_planks", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_RED));

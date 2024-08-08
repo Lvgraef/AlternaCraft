@@ -41,6 +41,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistry.BLUE_COLORFUL_FLOWER.get());
         dropSelf(BlockRegistry.BLUE_PASTEL_LOG.get());
         dropSelf(BlockRegistry.BLUE_PASTEL_PLANKS.value());
+        dropSelf(BlockRegistry.ELECTREE_SAPLING.value());
         dropSelf(BlockRegistry.CHARRED_BARK.get());
         dropSelf(BlockRegistry.CHARRED_PLANKS.value());
         dropSelf(BlockRegistry.CYAN_COLORFUL_FLOWER.get());

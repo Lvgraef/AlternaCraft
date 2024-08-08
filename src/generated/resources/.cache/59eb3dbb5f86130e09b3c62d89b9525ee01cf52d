@@ -1,4 +1,4 @@
-// 1.21	2024-07-25T17:38:54.8322248	Loot Tables
+// 1.21	2024-08-08T12:51:41.3463566	Loot Tables
 eac55d89f6c5d0933ada60ccd2ebc44d6d6da103 data/alternacraft/loot_table/blocks/blue_bulb.json
 0ac944c6f03fd856d69cc2eba2b9be3e6192aaf4 data/alternacraft/loot_table/blocks/blue_colorful_flower.json
 0f7f60e9e0cc6b6e06031f1a6f6a4e10060d820b data/alternacraft/loot_table/blocks/blue_pastel_leaves.json
@@ -18,6 +18,7 @@ fdd7fba6acd6c78495139e5aec9ab206222aac97 data/alternacraft/loot_table/blocks/dee
 7d6cd8668749472d02f0ad909eb2ab3af8925e9f data/alternacraft/loot_table/blocks/electree_leaves.json
 a6dc34cd7d2b9f019544c0ad82e5616852d24592 data/alternacraft/loot_table/blocks/electree_log.json
 7b0c648b7056c4806469866caeafc776b4cfb478 data/alternacraft/loot_table/blocks/electree_planks.json
+21650662c0df9a28215252571b00633d5ddca66b data/alternacraft/loot_table/blocks/electree_sapling.json
 94ad9bf822ec1b81ea7c062c8db647d86d21c8fc data/alternacraft/loot_table/blocks/frozen_cactus.json
 cd4096f20c9359fb3003c963eb7c84c691075907 data/alternacraft/loot_table/blocks/frozen_sand.json
 52c4af36e2fec4fbadb7e48dfbb6144c0a5357ad data/alternacraft/loot_table/blocks/green_colorful_flower.json

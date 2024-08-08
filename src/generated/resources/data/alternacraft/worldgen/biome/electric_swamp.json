@@ -80,8 +80,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_swamp",
-      "minecraft:flower_swamp",
+      "alternacraft:flower_electric_swamp",
+      "alternacraft:electree",
       "minecraft:patch_grass_normal",
       "minecraft:patch_dead_bush",
       "minecraft:patch_waterlily",

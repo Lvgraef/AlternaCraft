@@ -3,6 +3,7 @@ package io.github.itskillerluc.datagen;
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.BiomeInit;
 import io.github.itskillerluc.init.ConfiguredFeatureInit;
+import io.github.itskillerluc.init.PlacedFeatureInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -26,6 +27,7 @@ import java.util.concurrent.CompletableFuture;
 public class DatagenHandler {
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, ConfiguredFeatureInit::bootstrap)
+            .add(Registries.PLACED_FEATURE, PlacedFeatureInit::bootstrap)
             .add(Registries.BIOME, BiomeInit::bootstrap);
 
     @SubscribeEvent
