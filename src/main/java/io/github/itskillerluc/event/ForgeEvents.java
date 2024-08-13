@@ -2,14 +2,17 @@ package io.github.itskillerluc.event;
 
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.ArmorMaterialRegistry;
+import io.github.itskillerluc.init.BiomeInit;
 import io.github.itskillerluc.init.ToolTiers;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.TieredItem;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingBreatheEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.apache.commons.lang3.stream.Streams;
@@ -37,6 +40,13 @@ public class ForgeEvents {
                     }
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void livingBreatheEvent(final LivingBreatheEvent event) {
+        if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.ELECTRIC_SWAMP) && event.getEntity().isInWater()) {
+            event.getEntity().hurt(event.getEntity().damageSources().lightningBolt(), 1);
         }
     }
 }
