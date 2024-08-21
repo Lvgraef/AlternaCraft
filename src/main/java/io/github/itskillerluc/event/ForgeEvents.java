@@ -45,7 +45,8 @@ public class ForgeEvents {
 
     @SubscribeEvent
     public static void livingBreatheEvent(final LivingBreatheEvent event) {
-        if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.ELECTRIC_SWAMP) && event.getEntity().isInWater()) {
+        if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.ELECTRIC_SWAMP) && event.getEntity().isInWater()
+                && Streams.of(event.getEntity().getArmorSlots().iterator()).allMatch(item -> item.getItem() instanceof ArmorItem armor && (armor.getMaterial() == ArmorMaterialRegistry.AIO || armor.getMaterial() == ArmorMaterialRegistry.MAGNET))) {
             event.getEntity().hurt(event.getEntity().damageSources().lightningBolt(), 1);
         }
     }

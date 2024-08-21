@@ -1,0 +1,21 @@
+{
+  "feature": "alternacraft:cerulean_lava",
+  "placement": [
+    {
+      "type": "alternacraft:everywhere"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:matching_fluids",
+        "fluids": [
+          "minecraft:water",
+          "minecraft:flowing_water"
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -20,6 +20,7 @@ public class AlternaCraft {
     private static final Logger LOGGER = LogUtils.getLogger();
     public AlternaCraft(IEventBus modEventBus, ModContainer modContainer) {
         SoundEventRegistry.SOUND_EVENTS.register(modEventBus);
+        PlacementModifierRegistry.PLACEMENT_MODIFIERS.register(modEventBus);
         ArmorMaterialRegistry.ARMOR_MATERIALS.register(modEventBus);
         DataComponentRegistry.DATA_COMPONENTS.register(modEventBus);
         EntityDataSerailizerRegistry.ENTITY_DATA_SERIALIZERS.register(modEventBus);

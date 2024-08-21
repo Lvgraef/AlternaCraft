@@ -31,7 +31,8 @@
     [],
     [
       "minecraft:lake_lava_underground",
-      "minecraft:lake_lava_surface"
+      "minecraft:lake_lava_surface",
+      "alternacraft:cerulean_lava"
     ],
     [
       "minecraft:amethyst_geode"
@@ -80,12 +81,11 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_badlands",
+      "alternacraft:charred_tree",
+      "alternacraft:dead_flowers",
+      "alternacraft:dead_grass",
       "minecraft:patch_grass_badlands",
-      "minecraft:patch_dead_bush_badlands",
-      "minecraft:patch_sugar_cane_badlands",
-      "minecraft:patch_pumpkin",
-      "minecraft:patch_cactus_decorated"
+      "minecraft:patch_dead_bush_badlands"
     ],
     [
       "minecraft:freeze_top_layer"

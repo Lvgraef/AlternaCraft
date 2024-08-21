@@ -139,11 +139,11 @@ public class OverworldBiomes {
         globalOverworldGeneration(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultOres(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomegenerationsettings$builder);
-        BiomeDefaultFeatures.addBadlandsTrees(biomegenerationsettings$builder);
-
-
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.CHARRED_TREE);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.DEAD_FLOWERS);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.DEAD_GRASS);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.LAKES, PlacedFeatureInit.CERULEAN_LAVA);
         BiomeDefaultFeatures.addBadlandGrass(biomegenerationsettings$builder);
-        BiomeDefaultFeatures.addBadlandExtraVegetation(biomegenerationsettings$builder);
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false)
                 .temperature(2.0F)
