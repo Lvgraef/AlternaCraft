@@ -47,7 +47,7 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> GREEN_ROSE_BULB = BLOCKS.registerBlock("green_rose_bulb",props -> new FlowerBlock(
             MobEffects.LEVITATION, 4, props), BlockBehaviour.Properties.ofFullCopy(Blocks.AZURE_BLUET));
 
-    public static final DeferredBlock<Block> PAINITE_ORE_SOIL = BLOCKS.registerSimpleBlock("painite_ore_soil", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE));
+    public static final DeferredBlock<Block> PAINITE_ORE = BLOCKS.registerSimpleBlock("painite_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_ORE));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_CHARRED_BARK = BLOCKS.registerBlock("stripped_charred_bark", RotatedPillarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(block ->  MapColor.STONE));
 
     public static final DeferredBlock<Block> VOLCANIC_ROCK = BLOCKS.registerSimpleBlock("volcanic_rock", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));

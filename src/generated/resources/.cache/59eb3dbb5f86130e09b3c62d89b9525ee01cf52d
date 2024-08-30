@@ -1,4 +1,4 @@
-// 1.21	2024-08-08T12:51:41.3463566	Loot Tables
+// 1.21	2024-08-30T15:33:04.1392895	Loot Tables
 eac55d89f6c5d0933ada60ccd2ebc44d6d6da103 data/alternacraft/loot_table/blocks/blue_bulb.json
 0ac944c6f03fd856d69cc2eba2b9be3e6192aaf4 data/alternacraft/loot_table/blocks/blue_colorful_flower.json
 0f7f60e9e0cc6b6e06031f1a6f6a4e10060d820b data/alternacraft/loot_table/blocks/blue_pastel_leaves.json
@@ -30,7 +30,7 @@ f8b5106c0ee4925e20394b106b2fb2cf31ea3fdb data/alternacraft/loot_table/blocks/min
 ffe98096a92b82555c0f2f64a248461079f39a38 data/alternacraft/loot_table/blocks/mossy_grass.json
 645528169fa4fe0a4366d48b929705a8d7d61a8d data/alternacraft/loot_table/blocks/orange_bulb.json
 804cf3427c6b00080e000560b2a98db74c675697 data/alternacraft/loot_table/blocks/orange_colorful_flower.json
-464529840abb36c653f092c68bd81d1224e5da15 data/alternacraft/loot_table/blocks/painite_ore_soil.json
+53c515da88d3b61e1b666a7353f791dc4758d9ff data/alternacraft/loot_table/blocks/painite_ore.json
 621a7093cb94be746c0680b179f1f34ced4f6cc1 data/alternacraft/loot_table/blocks/pink_colorful_flower.json
 efd4c37fdac3ec6d77f448da8d0e02f3f08cf0fc data/alternacraft/loot_table/blocks/purple_colorful_flower.json
 753caa95b067834b0ba81212dfec364d59e4ddc7 data/alternacraft/loot_table/blocks/red_pastel_leaves.json

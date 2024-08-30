@@ -25,8 +25,6 @@ public class AlternaCraft {
         DataComponentRegistry.DATA_COMPONENTS.register(modEventBus);
         EntityDataSerailizerRegistry.ENTITY_DATA_SERIALIZERS.register(modEventBus);
         EntityRegistry.ENTITY_TYPES.register(modEventBus);
-        Regions.register(new OverworldRegion(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "overworld"), RegionType.OVERWORLD, 3));
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, SurfaceRuleData.overworld());
 
         BlockRegistry.BLOCKS.register(modEventBus);
         FluidRegistry.FLUIDS.register(modEventBus);

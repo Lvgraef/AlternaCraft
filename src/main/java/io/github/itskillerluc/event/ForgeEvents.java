@@ -4,6 +4,9 @@ import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.ArmorMaterialRegistry;
 import io.github.itskillerluc.init.BiomeInit;
 import io.github.itskillerluc.init.ToolTiers;
+import io.github.itskillerluc.worldgen.biome.OverworldRegion;
+import io.github.itskillerluc.worldgen.biome.SurfaceRuleData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -12,10 +15,14 @@ import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.entity.living.LivingBreatheEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.apache.commons.lang3.stream.Streams;
+import terrablender.api.RegionType;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 @EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ForgeEvents {

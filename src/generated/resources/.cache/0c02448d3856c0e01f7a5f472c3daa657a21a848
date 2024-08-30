@@ -1,4 +1,4 @@
-// 1.21	2024-07-25T17:38:54.840223	Tags for minecraft:block mod id alternacraft
+// 1.21	2024-08-30T15:33:04.1554155	Tags for minecraft:block mod id alternacraft
 7a883fa331b5ba358c43a58409a85844a773e140 data/alternacraft/tags/block/blue_pastel_logs.json
 92ba13da97c7e3ab9741b3a8501d5d7131fdb54c data/alternacraft/tags/block/charred_logs.json
 e2a62d9ead72c5761e5b693962525f77367a4ad1 data/alternacraft/tags/block/copperwood_ores.json
@@ -8,7 +8,7 @@ ec5ce07d121b6e71b9c8108db33250c49ecf865e data/alternacraft/tags/block/electree_l
 3d44e5f97eb0e90b0cb676ecc0d40fe3c855a6df data/alternacraft/tags/block/incorrect_dark_crystal.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/block/needs_aio_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/alternacraft/tags/block/needs_dark_crystal_tool.json
-9f3d569175a837426d5afff17efc45bdd4437239 data/alternacraft/tags/block/painite_ores.json
+732be04895425781b668f3d95e7775f44c86827d data/alternacraft/tags/block/painite_ores.json
 4a47ecb88f581e108c641e36af36a65f655d3199 data/alternacraft/tags/block/red_pastel_logs.json
 5a18faf905a1a86e7a02fd13f4e8cb07457f6801 data/minecraft/tags/block/dirt.json
 196283773ae8f9c065c0f0d81b8324c15c0503ce data/minecraft/tags/block/flowers.json
@@ -16,9 +16,9 @@ ec5ce07d121b6e71b9c8108db33250c49ecf865e data/alternacraft/tags/block/electree_l
 6e2cc364109fc1dff4f9e09e7522fa79ac92dfea data/minecraft/tags/block/leaves.json
 a6b01207230c7d84a2055a2315d38176dfb6dab0 data/minecraft/tags/block/logs_that_burn.json
 b97be71ce6e9704eabc0dd28701de92068b53762 data/minecraft/tags/block/mineable/axe.json
-fcd93483e62500eec07bebb021134c6b2a529c13 data/minecraft/tags/block/mineable/pickaxe.json
+c6649eefa585cab48c3a6022f651e5bed66cd4be data/minecraft/tags/block/mineable/pickaxe.json
 dcc27eb201d3c6fd92b385b32741d4d7bbdbd046 data/minecraft/tags/block/mineable/shovel.json
-2a3fa43d96d9c7e3aec140c68c3f2b3b9206df29 data/minecraft/tags/block/needs_diamond_tool.json
+213cc867fa091a71d8c2a369fc7f1e3299db8938 data/minecraft/tags/block/needs_diamond_tool.json
 ecaa742c028e4aa8339477e6ad8ecb1db008881b data/minecraft/tags/block/planks.json
 a9bdb5f85f8d72da5c86aaa7fad0aa6f111ad165 data/minecraft/tags/block/sand.json
 5822c9a7d7e9a9aca20d26b8b04418be0dab7e04 data/minecraft/tags/block/small_flowers.json

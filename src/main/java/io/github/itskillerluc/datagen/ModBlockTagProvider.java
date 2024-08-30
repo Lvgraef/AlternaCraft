@@ -48,7 +48,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(BlockRegistry.STRIPPED_ELECTREE_LOG.value());
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BlockRegistry.VOLCANIC_ROCK.get())
-                .add(BlockRegistry.PAINITE_ORE_SOIL.get())
+                .add(BlockRegistry.PAINITE_ORE.get())
                 .add(BlockRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.value())
                 .add(BlockRegistry.DARK_CRYSTAL_ORE.value())
                 .add(BlockRegistry.COPPERWOOD_ORE.value())
@@ -57,7 +57,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(BlockRegistry.VOLCANIC_SOIL.get())
                 .add(BlockRegistry.FROZEN_SAND.value());
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(BlockRegistry.PAINITE_ORE_SOIL.get())
+                .add(BlockRegistry.PAINITE_ORE.get())
                 .add(BlockRegistry.COPPERWOOD_ORE.value())
                 .add(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value())
                 .add(BlockRegistry.DARK_CRYSTAL_ORE.value())
@@ -101,7 +101,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(Tags.Blocks.NEEDS_AIO_TOOL);
         tag(Tags.Blocks.NEEDS_DARK_CRYSTAL_TOOL);
         tag(Tags.Blocks.PAINITE_ORES)
-                .add(BlockRegistry.PAINITE_ORE_SOIL.value());
+                .add(BlockRegistry.PAINITE_ORE.value());
         tag(Tags.Blocks.RED_PASTEL_LOGS)
                 .add(BlockRegistry.RED_PASTEL_LOG.value())
                 .add(BlockRegistry.STRIPPED_RED_PASTEL_LOG.value());

@@ -8,11 +8,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -129,7 +126,7 @@ public class ItemRegistry {
     public static final Supplier<BlockItem> DEAD_DANDELION = ITEMS.registerSimpleBlockItem(BlockRegistry.DEAD_DANDELION);
     public static final Supplier<BlockItem> DEAD_POPPY = ITEMS.registerSimpleBlockItem(BlockRegistry.DEAD_POPPY);
     public static final Supplier<BlockItem> DEAD_GRASS = ITEMS.registerSimpleBlockItem(BlockRegistry.DEAD_GRASS);
-    public static final Supplier<BlockItem> PAINITE_ORE_SOIL = ITEMS.registerSimpleBlockItem(BlockRegistry.PAINITE_ORE_SOIL);
+    public static final Supplier<BlockItem> PAINITE_ORE_SOIL = ITEMS.registerSimpleBlockItem(BlockRegistry.PAINITE_ORE);
     public static final Supplier<BlockItem> STRIPPED_CHARRED_BARK = ITEMS.registerSimpleBlockItem(BlockRegistry.STRIPPED_CHARRED_BARK);
     public static final Supplier<BlockItem> VOLCANIC_ROCK = ITEMS.registerSimpleBlockItem(BlockRegistry.VOLCANIC_ROCK);
     public static final Supplier<BlockItem> VOLCANIC_SOIL = ITEMS.registerSimpleBlockItem(BlockRegistry.VOLCANIC_SOIL);
