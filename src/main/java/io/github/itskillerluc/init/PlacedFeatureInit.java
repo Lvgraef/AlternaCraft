@@ -99,14 +99,14 @@ public class PlacedFeatureInit {
                 context,
                 PAINITE_ORE,
                 configuredFeatures.getOrThrow(ConfiguredFeatureInit.PAINITE_ORE),
+                HeightRangePlacement.uniform(new VerticalAnchor.Absolute(0), new VerticalAnchor.Absolute(60)),
                 CountPlacement.of(
                         new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder()
-                                .add(ConstantInt.of(7), 2)
-                                .add(ConstantInt.of(6), 5)
-                                .add(ConstantInt.of(6), 3)
-                                .add(ConstantInt.of(3), 2).build())),
+                                .add(ConstantInt.of(2), 2)
+                                .add(ConstantInt.of(3), 5)
+                                .add(ConstantInt.of(1), 3)
+                                .add(ConstantInt.of(4), 1).build())),
                 InSquarePlacement.spread(),
-                HeightRangePlacement.uniform(new VerticalAnchor.Absolute(0), new VerticalAnchor.Absolute(60)),
                 BiomeFilter.biome()
         );
     }
