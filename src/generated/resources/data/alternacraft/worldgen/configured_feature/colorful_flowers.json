@@ -1,0 +1,64 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:noise_provider",
+            "noise": {
+              "amplitudes": [
+                1.0
+              ],
+              "firstOctave": 0
+            },
+            "scale": 0.020833334,
+            "seed": 2345,
+            "states": [
+              {
+                "Name": "alternacraft:cyan_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:blue_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:green_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:lime_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:orange_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:pink_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:purple_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:yellow_colorful_flower"
+              },
+              {
+                "Name": "alternacraft:magenta_colorful_flower"
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 96,
+    "xz_spread": 6,
+    "y_spread": 2
+  }
+}
