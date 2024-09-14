@@ -13,6 +13,10 @@ public class SurfaceRuleData {
     private static final SurfaceRules.RuleSource WATER = makeStateRule(Blocks.WATER);
     private static final SurfaceRules.RuleSource VOLCANIC_SOIL = makeStateRule(BlockRegistry.VOLCANIC_SOIL.get());
     private static final SurfaceRules.RuleSource VOLCANIC_ROCK = makeStateRule(BlockRegistry.VOLCANIC_ROCK.get());
+    private static final SurfaceRules.RuleSource STONE = makeStateRule(Blocks.STONE);
+    private static final SurfaceRules.RuleSource FROZEN_SAND = makeStateRule(BlockRegistry.FROZEN_SAND.value());
+    private static final SurfaceRules.RuleSource MOSSY_GRASS = makeStateRule(BlockRegistry.MOSSY_GRASS.value());
+    private static final SurfaceRules.RuleSource MOSSY_DIRT = makeStateRule(BlockRegistry.MOSSY_DIRT.value());
 
     private static SurfaceRules.RuleSource makeStateRule(Block block) {
         return SurfaceRules.state(block.defaultBlockState());
@@ -39,14 +43,16 @@ public class SurfaceRuleData {
                 )
         );
 
+        SurfaceRules.ConditionSource waterCheck = SurfaceRules.waterBlockCheck(-1, 0);
         SurfaceRules.RuleSource volcanicWasteland = SurfaceRules.ifTrue(
                 SurfaceRules.isBiome(BiomeInit.VOLCANIC_WASTELAND),
                 SurfaceRules.sequence(
-                        SurfaceRules.ifTrue(SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
                                 SurfaceRules.ifTrue(
                                         SurfaceRules.ON_FLOOR,
                                         SurfaceRules.ifTrue(
-                                                SurfaceRules.waterBlockCheck(-1, 0),
+                                                waterCheck,
                                                 VOLCANIC_SOIL
                                         )
                                 )),
@@ -57,7 +63,46 @@ public class SurfaceRuleData {
                 )
         );
 
-        return SurfaceRules.sequence(swamp, volcanicWasteland);
+        SurfaceRules.RuleSource frozenDesert = SurfaceRules.ifTrue(
+                SurfaceRules.isBiome(BiomeInit.FROZEN_DESERT),
+                SurfaceRules.sequence(
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.ifTrue(
+                                                waterCheck,
+                                                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_CEILING, STONE), FROZEN_SAND)
+                                        )
+                                )
+                        )
+                )
+        );
+
+        SurfaceRules.RuleSource colorfulForest = SurfaceRules.ifTrue(
+                SurfaceRules.isBiome(BiomeInit.COLORFUL_FOREST),
+                SurfaceRules.ifTrue(
+                        SurfaceRules.abovePreliminarySurface(),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.UNDER_FLOOR,
+                                SurfaceRules.ifTrue(
+                                        waterCheck,
+                                        SurfaceRules.sequence(
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.ON_FLOOR,
+                                                        SurfaceRules.ifTrue(
+                                                                SurfaceRules.waterBlockCheck(0, 0),
+                                                                MOSSY_GRASS
+                                                        )
+                                                ),
+                                                MOSSY_DIRT
+                                        )
+                                )
+                        )
+                )
+        );
+
+        return SurfaceRules.sequence(swamp, volcanicWasteland, frozenDesert, colorfulForest);
     }
 
 

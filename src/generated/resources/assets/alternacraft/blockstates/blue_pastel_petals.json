@@ -5,14 +5,8 @@
         "model": "alternacraft:block/blue_pastel_petals_1"
       },
       "when": {
-        "OR": [
-          {
-            "facing": "north"
-          },
-          {
-            "flower_amount": "1|2|3|4"
-          }
-        ]
+        "facing": "north",
+        "flower_amount": "1|2|3|4"
       }
     },
     {
@@ -21,14 +15,8 @@
         "y": 90
       },
       "when": {
-        "OR": [
-          {
-            "facing": "east"
-          },
-          {
-            "flower_amount": "1|2|3|4"
-          }
-        ]
+        "facing": "east",
+        "flower_amount": "1|2|3|4"
       }
     },
     {
@@ -37,14 +25,8 @@
         "y": 180
       },
       "when": {
-        "OR": [
-          {
-            "facing": "south"
-          },
-          {
-            "flower_amount": "1|2|3|4"
-          }
-        ]
+        "facing": "south",
+        "flower_amount": "1|2|3|4"
       }
     },
     {
@@ -53,14 +35,8 @@
         "y": 270
       },
       "when": {
-        "OR": [
-          {
-            "facing": "west"
-          },
-          {
-            "flower_amount": "1|2|3|4"
-          }
-        ]
+        "facing": "west",
+        "flower_amount": "1|2|3|4"
       }
     },
     {
@@ -68,14 +44,8 @@
         "model": "alternacraft:block/blue_pastel_petals_2"
       },
       "when": {
-        "OR": [
-          {
-            "facing": "north"
-          },
-          {
-            "flower_amount": "2|3|4"
-          }
-        ]
+        "facing": "north",
+        "flower_amount": "2|3|4"
       }
     },
     {
@@ -84,14 +54,8 @@
         "y": 90
       },
       "when": {
-        "OR": [
-          {
-            "facing": "east"
-          },
-          {
-            "flower_amount": "2|3|4"
-          }
-        ]
+        "facing": "east",
+        "flower_amount": "2|3|4"
       }
     },
     {
@@ -100,14 +64,8 @@
         "y": 180
       },
       "when": {
-        "OR": [
-          {
-            "facing": "south"
-          },
-          {
-            "flower_amount": "2|3|4"
-          }
-        ]
+        "facing": "south",
+        "flower_amount": "2|3|4"
       }
     },
     {
@@ -116,14 +74,8 @@
         "y": 270
       },
       "when": {
-        "OR": [
-          {
-            "facing": "west"
-          },
-          {
-            "flower_amount": "2|3|4"
-          }
-        ]
+        "facing": "west",
+        "flower_amount": "2|3|4"
       }
     },
     {
@@ -131,14 +83,8 @@
         "model": "alternacraft:block/blue_pastel_petals_3"
       },
       "when": {
-        "OR": [
-          {
-            "facing": "north"
-          },
-          {
-            "flower_amount": "3|4"
-          }
-        ]
+        "facing": "north",
+        "flower_amount": "3|4"
       }
     },
     {
@@ -147,14 +93,8 @@
         "y": 90
       },
       "when": {
-        "OR": [
-          {
-            "facing": "east"
-          },
-          {
-            "flower_amount": "3|4"
-          }
-        ]
+        "facing": "east",
+        "flower_amount": "3|4"
       }
     },
     {
@@ -163,14 +103,8 @@
         "y": 180
       },
       "when": {
-        "OR": [
-          {
-            "facing": "south"
-          },
-          {
-            "flower_amount": "3|4"
-          }
-        ]
+        "facing": "south",
+        "flower_amount": "3|4"
       }
     },
     {
@@ -179,14 +113,8 @@
         "y": 270
       },
       "when": {
-        "OR": [
-          {
-            "facing": "west"
-          },
-          {
-            "flower_amount": "3|4"
-          }
-        ]
+        "facing": "west",
+        "flower_amount": "3|4"
       }
     },
     {
@@ -194,14 +122,8 @@
         "model": "alternacraft:block/blue_pastel_petals_4"
       },
       "when": {
-        "OR": [
-          {
-            "facing": "north"
-          },
-          {
-            "flower_amount": "4"
-          }
-        ]
+        "facing": "north",
+        "flower_amount": "4"
       }
     },
     {
@@ -210,14 +132,8 @@
         "y": 90
       },
       "when": {
-        "OR": [
-          {
-            "facing": "east"
-          },
-          {
-            "flower_amount": "4"
-          }
-        ]
+        "facing": "east",
+        "flower_amount": "4"
       }
     },
     {
@@ -226,14 +142,8 @@
         "y": 180
       },
       "when": {
-        "OR": [
-          {
-            "facing": "south"
-          },
-          {
-            "flower_amount": "4"
-          }
-        ]
+        "facing": "south",
+        "flower_amount": "4"
       }
     },
     {
@@ -242,14 +152,8 @@
         "y": 270
       },
       "when": {
-        "OR": [
-          {
-            "facing": "west"
-          },
-          {
-            "flower_amount": "4"
-          }
-        ]
+        "facing": "west",
+        "flower_amount": "4"
       }
     }
   ]

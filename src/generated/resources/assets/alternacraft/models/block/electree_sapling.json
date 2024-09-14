@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cross",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "all": "alternacraft:block/electree_sapling"
+    "cross": "alternacraft:item/electree_sapling"
   }
 }

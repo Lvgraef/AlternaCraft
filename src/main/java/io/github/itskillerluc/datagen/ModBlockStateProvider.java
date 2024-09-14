@@ -52,7 +52,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
             BlockRegistry.BLUE_PASTEL_PETALS,
             BlockRegistry.RED_PASTEL_PETALS,
             BlockRegistry.CYAN_COLORFUL_FLOWER,
-            BlockRegistry.MOSSY_DIRT
+            BlockRegistry.MOSSY_DIRT,
+            BlockRegistry.BLUE_PASTELIZED_SAPLING,
+            BlockRegistry.RED_PASTELIZED_SAPLING,
+            BlockRegistry.ELECTREE_SAPLING
     );
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -174,57 +177,61 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockItem(BlockRegistry.ROCKS.value(), itemModels().basicItem(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "rocks_item")));
         simpleBlock(BlockRegistry.COOL_LAVA.value(), models().getBuilder(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/cool_lava").toString()).texture("particle", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/cool_lava_still")));
+        simpleBlock(BlockRegistry.BLUE_PASTELIZED_SAPLING.get(), models().cross("blue_pastelized_sapling", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "item/blue_pastelized_sapling")).renderType("minecraft:cutout"));
+        simpleBlock(BlockRegistry.RED_PASTELIZED_SAPLING.get(), models().cross("red_pastelized_sapling", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "item/red_pastelized_sapling")).renderType("minecraft:cutout"));
+        simpleBlock(BlockRegistry.ELECTREE_SAPLING.get(), models().cross("electree_sapling", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "item/electree_sapling")).renderType("minecraft:cutout"));
+
     }
 
     private void petals(String name, Block block) {
         getMultipartBuilder(block)
-                .part().rotationY(0).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                .part().rotationY(0).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.NORTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).useOr().end()
-                .part().rotationY(90).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).end()
+                .part().rotationY(90).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.EAST)
-                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).useOr().end()
-                .part().rotationY(180).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).end()
+                .part().rotationY(180).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.SOUTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).useOr().end()
-                .part().rotationY(270).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).end()
+                .part().rotationY(270).modelFile(models().withExistingParent(name + "_1", mcLoc("block/flowerbed_1")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.WEST)
-                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).useOr().end()
-                .part().rotationY(0).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 1, 2, 3, 4).end()
+                .part().rotationY(0).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.NORTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).useOr().end()
-                .part().rotationY(90).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).end()
+                .part().rotationY(90).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.EAST)
-                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).useOr().end()
-                .part().rotationY(180).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).end()
+                .part().rotationY(180).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.SOUTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).useOr().end()
-                .part().rotationY(270).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).end()
+                .part().rotationY(270).modelFile(models().withExistingParent(name + "_2", mcLoc("block/flowerbed_2")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.WEST)
-                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).useOr().end()
-                .part().rotationY(0).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 2, 3, 4).end()
+                .part().rotationY(0).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.NORTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).useOr().end()
-                .part().rotationY(90).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).end()
+                .part().rotationY(90).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.EAST)
-                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).useOr().end()
-                .part().rotationY(180).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).end()
+                .part().rotationY(180).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.SOUTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).useOr().end()
-                .part().rotationY(270).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).end()
+                .part().rotationY(270).modelFile(models().withExistingParent(name + "_3", mcLoc("block/flowerbed_3")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.WEST)
-                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).useOr().end()
-                .part().rotationY(0).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 3, 4).end()
+                .part().rotationY(0).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.NORTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 4).useOr().end()
-                .part().rotationY(90).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 4).end()
+                .part().rotationY(90).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.EAST)
-                    .condition(PinkPetalsBlock.AMOUNT, 4).useOr().end()
-                .part().rotationY(180).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 4).end()
+                .part().rotationY(180).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.SOUTH)
-                    .condition(PinkPetalsBlock.AMOUNT, 4).useOr().end()
-                .part().rotationY(270).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
+                    .condition(PinkPetalsBlock.AMOUNT, 4).end()
+                .part().rotationY(270).modelFile(models().withExistingParent(name + "_4", mcLoc("block/flowerbed_4")).renderType("cutout").texture("flowerbed", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name)).texture("stem", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + name + "_stem"))).addModel()
                     .condition(PinkPetalsBlock.FACING, Direction.WEST)
-                    .condition(PinkPetalsBlock.AMOUNT, 4).useOr().end();
+                    .condition(PinkPetalsBlock.AMOUNT, 4).end();
     }
 }

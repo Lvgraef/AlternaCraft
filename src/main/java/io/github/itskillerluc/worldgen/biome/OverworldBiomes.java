@@ -7,7 +7,6 @@ import net.minecraft.data.worldgen.placement.AquaticPlacements;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -173,10 +172,9 @@ public class OverworldBiomes {
         BiomeDefaultFeatures.addFossilDecoration(biomegenerationsettings$builder);
         globalOverworldGeneration(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultOres(biomegenerationsettings$builder);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedFeatureInit.DARK_CRYSTAL_ORE);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomegenerationsettings$builder);
-        BiomeDefaultFeatures.addDesertVegetation(biomegenerationsettings$builder);
-        BiomeDefaultFeatures.addDesertExtraVegetation(biomegenerationsettings$builder);
-        BiomeDefaultFeatures.addDesertExtraDecoration(biomegenerationsettings$builder);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.CRYSTAL_ICE_CACTUS);
         return biome(true, 0.0F, 0.6F, mobspawnsettings$builder, biomegenerationsettings$builder, Musics.createGameMusic(SoundEvents.MUSIC_BIOME_DESERT), 592999, 329544);
     }
 
@@ -190,13 +188,23 @@ public class OverworldBiomes {
         float f = 0.5F;
         BiomeGenerationSettings.Builder biomegenerationsettings$builder = new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers);
         globalOverworldGeneration(biomegenerationsettings$builder);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedFeatureInit.COPPERWOOD_ORE);
+
         BiomeDefaultFeatures.addFerns(biomegenerationsettings$builder);
+
         BiomeDefaultFeatures.addDefaultOres(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(biomegenerationsettings$builder);
-        BiomeDefaultFeatures.addTaigaTrees(biomegenerationsettings$builder);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.RED_PASTELIZED_TREE);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.BLUE_PASTELIZED_TREE);
+        BiomeDefaultFeatures.addForestFlowers(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultFlowers(biomegenerationsettings$builder);
+        BiomeDefaultFeatures.addWarmFlowers(biomegenerationsettings$builder);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.COLORFUL_FLOWERS);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.ROCK_PATCH);
+
         BiomeDefaultFeatures.addTaigaGrass(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomegenerationsettings$builder);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.FLOWER_PETALS);
         BiomeDefaultFeatures.addCommonBerryBushes(biomegenerationsettings$builder);
 
 

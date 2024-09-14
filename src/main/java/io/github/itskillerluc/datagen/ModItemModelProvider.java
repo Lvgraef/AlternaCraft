@@ -67,6 +67,10 @@ public class ModItemModelProvider extends ItemModelProvider {
             if (EXCLUDED.contains(entry) || entry.get() instanceof BlockItem) continue;
             basicItem(entry.get());
         }
+        basicItem(ItemRegistry.BLUE_PASTELIZED_SAPLING.get());
+        basicItem(ItemRegistry.RED_PASTELIZED_SAPLING.get());
+        basicItem(ItemRegistry.ELECTREE_SAPLING.get());
+
         withExistingParent("alternacraft:aio_axe", "minecraft:item/handheld");
         withExistingParent("alternacraft:aio_pickaxe", "minecraft:item/handheld");
         withExistingParent("alternacraft:aio_scythe", "minecraft:item/handheld");

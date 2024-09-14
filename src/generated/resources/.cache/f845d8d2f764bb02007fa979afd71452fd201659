@@ -1,4 +1,4 @@
-// 1.21	2024-07-25T17:38:54.8322248	Item Models: alternacraft
+// 1.21	2024-09-14T11:49:05.2184723	Item Models: alternacraft
 651b8c96c692186e52edf1515ff8c05376b2985b assets/alternacraft/models/item/aio_axe.json
 c7dd0e775a6f1c4aa540e7b51b58d3c380ebec6d assets/alternacraft/models/item/aio_boots.json
 aa9444f8d4102d6d29af2e7760564680f0b21bb1 assets/alternacraft/models/item/aio_boots_amethyst_trim.json
@@ -49,6 +49,7 @@ e21c1589330b34fce713bb38b767a71719214ff5 assets/alternacraft/models/item/aio_leg
 6a3817201abd8e0bc80ea3be48948e317db83d2a assets/alternacraft/models/item/aio_scythe.json
 739eb1fd11b67276436142a91008a505b229de8e assets/alternacraft/models/item/aio_shovel.json
 78ad33425e398c96fc16c25b2b46f04c2c0c7c42 assets/alternacraft/models/item/aio_sword.json
+313406057c568abbc6c58f940bde7df1c5387b1f assets/alternacraft/models/item/blue_pastelized_sapling.json
 d45396d0eb461211e29ab6b77a21ac0e401669c9 assets/alternacraft/models/item/cool_lava_bucket.json
 cccc5cd39a294eccb58694baa4c29665969f24da assets/alternacraft/models/item/copperwood_axe.json
 7fb6476597fab7634be50b58b557137e032aae14 assets/alternacraft/models/item/copperwood_boots.json
@@ -150,6 +151,7 @@ bb114dda94b2b477e356a9ecd8e6b1f3f95c9f4d assets/alternacraft/models/item/dark_cr
 0f5cc112cc8457f1b088db8df49437d9226b4be2 assets/alternacraft/models/item/dark_crystal_pickaxe.json
 259886d819e5de328667f40b0947f4030fae23e9 assets/alternacraft/models/item/dark_crystal_shovel.json
 3f8512a4bbca78dcea3bd9d1ff145e9fbfa9dcf3 assets/alternacraft/models/item/dark_crystal_sword.json
+de27bab5ef3468b66e23ea5ab618dbded5ebce08 assets/alternacraft/models/item/electree_sapling.json
 c9a23f3c25e1889920cc311e7fa416bc3e06494a assets/alternacraft/models/item/magnetic_axe.json
 d162d3c37671952f92e851e4dd79cc54148ee112 assets/alternacraft/models/item/magnetic_boots.json
 95fb91e9d96a7debc19c3d255bcdfd86e4a8e8c3 assets/alternacraft/models/item/magnetic_boots_amethyst_trim.json
@@ -253,3 +255,4 @@ bd213b6ec16a05983af0ec905d9634c2c747b7c3 assets/alternacraft/models/item/painite
 89b7ca80081b4b5d1423ba05dce8a9567976ea8a assets/alternacraft/models/item/painite_sword.json
 0b8bdc40d3e57d4da78908479146c8971aa1e872 assets/alternacraft/models/item/prisamond_shard.json
 17a8fcc1b99230ac5f1f23cc7e2d1ab97748286f assets/alternacraft/models/item/prisma_stick.json
+a93031cae92fe7d79880c5dba6eaeae6e9f25146 assets/alternacraft/models/item/red_pastelized_sapling.json

@@ -111,5 +111,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)
                 .addTag(Tags.Blocks.NEEDS_AIO_TOOL)
                 .addTag(Tags.Blocks.NEEDS_DARK_CRYSTAL_TOOL);
+        tag(BlockTags.SAPLINGS)
+                .add(BlockRegistry.ELECTREE_SAPLING.get())
+                .add(BlockRegistry.BLUE_PASTELIZED_SAPLING.get())
+                .add(BlockRegistry.RED_PASTELIZED_SAPLING.get());
     }
 }

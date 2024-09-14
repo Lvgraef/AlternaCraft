@@ -70,5 +70,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistry.VOLCANIC_ROCK.get());
         dropSelf(BlockRegistry.VOLCANIC_SOIL.get());
         dropSelf(BlockRegistry.YELLOW_COLORFUL_FLOWER.get());
+        dropSelf(BlockRegistry.RED_PASTELIZED_SAPLING.get());
+        dropSelf(BlockRegistry.BLUE_PASTELIZED_SAPLING.get());
     }
 }

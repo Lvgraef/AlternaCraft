@@ -55,6 +55,8 @@ public class ForgeEvents {
         if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.ELECTRIC_SWAMP) && event.getEntity().isInWater()
                 && Streams.of(event.getEntity().getArmorSlots().iterator()).allMatch(item -> item.getItem() instanceof ArmorItem armor && (armor.getMaterial() == ArmorMaterialRegistry.AIO || armor.getMaterial() == ArmorMaterialRegistry.MAGNET))) {
             event.getEntity().hurt(event.getEntity().damageSources().lightningBolt(), 1);
+        } else if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.FROZEN_DESERT) && event.getEntity().isInWater()) {
+            event.getEntity().setTicksFrozen(200);
         }
     }
 }

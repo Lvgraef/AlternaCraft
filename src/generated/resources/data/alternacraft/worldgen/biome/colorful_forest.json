@@ -50,6 +50,7 @@
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
       "minecraft:ore_tuff",
+      "alternacraft:copperwood_ore",
       "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
       "minecraft:ore_iron_upper",
@@ -79,13 +80,19 @@
     [
       "minecraft:glow_lichen",
       "minecraft:patch_large_fern",
-      "minecraft:trees_taiga",
+      "alternacraft:red_pastelized_tree",
+      "alternacraft:blue_pastelized_tree",
+      "minecraft:forest_flowers",
       "minecraft:flower_default",
+      "minecraft:flower_warm",
+      "alternacraft:colorful_flowers",
+      "alternacraft:rock_patch",
       "minecraft:patch_grass_taiga_2",
       "minecraft:brown_mushroom_taiga",
       "minecraft:red_mushroom_taiga",
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin",
+      "alternacraft:flower_petals",
       "minecraft:patch_berry_common"
     ],
     [

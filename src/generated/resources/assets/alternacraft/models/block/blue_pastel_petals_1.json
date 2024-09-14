@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/flowerbed_1",
+  "render_type": "minecraft:cutout",
   "textures": {
     "flowerbed": "alternacraft:block/blue_pastel_petals",
     "stem": "alternacraft:block/blue_pastel_petals_stem"

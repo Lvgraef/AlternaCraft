@@ -1,4 +1,4 @@
-// 1.21	2024-08-30T15:33:04.1554155	Tags for minecraft:block mod id alternacraft
+// 1.21	2024-09-04T11:10:12.0959836	Tags for minecraft:block mod id alternacraft
 7a883fa331b5ba358c43a58409a85844a773e140 data/alternacraft/tags/block/blue_pastel_logs.json
 92ba13da97c7e3ab9741b3a8501d5d7131fdb54c data/alternacraft/tags/block/charred_logs.json
 e2a62d9ead72c5761e5b693962525f77367a4ad1 data/alternacraft/tags/block/copperwood_ores.json
@@ -21,4 +21,5 @@ dcc27eb201d3c6fd92b385b32741d4d7bbdbd046 data/minecraft/tags/block/mineable/shov
 213cc867fa091a71d8c2a369fc7f1e3299db8938 data/minecraft/tags/block/needs_diamond_tool.json
 ecaa742c028e4aa8339477e6ad8ecb1db008881b data/minecraft/tags/block/planks.json
 a9bdb5f85f8d72da5c86aaa7fad0aa6f111ad165 data/minecraft/tags/block/sand.json
+3e55a4eee76929fc27cb6ef8bafd033842c041c4 data/minecraft/tags/block/saplings.json
 5822c9a7d7e9a9aca20d26b8b04418be0dab7e04 data/minecraft/tags/block/small_flowers.json

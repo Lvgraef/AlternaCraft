@@ -86,5 +86,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ItemRegistry.DARK_CRYSTAL_BOOTS.value())
                 .add(ItemRegistry.COPPERWOOD_BOOTS.value())
                 .add(ItemRegistry.MAGNETIC_BOOTS.value());
+        copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
     }
 }
