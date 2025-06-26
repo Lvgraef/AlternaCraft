@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -67,7 +68,6 @@ public class ItemRegistry {
             ArmorMaterialRegistry.PAINITE, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant());
     public static final DeferredHolder<Item, ArmorItem> PAINITE_HELMET = registerArmorWithDescription("painite_helmet",
             ArmorMaterialRegistry.PAINITE, ArmorItem.Type.HELMET, new Item.Properties().fireResistant());
-
     public static final DeferredHolder<Item, PickaxeItem> AIO_PICKAXE = ITEMS.registerItem("aio_pickaxe",
             properties -> new AIOPickaxe(ToolTiers.AIO_TIER, 5, -3, properties.fireResistant()));
     public static final DeferredHolder<Item, AxeItem> AIO_AXE = ITEMS.registerItem("aio_axe",
@@ -177,5 +177,8 @@ public class ItemRegistry {
                 super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
             }
         });
+    }
+    public static void register(IEventBus eventBus) {
+        ITEMS.register(eventBus);
     }
 }
