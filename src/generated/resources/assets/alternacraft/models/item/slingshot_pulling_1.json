@@ -1,6 +1,0 @@
-{
-    "parent": "alternacraft:item/slingshot",
-    "textures": {
-        "layer0": "alternacraft:item/slingshot_pulling_1"
-    }
-}
