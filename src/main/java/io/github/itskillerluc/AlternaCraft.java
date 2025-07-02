@@ -3,13 +3,9 @@ package io.github.itskillerluc;
 import com.mojang.logging.LogUtils;
 import io.github.itskillerluc.enchantment.ModEnchantmentEffects;
 import io.github.itskillerluc.init.*;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
 @Mod(AlternaCraft.MODID)
@@ -31,6 +27,6 @@ public class AlternaCraft {
         ItemRegistry.ITEMS.register(modEventBus);
         CreativeTabRegistry.CREATIVE_TABS.register(modEventBus);
         GlobalLootModifierRegistry.MODIFIERS.register(modEventBus);
-        ModEnchantmentEffects.register(modEventBus);
+        ModEnchantmentEffects.ENTITY_ENCHANTMENT_EFFECTS.register(modEventBus);
     }
 }

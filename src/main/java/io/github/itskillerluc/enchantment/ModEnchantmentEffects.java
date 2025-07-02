@@ -16,9 +16,4 @@ public class ModEnchantmentEffects {
 
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> STRIKING =
             ENTITY_ENCHANTMENT_EFFECTS.register("striking",()-> StrikingEnchantmentEffect.CODEC);
-
-    public static void register(IEventBus eventBus) {
-        ENTITY_ENCHANTMENT_EFFECTS.register(eventBus);
-    }
-
 }

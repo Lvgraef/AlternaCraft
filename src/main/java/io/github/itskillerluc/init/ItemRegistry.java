@@ -29,95 +29,95 @@ public class ItemRegistry {
     public static final Supplier<Item> PRISMA_STICK = ITEMS.registerSimpleItem("prisma_stick");
 
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_BOOTS = registerArmorWithDescription("copperwood_boots",
-            ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.BOOTS, new Item.Properties());
+            ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> COPPERWOOD_CHESTPLATE = ITEMS.register("copperwood_chestplate",
-            () -> new ArmorEffectItem("copperwood_chestplate", ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.CHESTPLATE, new Item.Properties(), new MobEffectInstance(MobEffects.REGENERATION)));
+            () -> new ArmorEffectItem("copperwood_chestplate", ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1), new MobEffectInstance(MobEffects.REGENERATION)));
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_LEGGINGS = registerArmorWithDescription("copperwood_leggings",
-            ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.LEGGINGS, new Item.Properties());
+            ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_HELMET = registerArmorWithDescription("copperwood_helmet",
-            ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.HELMET, new Item.Properties());
+            ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> DARK_CRYSTAL_BOOTS = registerArmorWithDescription("dark_crystal_boots",
-            ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.BOOTS, new Item.Properties());
+            ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> DARK_CRYSTAL_CHESTPLATE = ITEMS.register("dark_crystal_chestplate",
-            () -> new ArmorEffectItem("dark_crystal_chestplate", ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.CHESTPLATE, new Item.Properties(), new MobEffectInstance(MobEffects.DAMAGE_BOOST)));
+            () -> new ArmorEffectItem("dark_crystal_chestplate", ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1), new MobEffectInstance(MobEffects.DAMAGE_BOOST)));
     public static final DeferredHolder<Item, ArmorItem> DARK_CRYSTAL_LEGGINGS = registerArmorWithDescription("dark_crystal_leggings",
-            ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.LEGGINGS, new Item.Properties());
+            ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> DARK_CRYSTAL_HELMET = registerArmorWithDescription("dark_crystal_helmet",
-            ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.HELMET, new Item.Properties());
+            ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> MAGNETIC_BOOTS = registerArmorWithDescription("magnetic_boots",
-            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.BOOTS, new Item.Properties());
+            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> MAGNETIC_CHESTPLATE = registerArmorWithDescription("magnetic_chestplate",
-            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.CHESTPLATE, new Item.Properties());
+            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> MAGNETIC_LEGGINGS = registerArmorWithDescription("magnetic_leggings",
-            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.LEGGINGS, new Item.Properties());
+            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> MAGNETIC_HELMET = registerArmorWithDescription("magnetic_helmet",
-            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.HELMET, new Item.Properties());
+            ArmorMaterialRegistry.MAGNET, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> AIO_BOOTS = registerArmorWithDescription("aio_boots",
-            ArmorMaterialRegistry.AIO, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant());
+            ArmorMaterialRegistry.AIO, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> AIO_CHESTPLATE = ITEMS.register("aio_chestplate",
-            () -> new ArmorEffectItem("aio_chestplate", ArmorMaterialRegistry.AIO, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant(), new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 1, false, false), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, false, false), new MobEffectInstance(MobEffects.REGENERATION, 1, 1, false, false)));
+            () -> new ArmorEffectItem("aio_chestplate", ArmorMaterialRegistry.AIO, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1), new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 1, false, false), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, false, false), new MobEffectInstance(MobEffects.REGENERATION, 1, 1, false, false)));
     public static final DeferredHolder<Item, ArmorItem> AIO_LEGGINGS = registerArmorWithDescription("aio_leggings",
-            ArmorMaterialRegistry.AIO, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant());
+            ArmorMaterialRegistry.AIO, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> AIO_HELMET = registerArmorWithDescription("aio_helmet",
-            ArmorMaterialRegistry.AIO, ArmorItem.Type.HELMET, new Item.Properties().fireResistant());
+            ArmorMaterialRegistry.AIO, ArmorItem.Type.HELMET, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> PAINITE_BOOTS = registerArmorWithDescription("painite_boots",
-            ArmorMaterialRegistry.PAINITE, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant());
+            ArmorMaterialRegistry.PAINITE, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> PAINITE_CHESTPLATE = ITEMS.register("painite_chestplate",
-            () -> new ArmorEffectItem("painite_chestplate", ArmorMaterialRegistry.PAINITE, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant(), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, false, false)));
+            () -> new ArmorEffectItem("painite_chestplate", ArmorMaterialRegistry.PAINITE, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, false, false)));
     public static final DeferredHolder<Item, ArmorItem> PAINITE_LEGGINGS = registerArmorWithDescription("painite_leggings",
-            ArmorMaterialRegistry.PAINITE, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant());
+            ArmorMaterialRegistry.PAINITE, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> PAINITE_HELMET = registerArmorWithDescription("painite_helmet",
-            ArmorMaterialRegistry.PAINITE, ArmorItem.Type.HELMET, new Item.Properties().fireResistant());
+            ArmorMaterialRegistry.PAINITE, ArmorItem.Type.HELMET, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, PickaxeItem> AIO_PICKAXE = ITEMS.registerItem("aio_pickaxe",
-            properties -> new AIOPickaxe(ToolTiers.AIO_TIER, 5, -3, properties.fireResistant()));
+            properties -> new AIOPickaxe(ToolTiers.AIO_TIER, 5, -3, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, AxeItem> AIO_AXE = ITEMS.registerItem("aio_axe",
-            properties -> new AIOAxe(ToolTiers.AIO_TIER, 34, -2.7f, properties.fireResistant()));
+            properties -> new AIOAxe(ToolTiers.AIO_TIER, 34, -2.7f, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, SwordItem> AIO_SWORD = ITEMS.registerItem("aio_sword",
-            properties -> new AIOSword(ToolTiers.AIO_TIER, 27, -2, properties.fireResistant()));
+            properties -> new AIOSword(ToolTiers.AIO_TIER, 27, -2, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, HoeItem> AIO_HOE = ITEMS.registerItem("aio_scythe",
-            properties -> new AIOScythe(ToolTiers.AIO_TIER, 22, 0, properties.fireResistant()));
+            properties -> new AIOScythe(ToolTiers.AIO_TIER, 22, 0, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, ShovelItem> AIO_SHOVEL = ITEMS.registerItem("aio_shovel",
-            properties -> new AIOShovel(ToolTiers.AIO_TIER, 3, -3, properties.fireResistant()));
+            properties -> new AIOShovel(ToolTiers.AIO_TIER, 3, -3, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, PickaxeItem> DARK_CRYSTAL_PICKAXE = ITEMS.registerItem("dark_crystal_pickaxe",
-            properties -> new DarkCrystalPickaxe(ToolTiers.DARK_CRYSTAL_TIER, 1, -2.8f, properties));
+            properties -> new DarkCrystalPickaxe(ToolTiers.DARK_CRYSTAL_TIER, 1, -2.8f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, AxeItem> DARK_CRYSTAL_AXE = ITEMS.registerItem("dark_crystal_axe",
-            properties -> new DarkCrystalAxe(ToolTiers.DARK_CRYSTAL_TIER, 14, -3.3f, properties));
+            properties -> new DarkCrystalAxe(ToolTiers.DARK_CRYSTAL_TIER, 14, -3.3f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, SwordItem> DARK_CRYSTAL_SWORD = ITEMS.registerItem("dark_crystal_sword",
-            properties -> new DarkCrystalSword(ToolTiers.DARK_CRYSTAL_TIER, 7, -2.4f, properties));
+            properties -> new DarkCrystalSword(ToolTiers.DARK_CRYSTAL_TIER, 7, -2.4f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, HoeItem> DARK_CRYSTAL_HOE = ITEMS.registerItem("dark_crystal_hoe",
-            properties -> new DarkCrystalHoe(ToolTiers.DARK_CRYSTAL_TIER, 0, 0, properties));
+            properties -> new DarkCrystalHoe(ToolTiers.DARK_CRYSTAL_TIER, 0, 0, properties.stacksTo(1)));
     public static final DeferredHolder<Item, ShovelItem> DARK_CRYSTAL_SHOVEL = ITEMS.registerItem("dark_crystal_shovel",
-            properties -> new DarkCrystalShovel(ToolTiers.DARK_CRYSTAL_TIER, 1, -3, properties));
+            properties -> new DarkCrystalShovel(ToolTiers.DARK_CRYSTAL_TIER, 1, -3, properties.stacksTo(1)));
     public static final DeferredHolder<Item, PickaxeItem> PAINITE_PICKAXE = ITEMS.registerItem("painite_pickaxe",
-            properties -> new PainitePickaxe(ToolTiers.PAINITE_TIER, 1, -2.8f, properties.fireResistant()));
+            properties -> new PainitePickaxe(ToolTiers.PAINITE_TIER, 1, -2.8f, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, AxeItem> PAINITE_AXE = ITEMS.registerItem("painite_axe",
-            properties -> new PainiteAxe(ToolTiers.PAINITE_TIER, 9, -3.3f, properties.fireResistant()));
+            properties -> new PainiteAxe(ToolTiers.PAINITE_TIER, 9, -3.3f, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, SwordItem> PAINITE_SWORD = ITEMS.registerItem("painite_sword",
-            properties -> new PainiteSword(ToolTiers.PAINITE_TIER, 7, -2.4f, properties.fireResistant()));
+            properties -> new PainiteSword(ToolTiers.PAINITE_TIER, 7, -2.4f, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, HoeItem> PAINITE_HOE = ITEMS.registerItem("painite_scythe",
-            properties -> new PainiteScythe(ToolTiers.PAINITE_TIER, 3, 0, properties.fireResistant()));
+            properties -> new PainiteScythe(ToolTiers.PAINITE_TIER, 3, 0, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, ShovelItem> PAINITE_SHOVEL = ITEMS.registerItem("painite_shovel",
-            properties -> new PainiteShovel(ToolTiers.PAINITE_TIER, 1, -3, properties.fireResistant()));
+            properties -> new PainiteShovel(ToolTiers.PAINITE_TIER, 1, -3, properties.fireResistant().stacksTo(1)));
     public static final DeferredHolder<Item, PickaxeItem> COPPERWOOD_PICKAXE = ITEMS.registerItem("copperwood_pickaxe",
-            properties -> new CopperwoodPickaxe(ToolTiers.COPPERWOOD_TIER, 1, -2.8f, properties));
+            properties -> new CopperwoodPickaxe(ToolTiers.COPPERWOOD_TIER, 1, -2.8f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, AxeItem> COPPERWOOD_AXE = ITEMS.registerItem("copperwood_axe",
-            properties -> new CopperwoodAxe(ToolTiers.COPPERWOOD_TIER, 9, -3.0f, properties));
+            properties -> new CopperwoodAxe(ToolTiers.COPPERWOOD_TIER, 9, -3.0f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, SwordItem> COPPERWOOD_SWORD = ITEMS.registerItem("copperwood_sword",
-            properties -> new CopperwoodSword(ToolTiers.COPPERWOOD_TIER, 4, -1.8f, properties));
+            properties -> new CopperwoodSword(ToolTiers.COPPERWOOD_TIER, 4, -1.8f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, HoeItem> COPPERWOOD_HOE = ITEMS.registerItem("copperwood_hoe",
-            properties -> new CopperwoodHoe(ToolTiers.COPPERWOOD_TIER, 0, 0, properties));
+            properties -> new CopperwoodHoe(ToolTiers.COPPERWOOD_TIER, 0, 0, properties.stacksTo(1)));
     public static final DeferredHolder<Item, ShovelItem> COPPERWOOD_SHOVEL = ITEMS.registerItem("copperwood_shovel",
-            properties -> new CopperwoodShovel(ToolTiers.COPPERWOOD_TIER, 1, -3, properties));
+            properties -> new CopperwoodShovel(ToolTiers.COPPERWOOD_TIER, 1, -3, properties.stacksTo(1)));
     public static final DeferredHolder<Item, PickaxeItem> MAGNETIC_PICKAXE = ITEMS.registerItem("magnetic_pickaxe",
-            properties -> new MagneticPickaxe(ToolTiers.MAGNETIC_TIER, 1, -2.8f, properties));
+            properties -> new MagneticPickaxe(ToolTiers.MAGNETIC_TIER, 1, -2.8f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, AxeItem> MAGNETIC_AXE = ITEMS.registerItem("magnetic_axe",
-            properties -> new MagneticAxe(ToolTiers.MAGNETIC_TIER, 9, -3.0f, properties));
+            properties -> new MagneticAxe(ToolTiers.MAGNETIC_TIER, 9, -3.0f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, SwordItem> MAGNETIC_SWORD = ITEMS.registerItem("magnetic_sword",
-            properties -> new MagneticSword(ToolTiers.MAGNETIC_TIER, 6, -2.4f, properties));
+            properties -> new MagneticSword(ToolTiers.MAGNETIC_TIER, 6, -2.4f, properties.stacksTo(1)));
     public static final DeferredHolder<Item, HoeItem> MAGNETIC_HOE = ITEMS.registerItem("magnetic_hoe",
-            properties -> new MagneticHoe(ToolTiers.MAGNETIC_TIER, 0, 0, properties));
+            properties -> new MagneticHoe(ToolTiers.MAGNETIC_TIER, 0, 0, properties.stacksTo(1)));
     public static final DeferredHolder<Item, ShovelItem> MAGNETIC_SHOVEL = ITEMS.registerItem("magnetic_shovel",
-            properties -> new MagneticShovel(ToolTiers.MAGNETIC_TIER, 1, -3, properties));
+            properties -> new MagneticShovel(ToolTiers.MAGNETIC_TIER, 1, -3, properties.stacksTo(1)));
 
     public static final Supplier<BlockItem> CHARRED_BARK = ITEMS.registerSimpleBlockItem(BlockRegistry.CHARRED_BARK);
     public static final Supplier<BlockItem> CHARRED_PLANKS = ITEMS.registerSimpleBlockItem(BlockRegistry.CHARRED_PLANKS);
@@ -177,8 +177,5 @@ public class ItemRegistry {
                 super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
             }
         });
-    }
-    public static void register(IEventBus eventBus) {
-        ITEMS.register(eventBus);
     }
 }

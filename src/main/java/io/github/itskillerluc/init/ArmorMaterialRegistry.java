@@ -21,16 +21,15 @@ public class ArmorMaterialRegistry {
     public static final Holder<ArmorMaterial> COPPERWOOD = ARMOR_MATERIALS.register("copperwood", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 9);
-                map.put(ArmorItem.Type.CHESTPLATE, 7);
+                map.put(ArmorItem.Type.LEGGINGS, 7);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 8);
             }),
             15,
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             () -> Ingredient.of(ItemRegistry.COPPERWOOD_CRYSTAL.get()),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "copperwood")),
-                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "copperwood"), "_overlay", false)),
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "copperwood"))),
             2.0F,
             0.0F
     ));//37
@@ -38,16 +37,15 @@ public class ArmorMaterialRegistry {
     public static final Holder<ArmorMaterial> DARK_CRYSTAL = ARMOR_MATERIALS.register("dark_crystal", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 9);
-                map.put(ArmorItem.Type.CHESTPLATE, 7);
+                map.put(ArmorItem.Type.LEGGINGS, 7);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 8);
             }),
             15,
             SoundEvents.ARMOR_EQUIP_DIAMOND,
             () -> Ingredient.of(ItemRegistry.DARK_CRYSTAL.get()),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "dark_crystal")),
-                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "dark_crystal"), "_overlay", false)),
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "dark_crystal"))),
             3.0F,
             0.1F
     ));//39
@@ -55,16 +53,15 @@ public class ArmorMaterialRegistry {
     public static final Holder<ArmorMaterial> MAGNET = ARMOR_MATERIALS.register("magnet", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 9);
-                map.put(ArmorItem.Type.CHESTPLATE, 7);
+                map.put(ArmorItem.Type.LEGGINGS, 7);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 8);
             }),
             15,
             SoundEvents.ARMOR_EQUIP_IRON,
             () -> Ingredient.of(ItemRegistry.MAGNETIC_CRYSTAL.get()),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magnet")),
-                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magnet"), "_overlay", false)),
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magnet"))),
             3.0F,
             0.1F
     ));//40
@@ -72,16 +69,15 @@ public class ArmorMaterialRegistry {
     public static final Holder<ArmorMaterial> PAINITE = ARMOR_MATERIALS.register("painite", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 9);
-                map.put(ArmorItem.Type.CHESTPLATE, 7);
+                map.put(ArmorItem.Type.LEGGINGS, 7);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 8);
             }),
             20,
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             () -> Ingredient.of(ItemRegistry.PAINITE_CRYSTAL.get()),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "painite")),
-                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "painite"), "_overlay", false)),
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "painite"))),
             4.0F,
             0.2F
     ));//44
@@ -89,16 +85,15 @@ public class ArmorMaterialRegistry {
     public static final Holder<ArmorMaterial> AIO = ARMOR_MATERIALS.register("aio", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 3);
-                map.put(ArmorItem.Type.LEGGINGS, 9);
-                map.put(ArmorItem.Type.CHESTPLATE, 7);
+                map.put(ArmorItem.Type.LEGGINGS, 7);
+                map.put(ArmorItem.Type.CHESTPLATE, 9);
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 8);
             }),
             25,
             SoundEvents.ARMOR_EQUIP_NETHERITE,
             () -> Ingredient.of(ItemRegistry.AIO_CRYSTAL.get()),
-            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "aio")),
-                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "aio"), "_overlay", false)),
+            List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "aio"))),
             6.0F,
             0.5F
     ));//60
