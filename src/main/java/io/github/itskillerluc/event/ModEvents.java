@@ -4,6 +4,7 @@ import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.entity.Magmatyrannus;
 import io.github.itskillerluc.init.EntityRegistry;
 import io.github.itskillerluc.networking.ParticlePayload;
+import io.github.itskillerluc.networking.SoundPayload;
 import io.github.itskillerluc.worldgen.biome.OverworldRegion;
 import io.github.itskillerluc.worldgen.biome.SurfaceRuleData;
 import net.minecraft.resources.ResourceLocation;
@@ -31,6 +32,11 @@ public class ModEvents {
                 ParticlePayload.TYPE,
                 ParticlePayload.STREAM_CODEC,
                 ParticlePayload::handleData
+        );
+        registrar.playToClient(
+                SoundPayload.TYPE,
+                SoundPayload.STREAM_CODEC,
+                SoundPayload::handleData
         );
     }
 

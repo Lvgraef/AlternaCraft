@@ -23,10 +23,10 @@ public class BlockRegistry {
 
 
     public static final Supplier<Block> MINING_LIGHT = BLOCKS.registerBlock("mining_light", MiningLight::new, BlockBehaviour.Properties.of().lightLevel(state -> 15).replaceable().instabreak().noCollission().noOcclusion());
-    public static final DeferredBlock<RotatedPillarBlock> CHARRED_BARK = BLOCKS.registerBlock("charred_bark", props -> new LogBlock(props, BlockRegistry.STRIPPED_CHARRED_BARK), BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG).mapColor(block ->  MapColor.STONE));
+    public static final DeferredBlock<RotatedPillarBlock> CHARRED_BARK = BLOCKS.registerBlock("charred_bark", props -> new LogBlock(props, BlockRegistry.STRIPPED_CHARRED_BARK), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LOG).mapColor(block ->  MapColor.STONE));
     public static final Holder<Block> CHARRED_PLANKS = BLOCKS.registerSimpleBlock("charred_planks", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_GRAY));
-    public static final DeferredBlock<RotatedPillarBlock> ELECTREE_LOG = BLOCKS.registerBlock("electree_log", props -> new LogBlock(props, BlockRegistry.STRIPPED_CHARRED_BARK), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_YELLOW : MapColor.STONE));
-    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ELECTREE_LOG = BLOCKS.registerBlock("stripped_electree_log", RotatedPillarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_LOG));
+    public static final DeferredBlock<RotatedPillarBlock> ELECTREE_LOG = BLOCKS.registerBlock("electree_log", props -> new LogBlock(props, BlockRegistry.STRIPPED_ELECTREE_LOG), BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_YELLOW : MapColor.STONE));
+    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_ELECTREE_LOG = BLOCKS.registerBlock("stripped_electree_log", RotatedPillarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG));
     public static final DeferredBlock<LiquidBlock> COOL_LAVA = BLOCKS.registerBlock("cool_lava", CoolLavaBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.LAVA).lightLevel(state -> 12));
 
     public static final DeferredBlock<Block> DEAD_DANDELION = BLOCKS.registerBlock("dead_dandelion",props -> new FlowerBlock(

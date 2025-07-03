@@ -44,18 +44,30 @@ public class SurfaceRuleData {
         );
 
         SurfaceRules.ConditionSource waterCheck = SurfaceRules.waterBlockCheck(-1, 0);
+        SurfaceRules.ConditionSource waterCheck1 = SurfaceRules.waterBlockCheck(-6, -1);
+        SurfaceRules.ConditionSource waterCheck2 = SurfaceRules.waterBlockCheck(0, 0);
+
+
         SurfaceRules.RuleSource volcanicWasteland = SurfaceRules.ifTrue(
                 SurfaceRules.isBiome(BiomeInit.VOLCANIC_WASTELAND),
                 SurfaceRules.sequence(
                         SurfaceRules.ifTrue(
-                                SurfaceRules.abovePreliminarySurface(),
+                                waterCheck1,
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.UNDER_FLOOR,
                                         SurfaceRules.ifTrue(
                                                 waterCheck,
-                                                VOLCANIC_SOIL
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.abovePreliminarySurface(),
+                                                        SurfaceRules.ifTrue(
+                                                                waterCheck2,
+                                                                VOLCANIC_SOIL
+                                                        )
+                                                )
                                         )
-                                )),
+
+                                )
+                        ),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.not(SurfaceRules.verticalGradient("deepslate", VerticalAnchor.absolute(0), VerticalAnchor.absolute(0))),
                                 VOLCANIC_ROCK

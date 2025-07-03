@@ -13,6 +13,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.util.valueproviders.WeightedListInt;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -178,7 +179,7 @@ public class PlacedFeatureInit {
                 configuredFeatures.getOrThrow(ConfiguredFeatureInit.ROCK_PATCH),
                 CountPlacement.of(UniformInt.of(1, 2)),
                 InSquarePlacement.spread(),
-                PlacementUtils.HEIGHTMAP,
+                HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                 BiomeFilter.biome()
         );
     }

@@ -26,8 +26,7 @@ public class AIOScythe extends HoeItem {
         if (result == InteractionResult.SUCCESS) {
             return result;
         }
-        DarkCrystalHoe.darkCrystalUse(pContext);
-        return super.useOn(pContext);
+        return DarkCrystalHoe.darkCrystalUse(pContext);
     }
 
     @Override

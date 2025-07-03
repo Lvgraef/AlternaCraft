@@ -47,9 +47,7 @@ public class ArmorEffectItem extends ArmorItem {
 
     private boolean hasFullSuitOfArmorOn(LivingEntity pEntity) {
         for (ItemStack armorSlot : pEntity.getArmorSlots()) {
-            if (armorSlot.isEmpty()) return false;
-            ArmorItem armorItem = ((ArmorItem) armorSlot.getItem());
-            if (armorItem.getMaterial() != getMaterial()) return false;
+            if (armorSlot.isEmpty() || armorSlot.getItem() instanceof ArmorItem armor && armor.getMaterial() != getMaterial()) return false;
         }
         return true;
     }

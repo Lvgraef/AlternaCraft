@@ -25,10 +25,10 @@ import java.util.List;
 public class BlockDropMixin {
     @Inject(at = @At("RETURN"), method = "Lnet/minecraft/world/level/block/Block;getDrops(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)Ljava/util/List;", cancellable = true)
     private static void alternacraft$getDrops(BlockState pState, ServerLevel pLevel, BlockPos pPos, @Nullable BlockEntity pBlockEntity, @Nullable Entity pEntity, ItemStack pTool, CallbackInfoReturnable<List<ItemStack>> cbi) {
-        if (pEntity instanceof Player player && player.getMainHandItem().getItem() instanceof DiggerItem diggerItem && diggerItem.getTier() == ToolTiers.MAGNETIC_TIER) {
+        if (pEntity instanceof Player player && player.getMainHandItem().getItem() instanceof DiggerItem diggerItem && (diggerItem.getTier() == ToolTiers.MAGNETIC_TIER || diggerItem.getTier() == ToolTiers.AIO_TIER)) {
             for (ItemStack itemStack : cbi.getReturnValue()) {
                 if (!player.addItem(itemStack)) {
-                    player.drop(itemStack, false);
+                    player.spawnAtLocation(itemStack);
                 }
             }
             cbi.setReturnValue(List.of());

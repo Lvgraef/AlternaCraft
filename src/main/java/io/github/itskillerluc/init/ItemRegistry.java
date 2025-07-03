@@ -31,7 +31,7 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_BOOTS = registerArmorWithDescription("copperwood_boots",
             ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> COPPERWOOD_CHESTPLATE = ITEMS.register("copperwood_chestplate",
-            () -> new ArmorEffectItem("copperwood_chestplate", ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1), new MobEffectInstance(MobEffects.REGENERATION)));
+            () -> new ArmorEffectItem("copperwood_chestplate", ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1), new MobEffectInstance(MobEffects.REGENERATION, 0, 0, true, false)));
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_LEGGINGS = registerArmorWithDescription("copperwood_leggings",
             ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_HELMET = registerArmorWithDescription("copperwood_helmet",
@@ -39,7 +39,7 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, ArmorItem> DARK_CRYSTAL_BOOTS = registerArmorWithDescription("dark_crystal_boots",
             ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> DARK_CRYSTAL_CHESTPLATE = ITEMS.register("dark_crystal_chestplate",
-            () -> new ArmorEffectItem("dark_crystal_chestplate", ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1), new MobEffectInstance(MobEffects.DAMAGE_BOOST)));
+            () -> new ArmorEffectItem("dark_crystal_chestplate", ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1), new MobEffectInstance(MobEffects.DAMAGE_BOOST, 0, 0, true, false)));
     public static final DeferredHolder<Item, ArmorItem> DARK_CRYSTAL_LEGGINGS = registerArmorWithDescription("dark_crystal_leggings",
             ArmorMaterialRegistry.DARK_CRYSTAL, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> DARK_CRYSTAL_HELMET = registerArmorWithDescription("dark_crystal_helmet",
@@ -55,7 +55,7 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, ArmorItem> AIO_BOOTS = registerArmorWithDescription("aio_boots",
             ArmorMaterialRegistry.AIO, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> AIO_CHESTPLATE = ITEMS.register("aio_chestplate",
-            () -> new ArmorEffectItem("aio_chestplate", ArmorMaterialRegistry.AIO, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1), new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 1, false, false), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, false, false), new MobEffectInstance(MobEffects.REGENERATION, 1, 1, false, false)));
+            () -> new ArmorEffectItem("aio_chestplate", ArmorMaterialRegistry.AIO, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1), new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1, 1, true, false), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, false, false), new MobEffectInstance(MobEffects.REGENERATION, 1, 1, false, false)));
     public static final DeferredHolder<Item, ArmorItem> AIO_LEGGINGS = registerArmorWithDescription("aio_leggings",
             ArmorMaterialRegistry.AIO, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> AIO_HELMET = registerArmorWithDescription("aio_helmet",
@@ -63,7 +63,7 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, ArmorItem> PAINITE_BOOTS = registerArmorWithDescription("painite_boots",
             ArmorMaterialRegistry.PAINITE, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> PAINITE_CHESTPLATE = ITEMS.register("painite_chestplate",
-            () -> new ArmorEffectItem("painite_chestplate", ArmorMaterialRegistry.PAINITE, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, false, false)));
+            () -> new ArmorEffectItem("painite_chestplate", ArmorMaterialRegistry.PAINITE, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant().stacksTo(1), new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0, true, false)));
     public static final DeferredHolder<Item, ArmorItem> PAINITE_LEGGINGS = registerArmorWithDescription("painite_leggings",
             ArmorMaterialRegistry.PAINITE, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant().stacksTo(1));
     public static final DeferredHolder<Item, ArmorItem> PAINITE_HELMET = registerArmorWithDescription("painite_helmet",

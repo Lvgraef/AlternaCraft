@@ -36,19 +36,20 @@ public class DarkCrystalHoe extends HoeItem {
 
     @Override
     public @NotNull InteractionResult useOn(@NotNull UseOnContext pContext) {
-        darkCrystalUse(pContext);
-        return InteractionResult.SUCCESS;
-        //return super.useOn(pContext);
+        return darkCrystalUse(pContext);
     }
 
-    public static void darkCrystalUse(UseOnContext pContext) {
-        if (pContext.getPlayer() == null) return;
+    public static InteractionResult darkCrystalUse(UseOnContext pContext) {
+        if (pContext.getPlayer() == null) return InteractionResult.FAIL;
+        InteractionResult result = InteractionResult.FAIL;
         for (int x = -1; x < 2; x++) {
             for (int z = -1; z < 2; z++) {
                 var blockPos = pContext.getClickedPos().north(x).east(z);
                 useHoe(new UseOnContext(pContext.getPlayer(), pContext.getHand(), new BlockHitResult(pContext.getClickLocation(), pContext.getClickedFace(), blockPos, pContext.isInside())));
+                result = InteractionResult.SUCCESS;
             }
         }
+        return result;
     }
 
     public static void useHoe(UseOnContext pContext) {
