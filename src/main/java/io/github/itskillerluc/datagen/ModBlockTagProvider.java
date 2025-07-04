@@ -23,7 +23,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.DIRT)
                 .add(BlockRegistry.VOLCANIC_SOIL.get())
                 .add(BlockRegistry.MOSSY_DIRT.value())
-                .add(BlockRegistry.MOSSY_GRASS.get());
+                .add(BlockRegistry.MOSSY_GRASS.get())
+                .add(BlockRegistry.LIGHTNING_DIRT.get())
+                .add(BlockRegistry.LIGHTNING_MARSH.get());
         tag(BlockTags.FLOWERS)
                 .add(BlockRegistry.BLUE_PASTEL_PETALS.value())
                 .add(BlockRegistry.RED_PASTEL_PETALS.value());

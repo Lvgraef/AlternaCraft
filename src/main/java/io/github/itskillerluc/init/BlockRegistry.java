@@ -67,6 +67,8 @@ public class BlockRegistry {
     public static final Holder<Block> DEEPSLATE_COPPERWOOD_ORE = BLOCKS.registerSimpleBlock("deepslate_copperwood_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE));
     public static final DeferredBlock<Block> MOSSY_DIRT = BLOCKS.registerSimpleBlock("mossy_dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
     public static final DeferredBlock<Block> MOSSY_GRASS = BLOCKS.registerSimpleBlock("mossy_grass", BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK).mapColor(MapColor.COLOR_PURPLE));
+    public static final DeferredBlock<Block> LIGHTNING_DIRT = BLOCKS.registerSimpleBlock("lightning_dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
+    public static final DeferredBlock<Block> LIGHTNING_MARSH = BLOCKS.registerSimpleBlock("lightning_marsh", BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK));
     public static final DeferredBlock<Block> RED_PASTEL_LEAVES = BLOCKS.registerSimpleBlock("red_pastel_leaves", BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LEAVES).mapColor(MapColor.COLOR_RED));
     public static final DeferredBlock<RotatedPillarBlock> RED_PASTEL_LOG = BLOCKS.registerBlock("red_pastel_log", props -> new LogBlock(props, BlockRegistry.STRIPPED_RED_PASTEL_LOG), BlockBehaviour.Properties.ofFullCopy(Blocks.SPRUCE_LOG).mapColor(state -> state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_RED : MapColor.COLOR_BROWN));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_RED_PASTEL_LOG = BLOCKS.registerBlock("stripped_red_pastel_log", RotatedPillarBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.BIRCH_LOG).mapColor(MapColor.TERRACOTTA_RED));

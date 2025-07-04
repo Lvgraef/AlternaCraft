@@ -41,6 +41,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             BlockRegistry.LIME_COLORFUL_FLOWER,
             BlockRegistry.MAGENTA_COLORFUL_FLOWER,
             BlockRegistry.MOSSY_GRASS,
+            BlockRegistry.LIGHTNING_MARSH,
             BlockRegistry.ORANGE_COLORFUL_FLOWER,
             BlockRegistry.PINK_COLORFUL_FLOWER,
             BlockRegistry.PURPLE_COLORFUL_FLOWER,
@@ -53,6 +54,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             BlockRegistry.RED_PASTEL_PETALS,
             BlockRegistry.CYAN_COLORFUL_FLOWER,
             BlockRegistry.MOSSY_DIRT,
+            BlockRegistry.LIGHTNING_DIRT,
             BlockRegistry.BLUE_PASTELIZED_SAPLING,
             BlockRegistry.RED_PASTELIZED_SAPLING,
             BlockRegistry.ELECTREE_SAPLING
@@ -79,6 +81,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         BlockModelBuilder mossyDirtModel = models().cubeAll("mossy_dirt", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_dirt"));
         BlockModelBuilder mossyGrassModel = models().cubeBottomTop("mossy_grass", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_grass_side"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_dirt"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_grass"));
+        BlockModelBuilder lightningDirtModel = models().cubeAll("lightning_dirt", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_dirt"));
+        BlockModelBuilder lightningMarshModel = models().cubeBottomTop("lightning_marsh", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_marsh"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_dirt"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_marsh_top"));
 
         getVariantBuilder(BlockRegistry.MOSSY_GRASS.value())
                 .partialState().modelForState()
@@ -96,6 +100,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .modelFile(mossyDirtModel).rotationY(180).nextModel()
                 .modelFile(mossyDirtModel).rotationY(270).addModel();
         simpleBlockItem(BlockRegistry.MOSSY_DIRT.get(), mossyDirtModel);
+
+        getVariantBuilder(BlockRegistry.LIGHTNING_MARSH.value())
+                .partialState().modelForState()
+                .modelFile(lightningMarshModel).rotationY(0).nextModel()
+                .modelFile(lightningMarshModel).rotationY(90).nextModel()
+                .modelFile(lightningMarshModel).rotationY(180).nextModel()
+                .modelFile(lightningMarshModel).rotationY(270).addModel();
+        simpleBlockItem(BlockRegistry.LIGHTNING_MARSH.get(), lightningMarshModel);
+
+
+        getVariantBuilder(BlockRegistry.LIGHTNING_DIRT.value())
+                .partialState().modelForState()
+                .modelFile(lightningDirtModel).rotationY(0).nextModel()
+                .modelFile(lightningDirtModel).rotationY(90).nextModel()
+                .modelFile(lightningDirtModel).rotationY(180).nextModel()
+                .modelFile(lightningDirtModel).rotationY(270).addModel();
+        simpleBlockItem(BlockRegistry.LIGHTNING_DIRT.get(), lightningDirtModel);
 
 
         BlockModelBuilder miningLight = models().withExistingParent("mining_light","minecraft:block/air");

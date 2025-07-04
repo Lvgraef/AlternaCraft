@@ -17,6 +17,8 @@ public class SurfaceRuleData {
     private static final SurfaceRules.RuleSource FROZEN_SAND = makeStateRule(BlockRegistry.FROZEN_SAND.value());
     private static final SurfaceRules.RuleSource MOSSY_GRASS = makeStateRule(BlockRegistry.MOSSY_GRASS.value());
     private static final SurfaceRules.RuleSource MOSSY_DIRT = makeStateRule(BlockRegistry.MOSSY_DIRT.value());
+    private static final SurfaceRules.RuleSource LIGHTNING_MARSH = makeStateRule(BlockRegistry.LIGHTNING_MARSH.value());
+    private static final SurfaceRules.RuleSource LIGHTNING_DIRT = makeStateRule(BlockRegistry.LIGHTNING_DIRT.value());
 
     private static SurfaceRules.RuleSource makeStateRule(Block block) {
         return SurfaceRules.state(block.defaultBlockState());
@@ -33,15 +35,6 @@ public class SurfaceRuleData {
     }
 
     private static SurfaceRules.RuleSource makeOverworldRules() {
-        SurfaceRules.RuleSource swamp = SurfaceRules.ifTrue(
-                SurfaceRules.ON_FLOOR,
-                SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(BiomeInit.ELECTRIC_SWAMP),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.not(SurfaceRules.yBlockCheck(VerticalAnchor.absolute(63), 0)), SurfaceRules.ifTrue(SurfaceRules.noiseCondition(Noises.SWAMP, 0.0), WATER)
-                        )
-                )
-        );
 
         SurfaceRules.ConditionSource waterCheck = SurfaceRules.waterBlockCheck(-1, 0);
         SurfaceRules.ConditionSource waterCheck1 = SurfaceRules.waterBlockCheck(-6, -1);
@@ -112,6 +105,22 @@ public class SurfaceRuleData {
                                 )
                         )
                 )
+        );
+        SurfaceRules.RuleSource swamp = SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(BiomeInit.ELECTRIC_SWAMP),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.waterBlockCheck(0, 0),
+                                                        LIGHTNING_MARSH
+                                                )
+                                        ),
+                                        LIGHTNING_DIRT
+                                )
+                        )
         );
 
         return SurfaceRules.sequence(swamp, volcanicWasteland, frozenDesert, colorfulForest);

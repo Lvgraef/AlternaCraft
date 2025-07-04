@@ -34,6 +34,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(BlockRegistry.ELECTREE_LEAVES.get(), createLeavesDrops(BlockRegistry.ELECTREE_LEAVES.value(), Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
         add(BlockRegistry.MINING_LIGHT.get(), noDrop());
         add(BlockRegistry.MOSSY_GRASS.value(), createSingleItemTableWithSilkTouch(BlockRegistry.MOSSY_GRASS.value(), ItemRegistry.MOSSY_GRASS.get()));
+        add(BlockRegistry.LIGHTNING_MARSH.value(), createSingleItemTableWithSilkTouch(BlockRegistry.LIGHTNING_MARSH.value(), ItemRegistry.LIGHTNING_MARSH.get()));
         add(BlockRegistry.PAINITE_ORE.get(),createOreDrop(BlockRegistry.PAINITE_ORE.get(), ItemRegistry.PAINITE_CRYSTAL.get()));
         add(BlockRegistry.RED_PASTEL_LEAVES.get(), createLeavesDrops(BlockRegistry.RED_PASTEL_LEAVES.get(), Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
         add(BlockRegistry.RED_PASTEL_PETALS.get(), createPetalsDrops(BlockRegistry.RED_PASTEL_PETALS.get()));
@@ -56,6 +57,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(BlockRegistry.LIME_COLORFUL_FLOWER.get());
         dropSelf(BlockRegistry.MAGENTA_COLORFUL_FLOWER.get());
         dropSelf(BlockRegistry.MOSSY_DIRT.value());
+        dropSelf(BlockRegistry.LIGHTNING_DIRT.value());
         dropSelf(BlockRegistry.ORANGE_BULB.get());
         dropSelf(BlockRegistry.ORANGE_COLORFUL_FLOWER.get());
         dropSelf(BlockRegistry.PINK_COLORFUL_FLOWER.get());

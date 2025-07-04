@@ -157,6 +157,8 @@ public class ItemRegistry {
     public static final Supplier<BlockItem> MAGENTA_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.MAGENTA_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> MOSSY_DIRT = ITEMS.registerSimpleBlockItem(BlockRegistry.MOSSY_DIRT);
     public static final Supplier<BlockItem> MOSSY_GRASS = ITEMS.registerSimpleBlockItem(BlockRegistry.MOSSY_GRASS);
+    public static final Supplier<BlockItem> LIGHTNING_DIRT = ITEMS.registerSimpleBlockItem(BlockRegistry.LIGHTNING_DIRT);
+    public static final Supplier<BlockItem> LIGHTNING_MARSH = ITEMS.registerSimpleBlockItem(BlockRegistry.LIGHTNING_MARSH);
     public static final Supplier<BlockItem> ORANGE_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.ORANGE_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> PINK_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.PINK_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> PURPLE_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.PURPLE_COLORFUL_FLOWER);
