@@ -172,9 +172,11 @@ public class ModRecipeProvider extends RecipeProvider {
         oneToOneConversionRecipe(pRecipeOutput, Items.YELLOW_DYE, ItemRegistry.DEAD_POPPY.get(), "yellow_dye");
         oneToOneConversionRecipe(pRecipeOutput, Items.YELLOW_DYE, ItemRegistry.YELLOW_COLORFUL_FLOWER.get(), "yellow_dye");
         oreBlasting(pRecipeOutput, List.of(ItemRegistry.DEEPSLATE_COPPERWOOD_ORE.get(), ItemRegistry.COPPERWOOD_ORE.get()), RecipeCategory.MISC, ItemRegistry.COPPERWOOD_CRYSTAL.get(), 0.7f, 100, "copperwood_crystal");
+        oreBlasting(pRecipeOutput, List.of(ItemRegistry.DEEPSLATE_MAGNETIC_ORE.get(), ItemRegistry.MAGNETIC_ORE.get()), RecipeCategory.MISC, ItemRegistry.MAGNETIC_CRYSTAL.get(), 0.7f, 100, "magnetic_crystal");
         oreBlasting(pRecipeOutput, List.of(ItemRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.get(), ItemRegistry.DARK_CRYSTAL_ORE.get()), RecipeCategory.MISC, ItemRegistry.DARK_CRYSTAL.get(), 0.7f, 100, "dark_crystal");
         oreBlasting(pRecipeOutput, List.of(ItemRegistry.PAINITE_ORE_SOIL.get()), RecipeCategory.MISC, ItemRegistry.PAINITE_CRYSTAL.get(), 0.7f, 100, "painite_crystal");
         oreSmelting(pRecipeOutput, List.of(ItemRegistry.DEEPSLATE_COPPERWOOD_ORE.get(), ItemRegistry.COPPERWOOD_ORE.get()), RecipeCategory.MISC, ItemRegistry.COPPERWOOD_CRYSTAL.get(), 0.7f, 200, "copperwood_crystal");
+        oreSmelting(pRecipeOutput, List.of(ItemRegistry.DEEPSLATE_MAGNETIC_ORE.get(), ItemRegistry.MAGNETIC_ORE.get()), RecipeCategory.MISC, ItemRegistry.MAGNETIC_CRYSTAL.get(), 0.7f, 200, "magnetic_crystal");
         oreSmelting(pRecipeOutput, List.of(ItemRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.get(), ItemRegistry.DARK_CRYSTAL_ORE.get()), RecipeCategory.MISC, ItemRegistry.DARK_CRYSTAL.get(), 0.7f, 200, "dark_crystal");
         oreSmelting(pRecipeOutput, List.of(ItemRegistry.PAINITE_ORE_SOIL.get()), RecipeCategory.MISC, ItemRegistry.PAINITE_CRYSTAL.get(), 0.7f, 200, "painite_crystal");
         planksFromLog(pRecipeOutput, ItemRegistry.BLUE_PASTEL_PLANKS.get(), Tags.Items.BLUE_PASTEL_LOGS, 4);

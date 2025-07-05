@@ -65,6 +65,8 @@ public class BlockRegistry {
     public static final Holder<Block> BLUE_PASTEL_PLANKS = BLOCKS.registerSimpleBlock("blue_pastel_planks", BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.COLOR_LIGHT_BLUE));
     public static final Holder<Block> COPPERWOOD_ORE = BLOCKS.registerSimpleBlock("copperwood_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE));
     public static final Holder<Block> DEEPSLATE_COPPERWOOD_ORE = BLOCKS.registerSimpleBlock("deepslate_copperwood_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE));
+    public static final Holder<Block> MAGNETIC_ORE = BLOCKS.registerSimpleBlock("magnetic_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE));
+    public static final Holder<Block> DEEPSLATE_MAGNETIC_ORE = BLOCKS.registerSimpleBlock("deepslate_magnetic_ore", BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE));
     public static final DeferredBlock<Block> MOSSY_DIRT = BLOCKS.registerSimpleBlock("mossy_dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));
     public static final DeferredBlock<Block> MOSSY_GRASS = BLOCKS.registerSimpleBlock("mossy_grass", BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK).mapColor(MapColor.COLOR_PURPLE));
     public static final DeferredBlock<Block> LIGHTNING_DIRT = BLOCKS.registerSimpleBlock("lightning_dirt", BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT));

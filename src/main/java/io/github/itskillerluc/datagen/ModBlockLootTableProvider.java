@@ -27,9 +27,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(BlockRegistry.BLUE_PASTEL_LEAVES.get(), createLeavesDrops(BlockRegistry.BLUE_PASTEL_LEAVES.get(), Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
         add(BlockRegistry.BLUE_PASTEL_PETALS.get(), createPetalsDrops(BlockRegistry.BLUE_PASTEL_PETALS.get()));
         add(BlockRegistry.COPPERWOOD_ORE.value(), createOreDrop(BlockRegistry.COPPERWOOD_ORE.value(), ItemRegistry.COPPERWOOD_CRYSTAL.get()));
+        add(BlockRegistry.MAGNETIC_ORE.value(), createOreDrop(BlockRegistry.MAGNETIC_ORE.value(), ItemRegistry.MAGNETIC_CRYSTAL.get()));
         add(BlockRegistry.DARK_CRYSTAL_ORE.value(), createOreDrop(BlockRegistry.DARK_CRYSTAL_ORE.value(), ItemRegistry.DARK_CRYSTAL.get()));
         add(BlockRegistry.DEAD_GRASS.get(), createGrassDrops(BlockRegistry.DEAD_GRASS.get()));
         add(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value(), createOreDrop(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value(), ItemRegistry.COPPERWOOD_CRYSTAL.get()));
+        add(BlockRegistry.DEEPSLATE_MAGNETIC_ORE.value(), createOreDrop(BlockRegistry.DEEPSLATE_MAGNETIC_ORE.value(), ItemRegistry.MAGNETIC_CRYSTAL.get()));
         add(BlockRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.value(), createOreDrop(BlockRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.value(), ItemRegistry.DARK_CRYSTAL.get()));
         add(BlockRegistry.ELECTREE_LEAVES.get(), createLeavesDrops(BlockRegistry.ELECTREE_LEAVES.value(), Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
         add(BlockRegistry.MINING_LIGHT.get(), noDrop());

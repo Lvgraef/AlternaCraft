@@ -34,6 +34,7 @@ public class PlacedFeatureInit {
     public static final ResourceKey<PlacedFeature> CERULEAN_LAVA = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "cerulean_lava"));
     public static final ResourceKey<PlacedFeature> PAINITE_ORE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "painite_ore"));
     public static final ResourceKey<PlacedFeature> COPPERWOOD_ORE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "copperwood_ore"));
+    public static final ResourceKey<PlacedFeature> MAGNETIC_ORE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magnetic_ore"));
     public static final ResourceKey<PlacedFeature> DARK_CRYSTAL_ORE = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "dark_crystal_ore"));
     public static final ResourceKey<PlacedFeature> CRYSTAL_ICE_CACTUS = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "crystal_ice_cactus"));
     public static final ResourceKey<PlacedFeature> COLORFUL_FLOWERS = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "colorful_flowers"));
@@ -137,6 +138,16 @@ public class PlacedFeatureInit {
                 context,
                 COPPERWOOD_ORE,
                 configuredFeatures.getOrThrow(ConfiguredFeatureInit.COPPERWOOD_ORE),
+                CountPlacement.of(5),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.triangle(new VerticalAnchor.Absolute(-80), new VerticalAnchor.Absolute(80)),
+                BiomeFilter.biome()
+        );
+
+        PlacementUtils.register(
+                context,
+                MAGNETIC_ORE,
+                configuredFeatures.getOrThrow(ConfiguredFeatureInit.MAGNETIC_ORE),
                 CountPlacement.of(5),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.triangle(new VerticalAnchor.Absolute(-80), new VerticalAnchor.Absolute(80)),
