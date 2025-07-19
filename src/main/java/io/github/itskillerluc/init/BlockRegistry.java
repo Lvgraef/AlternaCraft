@@ -1,10 +1,7 @@
 package io.github.itskillerluc.init;
 
 import io.github.itskillerluc.AlternaCraft;
-import io.github.itskillerluc.block.CoolLavaBlock;
-import io.github.itskillerluc.block.LogBlock;
-import io.github.itskillerluc.block.MiningLight;
-import io.github.itskillerluc.block.RocksBlock;
+import io.github.itskillerluc.block.*;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.util.ColorRGBA;
@@ -31,6 +28,9 @@ public class BlockRegistry {
 
     public static final DeferredBlock<Block> DEAD_DANDELION = BLOCKS.registerBlock("dead_dandelion",props -> new FlowerBlock(
             MobEffects.WEAKNESS, 7, props), BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION));
+
+    public static final DeferredBlock<Block> COLORFUL_BUSH = BLOCKS.register("colorful_bush",
+            () -> new ColorfulBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     public static final DeferredBlock<Block> DEAD_GRASS = BLOCKS.registerBlock("dead_grass",
             TallGrassBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.SHORT_GRASS));

@@ -28,6 +28,9 @@ public class ItemRegistry {
     public static final Supplier<Item> PRISAMOND_SHARD = ITEMS.registerSimpleItem("prisamond_shard");
     public static final Supplier<Item> PRISMA_STICK = ITEMS.registerSimpleItem("prisma_stick");
 
+    public static final Supplier<Item> ALTERNABERRIES = ITEMS.register("alternaberries",
+            () -> new ItemNameBlockItem(BlockRegistry.COLORFUL_BUSH.get(), new Item.Properties().food(ConsumableProperties.ALTERNABERRY)));
+
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_BOOTS = registerArmorWithDescription("copperwood_boots",
             ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> COPPERWOOD_CHESTPLATE = ITEMS.register("copperwood_chestplate",

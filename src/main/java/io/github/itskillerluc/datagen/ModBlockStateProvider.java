@@ -1,12 +1,15 @@
 package io.github.itskillerluc.datagen;
 
 import io.github.itskillerluc.AlternaCraft;
+import io.github.itskillerluc.block.ColorfulBushBlock;
 import io.github.itskillerluc.init.BlockRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PinkPetalsBlock;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -15,6 +18,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -118,6 +122,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .modelFile(lightningDirtModel).rotationY(270).addModel();
         simpleBlockItem(BlockRegistry.LIGHTNING_DIRT.get(), lightningDirtModel);
 
+        makeBush(((SweetBerryBushBlock) BlockRegistry.COLORFUL_BUSH.get()), "colorful_berry_bush_stage", "honey_berry_bush_stage");
+
 
         BlockModelBuilder miningLight = models().withExistingParent("mining_light","minecraft:block/air");
 
@@ -202,6 +208,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.RED_PASTELIZED_SAPLING.get(), models().cross("red_pastelized_sapling", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "item/red_pastelized_sapling")).renderType("minecraft:cutout"));
         simpleBlock(BlockRegistry.ELECTREE_SAPLING.get(), models().cross("electree_sapling", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "item/electree_sapling")).renderType("minecraft:cutout"));
 
+    }
+
+    public void makeBush(SweetBerryBushBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] states(BlockState state, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().cross(modelName + state.getValue(ColorfulBushBlock.AGE),
+                ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + textureName + state.getValue(ColorfulBushBlock.AGE))).renderType("cutout"));
+
+        return models;
     }
 
     private void petals(String name, Block block) {

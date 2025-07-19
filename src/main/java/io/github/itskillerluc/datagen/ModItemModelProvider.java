@@ -71,6 +71,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ItemRegistry.RED_PASTELIZED_SAPLING.get());
         basicItem(ItemRegistry.ELECTREE_SAPLING.get());
 
+        basicItem(ItemRegistry.ALTERNABERRIES.get());
+
         withExistingParent("alternacraft:aio_axe", "minecraft:item/handheld");
         withExistingParent("alternacraft:aio_pickaxe", "minecraft:item/handheld");
         withExistingParent("alternacraft:aio_scythe", "minecraft:item/handheld");
