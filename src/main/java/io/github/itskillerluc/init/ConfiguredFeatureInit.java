@@ -55,6 +55,7 @@ public class ConfiguredFeatureInit {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PAINITE_ORE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "painite_ore"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> DARK_CRYSTAL_ORE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "dark_crystal_ore"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> COPPERWOOD_ORE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "copperwood_ore"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MAGNETIC_ORE = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magnetic_ore"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> CRYSTAL_ICE_CACTUS = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "crystal_ice_cactus"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> COLORFUL_FLOWERS = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "colorful_flowers"));
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_PETALS = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "flower_petals"));
@@ -159,6 +160,16 @@ public class ConfiguredFeatureInit {
                 new OreConfiguration(List.of(
                         OreConfiguration.target(new BlockMatchTest(Blocks.STONE), BlockRegistry.COPPERWOOD_ORE.value().defaultBlockState()),
                         OreConfiguration.target(new BlockMatchTest(Blocks.DEEPSLATE), BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value().defaultBlockState())),
+                        3)
+        );
+
+        FeatureUtils.register(
+                context,
+                MAGNETIC_ORE,
+                Feature.ORE,
+                new OreConfiguration(List.of(
+                        OreConfiguration.target(new BlockMatchTest(Blocks.STONE), BlockRegistry.MAGNETIC_ORE.value().defaultBlockState()),
+                        OreConfiguration.target(new BlockMatchTest(Blocks.DEEPSLATE), BlockRegistry.DEEPSLATE_MAGNETIC_ORE.value().defaultBlockState())),
                         3)
         );
 

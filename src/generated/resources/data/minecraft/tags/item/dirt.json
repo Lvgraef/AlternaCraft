@@ -2,6 +2,8 @@
   "values": [
     "alternacraft:volcanic_soil",
     "alternacraft:mossy_dirt",
-    "alternacraft:mossy_grass"
+    "alternacraft:mossy_grass",
+    "alternacraft:lightning_dirt",
+    "alternacraft:lightning_marsh"
   ]
 }

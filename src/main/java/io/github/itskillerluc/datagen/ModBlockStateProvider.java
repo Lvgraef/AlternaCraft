@@ -1,12 +1,15 @@
 package io.github.itskillerluc.datagen;
 
 import io.github.itskillerluc.AlternaCraft;
+import io.github.itskillerluc.block.ColorfulBushBlock;
 import io.github.itskillerluc.init.BlockRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PinkPetalsBlock;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -15,6 +18,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -41,6 +45,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             BlockRegistry.LIME_COLORFUL_FLOWER,
             BlockRegistry.MAGENTA_COLORFUL_FLOWER,
             BlockRegistry.MOSSY_GRASS,
+            BlockRegistry.LIGHTNING_MARSH,
             BlockRegistry.ORANGE_COLORFUL_FLOWER,
             BlockRegistry.PINK_COLORFUL_FLOWER,
             BlockRegistry.PURPLE_COLORFUL_FLOWER,
@@ -53,6 +58,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             BlockRegistry.RED_PASTEL_PETALS,
             BlockRegistry.CYAN_COLORFUL_FLOWER,
             BlockRegistry.MOSSY_DIRT,
+            BlockRegistry.LIGHTNING_DIRT,
             BlockRegistry.BLUE_PASTELIZED_SAPLING,
             BlockRegistry.RED_PASTELIZED_SAPLING,
             BlockRegistry.ELECTREE_SAPLING
@@ -79,6 +85,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         BlockModelBuilder mossyDirtModel = models().cubeAll("mossy_dirt", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_dirt"));
         BlockModelBuilder mossyGrassModel = models().cubeBottomTop("mossy_grass", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_grass_side"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_dirt"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/mossy_grass"));
+        BlockModelBuilder lightningDirtModel = models().cubeAll("lightning_dirt", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_dirt"));
+        BlockModelBuilder lightningMarshModel = models().cubeBottomTop("lightning_marsh", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_marsh"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_dirt"), ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/lightning_marsh_top"));
 
         getVariantBuilder(BlockRegistry.MOSSY_GRASS.value())
                 .partialState().modelForState()
@@ -96,6 +104,25 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .modelFile(mossyDirtModel).rotationY(180).nextModel()
                 .modelFile(mossyDirtModel).rotationY(270).addModel();
         simpleBlockItem(BlockRegistry.MOSSY_DIRT.get(), mossyDirtModel);
+
+        getVariantBuilder(BlockRegistry.LIGHTNING_MARSH.value())
+                .partialState().modelForState()
+                .modelFile(lightningMarshModel).rotationY(0).nextModel()
+                .modelFile(lightningMarshModel).rotationY(90).nextModel()
+                .modelFile(lightningMarshModel).rotationY(180).nextModel()
+                .modelFile(lightningMarshModel).rotationY(270).addModel();
+        simpleBlockItem(BlockRegistry.LIGHTNING_MARSH.get(), lightningMarshModel);
+
+
+        getVariantBuilder(BlockRegistry.LIGHTNING_DIRT.value())
+                .partialState().modelForState()
+                .modelFile(lightningDirtModel).rotationY(0).nextModel()
+                .modelFile(lightningDirtModel).rotationY(90).nextModel()
+                .modelFile(lightningDirtModel).rotationY(180).nextModel()
+                .modelFile(lightningDirtModel).rotationY(270).addModel();
+        simpleBlockItem(BlockRegistry.LIGHTNING_DIRT.get(), lightningDirtModel);
+
+        makeBush(((SweetBerryBushBlock) BlockRegistry.COLORFUL_BUSH.get()), "colorful_berry_bush_stage", "honey_berry_bush_stage");
 
 
         BlockModelBuilder miningLight = models().withExistingParent("mining_light","minecraft:block/air");
@@ -181,6 +208,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.RED_PASTELIZED_SAPLING.get(), models().cross("red_pastelized_sapling", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "item/red_pastelized_sapling")).renderType("minecraft:cutout"));
         simpleBlock(BlockRegistry.ELECTREE_SAPLING.get(), models().cross("electree_sapling", ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "item/electree_sapling")).renderType("minecraft:cutout"));
 
+    }
+
+    public void makeBush(SweetBerryBushBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> states(state, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] states(BlockState state, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().cross(modelName + state.getValue(ColorfulBushBlock.AGE),
+                ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/" + textureName + state.getValue(ColorfulBushBlock.AGE))).renderType("cutout"));
+
+        return models;
     }
 
     private void petals(String name, Block block) {

@@ -23,7 +23,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.DIRT)
                 .add(BlockRegistry.VOLCANIC_SOIL.get())
                 .add(BlockRegistry.MOSSY_DIRT.value())
-                .add(BlockRegistry.MOSSY_GRASS.get());
+                .add(BlockRegistry.MOSSY_GRASS.get())
+                .add(BlockRegistry.LIGHTNING_DIRT.get())
+                .add(BlockRegistry.LIGHTNING_MARSH.get());
         tag(BlockTags.FLOWERS)
                 .add(BlockRegistry.BLUE_PASTEL_PETALS.value())
                 .add(BlockRegistry.RED_PASTEL_PETALS.value());
@@ -52,7 +54,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(BlockRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.value())
                 .add(BlockRegistry.DARK_CRYSTAL_ORE.value())
                 .add(BlockRegistry.COPPERWOOD_ORE.value())
-                .add(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value());
+                .add(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value())
+                .add(BlockRegistry.MAGNETIC_ORE.value())
+                .add(BlockRegistry.DEEPSLATE_MAGNETIC_ORE.value());
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(BlockRegistry.VOLCANIC_SOIL.get())
                 .add(BlockRegistry.FROZEN_SAND.value());
@@ -60,6 +64,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(BlockRegistry.PAINITE_ORE.get())
                 .add(BlockRegistry.COPPERWOOD_ORE.value())
                 .add(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value())
+                .add(BlockRegistry.MAGNETIC_ORE.value())
+                .add(BlockRegistry.DEEPSLATE_MAGNETIC_ORE.value())
                 .add(BlockRegistry.DARK_CRYSTAL_ORE.value())
                 .add(BlockRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.value());
         tag(BlockTags.PLANKS)
@@ -92,6 +98,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(Tags.Blocks.COPPERWOOD_ORES)
                 .add(BlockRegistry.COPPERWOOD_ORE.value())
                 .add(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE.value());
+        tag(Tags.Blocks.MAGNETIC_ORES)
+                .add(BlockRegistry.MAGNETIC_ORE.value())
+                .add(BlockRegistry.DEEPSLATE_MAGNETIC_ORE.value());
         tag(Tags.Blocks.DARK_CRYSTAL_ORES)
                 .add(BlockRegistry.DARK_CRYSTAL_ORE.value())
                 .add(BlockRegistry.DEEPSLATE_DARK_CRYSTAL_ORE.value());

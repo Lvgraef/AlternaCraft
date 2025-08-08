@@ -15,6 +15,7 @@ public class Tags {
         public static final TagKey<Block> BLUE_PASTEL_LOGS = BlockTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "blue_pastel_logs"));
         public static final TagKey<Block> CHARRED_LOGS = BlockTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "charred_logs"));
         public static final TagKey<Block> COPPERWOOD_ORES = BlockTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "copperwood_ores"));
+        public static final TagKey<Block> MAGNETIC_ORES = BlockTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magnetic_ores"));
         public static final TagKey<Block> DARK_CRYSTAL_ORES = BlockTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "dark_crystal_ores"));
         public static final TagKey<Block> ELECTREE_LOGS = BlockTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "electree_logs"));
         public static final TagKey<Block> NEEDS_AIO_TOOL = BlockTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "needs_aio_tool"));
@@ -29,6 +30,7 @@ public class Tags {
         public static final TagKey<Item> BLUE_PASTEL_LOGS = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "blue_pastel_logs"));
         public static final TagKey<Item> CHARRED_LOGS = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "charred_logs"));
         public static final TagKey<Item> COPPERWOOD_ORES = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "copperwood_ores"));
+        public static final TagKey<Item> MAGNETIC_ORES = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magnetic_ores"));
         public static final TagKey<Item> DARK_CRYSTAL_ORES = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "dark_crystal_ores"));
         public static final TagKey<Item> ELECTREE_LOGS = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "electree_logs"));
         public static final TagKey<Item> PAINITE_ORES = ItemTags.create(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "painite_ores"));

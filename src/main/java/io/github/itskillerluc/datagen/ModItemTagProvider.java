@@ -32,6 +32,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
         copy(Tags.Blocks.BLUE_PASTEL_LOGS, Tags.Items.BLUE_PASTEL_LOGS);
         copy(Tags.Blocks.CHARRED_LOGS, Tags.Items.CHARRED_LOGS);
         copy(Tags.Blocks.COPPERWOOD_ORES, Tags.Items.COPPERWOOD_ORES);
+        copy(Tags.Blocks.MAGNETIC_ORES, Tags.Items.MAGNETIC_ORES);
         copy(Tags.Blocks.DARK_CRYSTAL_ORES, Tags.Items.DARK_CRYSTAL_ORES);
         copy(Tags.Blocks.ELECTREE_LOGS, Tags.Items.ELECTREE_LOGS);
         copy(Tags.Blocks.PAINITE_ORES, Tags.Items.PAINITE_ORES);

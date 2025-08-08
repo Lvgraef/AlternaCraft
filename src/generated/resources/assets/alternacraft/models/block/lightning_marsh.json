@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "alternacraft:block/lightning_dirt",
+    "side": "alternacraft:block/lightning_marsh",
+    "top": "alternacraft:block/lightning_marsh_top"
+  }
+}

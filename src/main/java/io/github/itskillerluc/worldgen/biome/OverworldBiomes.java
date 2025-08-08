@@ -98,6 +98,7 @@ public class OverworldBiomes {
         BiomeDefaultFeatures.addFossilDecoration(biomegenerationsettings$builder);
         globalOverworldGeneration(biomegenerationsettings$builder);
         BiomeDefaultFeatures.addDefaultOres(biomegenerationsettings$builder);
+        biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PlacedFeatureInit.MAGNETIC_ORE);
         BiomeDefaultFeatures.addSwampClayDisk(biomegenerationsettings$builder);
         biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.FLOWER_ELECTRIC_SWAMP);
         biomegenerationsettings$builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacedFeatureInit.ELECTREE);

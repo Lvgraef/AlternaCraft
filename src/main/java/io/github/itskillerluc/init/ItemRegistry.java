@@ -29,6 +29,9 @@ public class ItemRegistry {
     public static final Supplier<Item> PRISAMOND_SHARD = ITEMS.registerSimpleItem("prisamond_shard");
     public static final Supplier<Item> PRISMA_STICK = ITEMS.registerSimpleItem("prisma_stick");
 
+    public static final Supplier<Item> ALTERNABERRIES = ITEMS.register("alternaberries",
+            () -> new ItemNameBlockItem(BlockRegistry.COLORFUL_BUSH.get(), new Item.Properties().food(ConsumableProperties.ALTERNABERRY)));
+
     public static final DeferredHolder<Item, ArmorItem> COPPERWOOD_BOOTS = registerArmorWithDescription("copperwood_boots",
             ArmorMaterialRegistry.COPPERWOOD, ArmorItem.Type.BOOTS, new Item.Properties().stacksTo(1));
     public static final DeferredHolder<Item, ArmorEffectItem> COPPERWOOD_CHESTPLATE = ITEMS.register("copperwood_chestplate",
@@ -151,13 +154,17 @@ public class ItemRegistry {
     public static final Supplier<BlockItem> BLUE_PASTEL_PETALS = ITEMS.registerSimpleBlockItem(BlockRegistry.BLUE_PASTEL_PETALS);
     public static final Supplier<BlockItem> BLUE_PASTEL_PLANKS = ITEMS.registerSimpleBlockItem(BlockRegistry.BLUE_PASTEL_PLANKS);
     public static final Supplier<BlockItem> COPPERWOOD_ORE = ITEMS.registerSimpleBlockItem(BlockRegistry.COPPERWOOD_ORE);
+    public static final Supplier<BlockItem> MAGNETIC_ORE = ITEMS.registerSimpleBlockItem(BlockRegistry.MAGNETIC_ORE);
     public static final Supplier<BlockItem> CYAN_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.CYAN_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> DEEPSLATE_COPPERWOOD_ORE = ITEMS.registerSimpleBlockItem(BlockRegistry.DEEPSLATE_COPPERWOOD_ORE);
+    public static final Supplier<BlockItem> DEEPSLATE_MAGNETIC_ORE = ITEMS.registerSimpleBlockItem(BlockRegistry.DEEPSLATE_MAGNETIC_ORE);
     public static final Supplier<BlockItem> GREEN_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.GREEN_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> LIME_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.LIME_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> MAGENTA_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.MAGENTA_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> MOSSY_DIRT = ITEMS.registerSimpleBlockItem(BlockRegistry.MOSSY_DIRT);
     public static final Supplier<BlockItem> MOSSY_GRASS = ITEMS.registerSimpleBlockItem(BlockRegistry.MOSSY_GRASS);
+    public static final Supplier<BlockItem> LIGHTNING_DIRT = ITEMS.registerSimpleBlockItem(BlockRegistry.LIGHTNING_DIRT);
+    public static final Supplier<BlockItem> LIGHTNING_MARSH = ITEMS.registerSimpleBlockItem(BlockRegistry.LIGHTNING_MARSH);
     public static final Supplier<BlockItem> ORANGE_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.ORANGE_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> PINK_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.PINK_COLORFUL_FLOWER);
     public static final Supplier<BlockItem> PURPLE_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.PURPLE_COLORFUL_FLOWER);
