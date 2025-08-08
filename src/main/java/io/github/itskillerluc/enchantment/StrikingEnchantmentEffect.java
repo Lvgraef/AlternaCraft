@@ -1,4 +1,4 @@
-package io.github.itskillerluc.enchantment.custom;
+package io.github.itskillerluc.enchantment;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.server.level.ServerLevel;
@@ -7,7 +7,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.phys.Vec3;
 
 public record StrikingEnchantmentEffect() implements EnchantmentEntityEffect {
@@ -19,6 +18,7 @@ public record StrikingEnchantmentEffect() implements EnchantmentEntityEffect {
             EntityType.LIGHTNING_BOLT.spawn(serverLevel, entity.getOnPos(), MobSpawnType.TRIGGERED);
         }
         if(i == 2){
+            EntityType.LIGHTNING_BOLT.spawn(serverLevel, entity.getOnPos(), MobSpawnType.TRIGGERED);
             EntityType.LIGHTNING_BOLT.spawn(serverLevel, entity.getOnPos(), MobSpawnType.TRIGGERED);
         }
         if(i == 3){

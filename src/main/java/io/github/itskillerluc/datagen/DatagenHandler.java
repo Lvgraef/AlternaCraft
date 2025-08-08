@@ -3,6 +3,7 @@ package io.github.itskillerluc.datagen;
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.BiomeInit;
 import io.github.itskillerluc.init.ConfiguredFeatureInit;
+import io.github.itskillerluc.init.PaintingRegistry;
 import io.github.itskillerluc.init.PlacedFeatureInit;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -28,6 +29,7 @@ public class DatagenHandler {
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, ConfiguredFeatureInit::bootstrap)
             .add(Registries.PLACED_FEATURE, PlacedFeatureInit::bootstrap)
+            .add(Registries.PAINTING_VARIANT, PaintingRegistry::bootstrap)
             .add(Registries.BIOME, BiomeInit::bootstrap);
 
     @SubscribeEvent
@@ -42,6 +44,7 @@ public class DatagenHandler {
         generator.addProvider(event.includeClient(), new ModItemModelProvider(output, existingFileHelper));
         ModBlockTagProvider modBlockTagProvider = new ModBlockTagProvider(output, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), modBlockTagProvider);
+        generator.addProvider(event.includeServer(), new ModPaintingTagProvider(output, provider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ModDataMapProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), new ModItemTagProvider(output, lookupProvider, modBlockTagProvider.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeServer(), new ModEntityTypeTagProvider(output, lookupProvider, existingFileHelper));
@@ -49,7 +52,6 @@ public class DatagenHandler {
         generator.addProvider(event.includeServer(), new ModRecipeProvider(output, lookupProvider));
         generator.addProvider(event.includeClient(), new ModSoundProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
-        generator.addProvider(true, new ModDatapackProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
     }

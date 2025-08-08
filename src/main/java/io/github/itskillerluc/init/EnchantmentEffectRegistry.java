@@ -1,16 +1,15 @@
-package io.github.itskillerluc.enchantment;
+package io.github.itskillerluc.init;
 
 import com.mojang.serialization.MapCodec;
 import io.github.itskillerluc.AlternaCraft;
-import io.github.itskillerluc.enchantment.custom.StrikingEnchantmentEffect;
+import io.github.itskillerluc.enchantment.StrikingEnchantmentEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ModEnchantmentEffects {
+public class EnchantmentEffectRegistry {
     public static final DeferredRegister<MapCodec<? extends EnchantmentEntityEffect>> ENTITY_ENCHANTMENT_EFFECTS =
             DeferredRegister.create(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, AlternaCraft.MODID);
 

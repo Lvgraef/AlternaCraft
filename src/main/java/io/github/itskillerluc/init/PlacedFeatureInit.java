@@ -179,7 +179,7 @@ public class PlacedFeatureInit {
                 configuredFeatures.getOrThrow(ConfiguredFeatureInit.ROCK_PATCH),
                 CountPlacement.of(UniformInt.of(1, 2)),
                 InSquarePlacement.spread(),
-                HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome()
         );
     }

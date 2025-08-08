@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -168,6 +169,9 @@ public class ItemRegistry {
     public static final Supplier<BlockItem> STRIPPED_BLUE_PASTEL_LOG = ITEMS.registerSimpleBlockItem(BlockRegistry.STRIPPED_BLUE_PASTEL_LOG);
     public static final Supplier<BlockItem> STRIPPED_RED_PASTEL_LOG = ITEMS.registerSimpleBlockItem(BlockRegistry.STRIPPED_RED_PASTEL_LOG);
     public static final Supplier<BlockItem> YELLOW_COLORFUL_FLOWER = ITEMS.registerSimpleBlockItem(BlockRegistry.YELLOW_COLORFUL_FLOWER);
+
+    public static final Supplier<Item> CERATOSAURUS_SPAWN_EGG = ITEMS.registerItem("ceratosaurus_spawn_egg",
+            props -> new DeferredSpawnEggItem(EntityRegistry.CERATOSAURUS, 0xFFFFFF, 0, props));
 
     private static DeferredHolder<Item, ArmorItem> registerArmorWithDescription(String name, Holder<ArmorMaterial> material, ArmorItem.Type type, Item.Properties properties) {
         return ITEMS.register(name, () -> new ArmorItem(material, type, properties) {

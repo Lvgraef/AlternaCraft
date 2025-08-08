@@ -1,6 +1,7 @@
 package io.github.itskillerluc.init;
 
 import io.github.itskillerluc.AlternaCraft;
+import io.github.itskillerluc.entity.Ceratosaurus;
 import io.github.itskillerluc.entity.Magmatyrannus;
 import net.minecraft.network.syncher.EntityDataSerializer;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -13,5 +14,8 @@ public class EntityDataSerailizerRegistry {
 
     public static final Supplier<EntityDataSerializer<Magmatyrannus.Variant>> MAGMA_TYRANNUS_VARIANT_SERIALIZER = ENTITY_DATA_SERIALIZERS.register("magma_tyrannus_variant_serializer",
             () -> EntityDataSerializer.forValueType(Magmatyrannus.Variant.STREAM_CODEC));
+
+    public static final Supplier<EntityDataSerializer<Ceratosaurus.Variant>> CERATOSAURUS_VARIANT_SERIALIZER = ENTITY_DATA_SERIALIZERS.register("ceratosaurus_variant_serializer",
+            () -> EntityDataSerializer.forValueType(Ceratosaurus.Variant.STREAM_CODEC));
 
 }

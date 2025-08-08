@@ -1,18 +1,13 @@
 package io.github.itskillerluc.entity;
 
 import io.github.itskillerluc.AlternaCraft;
-import io.github.itskillerluc.client.model.MagmatyrannusModel;
+import io.github.itskillerluc.client.model.CeratosaurusModel;
 import io.github.itskillerluc.duclib.client.animation.DucAnimation;
 import io.github.itskillerluc.duclib.entity.Animatable;
-import io.github.itskillerluc.entity.ai.BreathAttackGoal;
 import io.github.itskillerluc.entity.ai.SleepingPattern;
 import io.github.itskillerluc.init.EntityDataSerailizerRegistry;
 import io.github.itskillerluc.init.EntityRegistry;
-import io.github.itskillerluc.init.Tags;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -31,33 +26,30 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
-import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.util.Lazy;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix2f;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 
-public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatable<MagmatyrannusModel>, VariantHolder<Magmatyrannus.Variant> {
-    public static final ResourceLocation LOCATION = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "magmatyrannus");
+public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable<CeratosaurusModel>, VariantHolder<Ceratosaurus.Variant> {
+    public static final ResourceLocation LOCATION = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "ceratosaurus");
     public static final DucAnimation ANIMATION = DucAnimation.create(LOCATION);
 
-    public static final EntityDataAccessor<Boolean> RUNNING = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> BREATHING_FIRE = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Variant> VARIANT = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerailizerRegistry.MAGMA_TYRANNUS_VARIANT_SERIALIZER.get());
+    public static final EntityDataAccessor<Boolean> RUNNING = SynchedEntityData.defineId(Ceratosaurus.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Variant> VARIANT = SynchedEntityData.defineId(Ceratosaurus.class, EntityDataSerailizerRegistry.CERATOSAURUS_VARIANT_SERIALIZER.get());
 
-    private final Lazy<Map<String, AnimationState>> animations = Lazy.of(() -> MagmatyrannusModel.createStateMap(getAnimation()));
-    private final DinoPart<Magmatyrannus> head;
-    private final List<DinoPart<Magmatyrannus>> subEntities;
+    private final Lazy<Map<String, AnimationState>> animations = Lazy.of(() -> CeratosaurusModel.createStateMap(getAnimation()));
+    private final DinoPart<Ceratosaurus> head;
+    private final List<DinoPart<Ceratosaurus>> subEntities;
 
-    public Magmatyrannus(EntityType<? extends Magmatyrannus> pEntityType, Level pLevel) {
+    public Ceratosaurus(EntityType<? extends Ceratosaurus> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         head = new DinoPart<>(this, "head", 1.5F, 1.3F, 1.7f, new Vec3(4, 3.3, 4));
         var chest = new DinoPart<>(this, "body", 2.0F, 2.0F, 1.2f, new Vec3(2.1, 2.3, 2.1));
@@ -72,7 +64,6 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         super.defineSynchedData(pBuilder);
         pBuilder.define(VARIANT, Variant.values()[random.nextInt(Variant.values().length)]);
         pBuilder.define(RUNNING, false);
-        pBuilder.define(BREATHING_FIRE, false);
     }
 
     @Nullable
@@ -84,7 +75,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return EntityRegistry.MAGMATYRANNUS.get().create(pLevel);
+        return EntityRegistry.CERATOSAURUS.get().create(pLevel);
     }
 
     @Override
@@ -102,17 +93,13 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     }
 
     @Override
-    protected boolean isImmobile() {
-        return super.isImmobile();
-    }
-
-    @Override
-    public DinoPart<Magmatyrannus> getHead() {
+    public DinoPart<Ceratosaurus> getHead() {
         return head;
     }
 
     @Override
     float sleepingOffset() {
+        // TODO: Set the correct offset.
         return isSleeping() ? 2 : 0;
     }
 
@@ -134,6 +121,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
     }
 
     public static AttributeSupplier.Builder attributes() {
+        // TODO: set the correct attributes.
         return AgeableMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 120)
                 .add(Attributes.ATTACK_DAMAGE, 12D)
@@ -190,69 +178,19 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
                 }
             }
         });
-        goalSelector.addGoal(4, new BreathAttackGoal(this, 1, 1, ParticleTypes.FLAME, 65, 100, 300, 20, 1, 5, 30, 20, new Vec3(0, -0.4, 1), 30, 1, 1, entity -> entity.setRemainingFireTicks(240)) {
-            @Override
-            public boolean canUse() {
-                return super.canUse() && distanceToSqr(getTarget()) >= 55;
-            }
-        });
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().is(Tags.EntityTypes.DINOS) || entity instanceof Player) {
-            @Override
-            public boolean canUse() {
-                targetConditions.range(getFollowDistance());
-                return getHunger() < 100 && super.canUse();
-            }
-        });
-        targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity instanceof Enemy) {
-            @Override
-            public boolean canUse() {
-                targetConditions.range(getFollowDistance());
-                return getHunger() < 50 && super.canUse();
-            }
-        });
-        targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> entity.getType().getCategory() != MobCategory.WATER_CREATURE && entity.getType().getCategory() != MobCategory.WATER_AMBIENT ) {
-            @Override
-            public boolean canUse() {
-                targetConditions.range(getFollowDistance());
-                return getHunger() < 25 && super.canUse();
-            }
-        });
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> !(entity instanceof Ceratosaurus)));
     }
 
 
     @Override
     public void tick() {
         super.tick();
-        var followRange = getAttributes().getInstance(Attributes.FOLLOW_RANGE);
-        if (followRange != null) {
-            if (getHunger() < 25) {
-                followRange.setBaseValue(25);
-            } else if (getHunger() < 50) {
-                followRange.setBaseValue(10);
-            } else {
-                followRange.setBaseValue(3);
-            }
-            if (lastHurtByPlayerTime - tickCount() < 20 * 60) {
-                followRange.setBaseValue(40);
-            }
-        }
         if (level().isClientSide) {
             animateWhen("idle", !isMoving(this) && !isSleeping());
             animateWhen("sleep", isSleeping());
-            if (random.nextFloat() < 0.005 && !isMoving(this) && !entityData.get(BREATHING_FIRE) && !isSleeping()) {
-                if (random.nextFloat() < 0.25) {
-                    replayAnimation("scratch");
-                } else if (random.nextFloat() < 0.25) {
-                    replayAnimation("sniff");
-                } else if (random.nextFloat() < 0.25) {
-                    replayAnimation("yawn");
-                } else if (random.nextFloat() < 0.25) {
-                    replayAnimation("look_around");
-                }
-            }
-            animateWhen("breath_attack", entityData.get(BREATHING_FIRE));
+            animateWhen("sit", isInSittingPose());
         }
     }
 
@@ -278,7 +216,7 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
 
     @Override
     public Optional<AnimationState> getAnimationState(String animation) {
-        return Optional.ofNullable(getAnimations().get().get("animation.magmatyrannus." + animation));
+        return Optional.ofNullable(getAnimations().get().get("animation.ceratosaurus." + animation));
     }
 
     @Override
@@ -296,41 +234,21 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
         return entityData.get(VARIANT);
     }
 
+
+
     @Override
     public SleepingPattern getSleepingPattern() {
-        return SleepingPattern.DIURNAL;
+        return SleepingPattern.CATHEMERAL;
     }
 
 
-    public List<DinoPart<Magmatyrannus>> getSubEntities() {
+    public List<DinoPart<Ceratosaurus>> getSubEntities() {
         return subEntities;
     }
 
     @Override
-    public boolean killedEntity(ServerLevel pLevel, LivingEntity pEntity) {
-        var killed = super.killedEntity(pLevel, pEntity);
-        if (killed) {
-            eatEnemy(pEntity);
-        }
-        return killed;
-    }
-
-    private void eatEnemy(LivingEntity entity) {
-        if (entity.getType().is(Tags.EntityTypes.MINI_DINOS)) {
-            feed(5);
-        } else if (entity.getType().is(Tags.EntityTypes.SMALL_DINOS)) {
-            feed(15);
-        } else if (entity.getType().is(Tags.EntityTypes.MEDIUM_DINOS)) {
-            feed(30);
-        } else if (entity.getType().is(Tags.EntityTypes.LARGE_DINOS)) {
-            feed(40);
-        } else {
-            feed(10);
-        }
-    }
-
-    @Override
     public void setSleeping(boolean sleeping) {
+        /* todo change the hitbox if needed
         if (isSleeping()) {
             if (!sleeping) {
                 dimensions = dimensions.scale(1f, 2f);
@@ -340,19 +258,21 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
             dimensions = dimensions.scale(1f, 0.5f);
             level().broadcastEntityEvent(this, (byte) 1);
         }
-        super.setSleeping(sleeping);
+        super.setSleeping(sleeping);*/
     }
 
     @Override
     public void swing(InteractionHand hand) {
+        /* todo implement attack animation
         super.swing(hand);
         if (level().isClientSide()) {
             replayAnimation("attack");
-        }
+        }*/
     }
 
     @Override
     public void handleEntityEvent(byte id) {
+        /* todo implement any sort of animations.
         super.handleEntityEvent(id);
         if (id == 0) {
             dimensions = dimensions.scale(1f, 2f);
@@ -360,13 +280,12 @@ public class Magmatyrannus extends DinoEntity<Magmatyrannus> implements Animatab
             dimensions = dimensions.scale(1f, 0.5f);
         } else if (id == 2) {
             replayAnimation("roar");
-        }
+        }*/
     }
 
     public enum Variant {
-        PINK(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "textures/entity/magmatyrannus_pink.png")),
-        PURPLE(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "textures/entity/magmatyrannus_purple.png")),
-        RED(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "textures/entity/magmatyrannus_red.png"));
+        MALE(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "textures/entity/ceratosaurus_male.png")),
+        FEMALE(ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "textures/entity/ceratosaurus_female.png"));
 
         public static final StreamCodec<ByteBuf, Variant> STREAM_CODEC = ByteBufCodecs.idMapper(i -> Variant.values()[i], Enum::ordinal);
         private final ResourceLocation texture;

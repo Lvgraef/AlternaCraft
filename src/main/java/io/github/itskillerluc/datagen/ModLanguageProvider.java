@@ -133,5 +133,9 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
                     .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
                     .collect(Collectors.joining(" ")));
         }
+
+        //Painting
+        add("painting.alternacraft.luc_when_coding.title", "Luc When Coding");
+        add("painting.alternacraft.luc_when_coding.author", "Cylixr");
     }
 }

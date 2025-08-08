@@ -93,8 +93,8 @@
   "description.alternacraft.painite_scythe": "Auto-Smelts!",
   "description.alternacraft.painite_shovel": "Auto-Smelts!",
   "description.alternacraft.painite_sword": "Sets the enemy on fire.",
+  "entity.alternacraft.ceratosaurus": "Ceratosaurus",
   "entity.alternacraft.magmatyrannus": "Magmatyrannus",
-  "enchantment.alternacraft.striking": "Striking",
   "item.alternacraft.aio_axe": "All In One Axe",
   "item.alternacraft.aio_boots": "All In One Boots",
   "item.alternacraft.aio_chestplate": "All In One Chestplate",
@@ -105,6 +105,7 @@
   "item.alternacraft.aio_scythe": "All In One Hoe",
   "item.alternacraft.aio_shovel": "All In One Shovel",
   "item.alternacraft.aio_sword": "All In One Sword",
+  "item.alternacraft.ceratosaurus_spawn_egg": "Ceratosaurus Spawn Egg",
   "item.alternacraft.cool_lava_bucket": "Cool Lava Bucket",
   "item.alternacraft.copperwood_axe": "Copperwood Axe",
   "item.alternacraft.copperwood_boots": "Copperwood Boots",
@@ -149,7 +150,9 @@
   "item.alternacraft.painite_sword": "Painite Sword",
   "item.alternacraft.prisamond_shard": "Prisamond Shard",
   "item.alternacraft.prisma_stick": "Prisma Stick",
+  "painting.alternacraft.luc_when_coding.author": "Cylixr",
+  "painting.alternacraft.luc_when_coding.title": "Luc When Coding",
   "subtitle.alternacraft.sonar_ping": "Sonar Ping",
   "subtitle.alternacraft.sonar_pong": "Sonar Pong",
-  "ítemGroup.alternacraft.main": "Out of The Ordinary"
+  "ítemGroup.alternacraft.main": "AlternaCraft"
 }

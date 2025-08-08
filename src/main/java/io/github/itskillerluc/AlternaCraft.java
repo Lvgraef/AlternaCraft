@@ -1,7 +1,7 @@
 package io.github.itskillerluc;
 
 import com.mojang.logging.LogUtils;
-import io.github.itskillerluc.enchantment.ModEnchantmentEffects;
+import io.github.itskillerluc.init.EnchantmentEffectRegistry;
 import io.github.itskillerluc.init.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -27,6 +27,6 @@ public class AlternaCraft {
         ItemRegistry.ITEMS.register(modEventBus);
         CreativeTabRegistry.CREATIVE_TABS.register(modEventBus);
         GlobalLootModifierRegistry.MODIFIERS.register(modEventBus);
-        ModEnchantmentEffects.ENTITY_ENCHANTMENT_EFFECTS.register(modEventBus);
+        EnchantmentEffectRegistry.ENTITY_ENCHANTMENT_EFFECTS.register(modEventBus);
     }
 }

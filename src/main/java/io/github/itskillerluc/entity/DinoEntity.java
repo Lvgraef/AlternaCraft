@@ -21,11 +21,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal implements NeutralMob, Sleeping {
-    private static final EntityDataAccessor<Boolean> SLEEPING = SynchedEntityData.defineId(Magmatyrannus.class, EntityDataSerializers.BOOLEAN);
+public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal implements Sleeping {
+    private static final EntityDataAccessor<Boolean> SLEEPING = SynchedEntityData.defineId(DinoEntity.class, EntityDataSerializers.BOOLEAN);
 
 
-    private int maxHunger = hungerDecreaseSpeed() * 20 * 100;
+    private final int maxHunger = hungerDecreaseSpeed() * 20 * 100;
     private int hunger = maxHunger;
     private int timer = 0;
 

@@ -1,7 +1,7 @@
 package io.github.itskillerluc.datagen;
 
 import io.github.itskillerluc.AlternaCraft;
-import io.github.itskillerluc.enchantment.ModEnchantments;
+import io.github.itskillerluc.init.EnchantmentRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -13,7 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModDatapackProvider extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(Registries.ENCHANTMENT, ModEnchantments::bootstrap);
+            .add(Registries.ENCHANTMENT, EnchantmentRegistry::bootstrap);
 
     public ModDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(AlternaCraft.MODID));
