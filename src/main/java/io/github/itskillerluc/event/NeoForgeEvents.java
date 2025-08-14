@@ -3,29 +3,26 @@ package io.github.itskillerluc.event;
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.ArmorMaterialRegistry;
 import io.github.itskillerluc.init.BiomeInit;
+import io.github.itskillerluc.init.EffectRegistry;
 import io.github.itskillerluc.init.ToolTiers;
-import io.github.itskillerluc.worldgen.biome.OverworldRegion;
-import io.github.itskillerluc.worldgen.biome.SurfaceRuleData;
-import net.minecraft.resources.ResourceLocation;
+import io.github.itskillerluc.networking.SetStunnedPayload;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.TieredItem;
-import net.minecraft.world.level.block.Blocks;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.entity.living.LivingBreatheEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.apache.commons.lang3.stream.Streams;
-import terrablender.api.RegionType;
-import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
 
 @EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.GAME)
-public class ForgeEvents {
+public class NeoForgeEvents {
     @SubscribeEvent
     public static void livingAttackEvent(final LivingIncomingDamageEvent event) {
         if (event.getSource().is(DamageTypes.FALL)) {
@@ -57,6 +54,25 @@ public class ForgeEvents {
             event.getEntity().hurt(event.getEntity().damageSources().lightningBolt(), 1);
         } else if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.FROZEN_DESERT) && event.getEntity().isInWater()) {
             event.getEntity().setTicksFrozen(200);
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onEffectRemove(final MobEffectEvent.Remove event) {
+        if (!event.isCanceled()) {
+            if (event.getEffect().value().equals(EffectRegistry.STUNNED)) {
+                PacketDistributor.sendToPlayersTrackingEntityAndSelf(event.getEntity(), new SetStunnedPayload(event.getEntity().getId(), false));
+            }
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onEffectExpire(final MobEffectEvent.Expired event) {
+        if (!event.isCanceled()) {
+            if (event.getEffectInstance() == null) return;
+            if (event.getEffectInstance().getEffect().value().equals(EffectRegistry.STUNNED)) {
+                PacketDistributor.sendToPlayersTrackingEntityAndSelf(event.getEntity(), new SetStunnedPayload(event.getEntity().getId(), false));
+            }
         }
     }
 }

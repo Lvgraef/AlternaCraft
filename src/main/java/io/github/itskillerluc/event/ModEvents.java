@@ -6,6 +6,7 @@ import io.github.itskillerluc.entity.Magmatyrannus;
 import io.github.itskillerluc.init.EntityRegistry;
 import io.github.itskillerluc.init.FluidTypeRegistry;
 import io.github.itskillerluc.networking.ParticlePayload;
+import io.github.itskillerluc.networking.SetStunnedPayload;
 import io.github.itskillerluc.networking.SoundPayload;
 import io.github.itskillerluc.worldgen.biome.OverworldRegion;
 import io.github.itskillerluc.worldgen.biome.SurfaceRuleData;
@@ -45,6 +46,12 @@ public class ModEvents {
                 SoundPayload.TYPE,
                 SoundPayload.STREAM_CODEC,
                 SoundPayload::handleData
+        );
+
+        registrar.playToClient(
+                SetStunnedPayload.TYPE,
+                SetStunnedPayload.STREAM_CODEC,
+                SetStunnedPayload::handleData
         );
     }
 

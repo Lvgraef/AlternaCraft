@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "magnetic_crystal",
+  "ingredient": {
+    "item": "alternacraft:deepslate_magnetic_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "alternacraft:magnetic_crystal"
+  }
+}

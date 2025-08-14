@@ -22,7 +22,7 @@ public class CeratosaurusModel extends AnimatableDucModel<Ceratosaurus> {
 
     @Override
     protected Set<String> excludeAnimations() {
-        return Set.of("animation.ceratosaurus.walk", "animation.ceratosaurus.run");
+        return Set.of("walk", "run");
     }
 
     @Override
@@ -31,18 +31,19 @@ public class CeratosaurusModel extends AnimatableDucModel<Ceratosaurus> {
         if (pEntity.getEntityData().get(Ceratosaurus.RUNNING)) {
             float maxAnimationSpeed = 1.125f;
             synchronizeDummyState(pEntity, pLimbSwing, maxAnimationSpeed, "run");
-            animateWalk(pEntity.getAnimation().getAnimations().get("animation.ceratosaurus.run").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1f);
+            animateWalk(pEntity.getAnimation().getAnimations().get("run").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1f);
         } else {
             float maxAnimationSpeed = 2;
+            //walk
             synchronizeDummyState(pEntity, pLimbSwing, maxAnimationSpeed, "walk");
-            animateWalk(pEntity.getAnimation().getAnimations().get("animation.ceratosaurus.walk").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1);
+            animateWalk(pEntity.getAnimation().getAnimations().get("walk").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1);
         }
     }
 
     private void synchronizeDummyState(Ceratosaurus pEntity, float limbSwing, float maxAnimationSpeed, String animation) {
         pEntity.getAnimationState(animation).ifPresent(state -> {
             state.start(pEntity.tickCount);
-            state.accumulatedTime = (long) (getElapsedSeconds(pEntity.getAnimation().getAnimations().get("animation.ceratosaurus." + animation).animation(), (long) (limbSwing * 50.0F * maxAnimationSpeed)) * 1000L);
+            state.accumulatedTime = (long) (getElapsedSeconds(pEntity.getAnimation().getAnimations().get(animation).animation(), (long) (limbSwing * 50.0F * maxAnimationSpeed)) * 1000L);
         });
     }
 

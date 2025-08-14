@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.pce:ceratosaurus1",
+				"identifier": "geometry.ceratosaurus1",
 				"texture_width": 256,
 				"texture_height": 256,
 				"visible_bounds_width": 126,

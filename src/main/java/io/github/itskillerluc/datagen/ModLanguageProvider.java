@@ -2,9 +2,11 @@ package io.github.itskillerluc.datagen;
 
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.BlockRegistry;
+import io.github.itskillerluc.init.EffectRegistry;
 import io.github.itskillerluc.init.EntityRegistry;
 import io.github.itskillerluc.init.ItemRegistry;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -126,6 +128,7 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
                     .collect(Collectors.joining(" ")));
         }
 
+        //Entities
         for (DeferredHolder<EntityType<?>, ? extends EntityType<?>> entry : EntityRegistry.ENTITY_TYPES.getEntries()) {
             if (EXCLUDED_ENTITIES.contains(entry)) continue;
             var input = entry.getKey().location().getPath();
@@ -137,5 +140,13 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
         //Painting
         add("painting.alternacraft.luc_when_coding.title", "Luc When Coding");
         add("painting.alternacraft.luc_when_coding.author", "Cylixr");
+
+        //Effects
+        for (DeferredHolder<MobEffect, ? extends MobEffect> entry : EffectRegistry.EFFECTS.getEntries()) {
+            var input = entry.getKey().location().getPath();
+            addEffect(entry, Arrays.stream(input.split("_"))
+                    .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
+                    .collect(Collectors.joining(" ")));
+        }
     }
 }

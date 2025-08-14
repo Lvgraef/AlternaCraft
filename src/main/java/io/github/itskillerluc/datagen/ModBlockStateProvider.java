@@ -61,7 +61,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
             BlockRegistry.LIGHTNING_DIRT,
             BlockRegistry.BLUE_PASTELIZED_SAPLING,
             BlockRegistry.RED_PASTELIZED_SAPLING,
-            BlockRegistry.ELECTREE_SAPLING
+            BlockRegistry.ELECTREE_SAPLING,
+            BlockRegistry.COLORFUL_BUSH
     );
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -122,7 +123,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .modelFile(lightningDirtModel).rotationY(270).addModel();
         simpleBlockItem(BlockRegistry.LIGHTNING_DIRT.get(), lightningDirtModel);
 
-        makeBush(((SweetBerryBushBlock) BlockRegistry.COLORFUL_BUSH.get()), "colorful_berry_bush_stage", "honey_berry_bush_stage");
+        makeBush(BlockRegistry.COLORFUL_BUSH.get(), "colorful_berry_bush_stage", "colorful_berry_bush_stage");
 
 
         BlockModelBuilder miningLight = models().withExistingParent("mining_light","minecraft:block/air");

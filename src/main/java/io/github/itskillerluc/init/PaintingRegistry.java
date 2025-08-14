@@ -14,6 +14,6 @@ public class PaintingRegistry {
     private static final ResourceLocation LUC_WHEN_CODING_TEXTURE = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "luc_when_coding");
 
     public static void bootstrap(BootstrapContext<PaintingVariant> context) {
-        context.register(LUC_WHEN_CODING, new PaintingVariant(3, 4, LUC_WHEN_CODING_TEXTURE));
+        context.register(LUC_WHEN_CODING, new PaintingVariant(4, 3, LUC_WHEN_CODING_TEXTURE));
     }
 }

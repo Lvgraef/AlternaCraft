@@ -26,6 +26,7 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -38,7 +39,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable<CeratosaurusModel>, VariantHolder<Ceratosaurus.Variant> {
+public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable<CeratosaurusModel>, VariantHolder<Ceratosaurus.Variant>, Enemy {
     public static final ResourceLocation LOCATION = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "ceratosaurus");
     public static final DucAnimation ANIMATION = DucAnimation.create(LOCATION);
 
@@ -51,10 +52,10 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
 
     public Ceratosaurus(EntityType<? extends Ceratosaurus> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        head = new DinoPart<>(this, "head", 1.5F, 1.3F, 1.7f, new Vec3(4, 3.3, 4));
-        var chest = new DinoPart<>(this, "body", 2.0F, 2.0F, 1.2f, new Vec3(2.1, 2.3, 2.1));
-        var tail = new DinoPart<>(this, "tail", 2.0F, 2.0F, 0.8f, new Vec3(-2.1, 2.1, -2.1));
-        var tailEnd = new DinoPart<>(this, "tail", 1.5F, 1.5F, 0.5f, new Vec3(-4.8, 2.5, -4.8));
+        head = new DinoPart<>(this, "head", 0.8f, 0.7F, 1.7f, new Vec3(2.2, 1.6, 2.2));
+        var chest = new DinoPart<>(this, "body", 0.8f, 1.6f, 1.2f, new Vec3(1.3, 1, 1.3));
+        var tail = new DinoPart<>(this, "tail", 0.8f, 0.8F, 0.8f, new Vec3(-1.3, 1.3, -1.3));
+        var tailEnd = new DinoPart<>(this, "tail", 0.8F, 0.8F, 0.5f, new Vec3(-2.2, 1.3, -2.2));
         this.subEntities = List.of(head, chest, tail, tailEnd);
         this.setId(ENTITY_COUNTER.getAndAdd(this.subEntities.size() + 1) + 1);
     }
@@ -117,16 +118,17 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
 
     @Override
     public boolean isFood(ItemStack pStack) {
+        // todo dino meat
         return false;
     }
 
     public static AttributeSupplier.Builder attributes() {
-        // TODO: set the correct attributes.
         return AgeableMob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 120)
-                .add(Attributes.ATTACK_DAMAGE, 12D)
-                .add(Attributes.MOVEMENT_SPEED, 0.3D)
-                .add(Attributes.FOLLOW_RANGE, 3);
+                .add(Attributes.MAX_HEALTH, 55)
+                .add(Attributes.ATTACK_DAMAGE, 15)
+                //todo
+                .add(Attributes.MOVEMENT_SPEED, 0.25D)
+                .add(Attributes.FOLLOW_RANGE, 20);
     }
 
     @Override
@@ -136,36 +138,15 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
 
     @Override
     protected AABB getAttackBoundingBox() {
-        Entity entity = this.getVehicle();
-        AABB aabb;
-        if (entity != null) {
-            AABB aabb1 = entity.getBoundingBox();
-            AABB aabb2 = getBoundingBoxForCulling();
-            aabb = new AABB(
-                    Math.min(aabb2.minX, aabb1.minX),
-                    aabb2.minY,
-                    Math.min(aabb2.minZ, aabb1.minZ),
-                    Math.max(aabb2.maxX, aabb1.maxX),
-                    aabb2.maxY,
-                    Math.max(aabb2.maxZ, aabb1.maxZ)
-            );
-        } else {
-            aabb = getBoundingBoxForCulling();
-        }
-
-        return aabb.inflate(0.8, 0.0, 0.8);
+        return super.getAttackBoundingBox();
     }
+
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
         goalSelector.addGoal(0, new FloatGoal(this));
-        goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.0, false) {
-            @Override
-            public boolean canUse() {
-                return super.canUse() && distanceToSqr(getTarget()) < 55;
-            }
-        });
+        goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2, false));
         goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.005f) {
             @Nullable
             @Override
@@ -180,13 +161,22 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
         });
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, entity -> !(entity instanceof Ceratosaurus)));
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, true, entity -> !(entity instanceof Ceratosaurus) && entity.isAttackable()));
     }
 
 
     @Override
     public void tick() {
         super.tick();
+        if (getTarget() != null) {
+            if (!getEntityData().get(RUNNING)) {
+                getEntityData().set(RUNNING, true);
+            }
+        } else {
+            if (getEntityData().get(RUNNING)) {
+                getEntityData().set(RUNNING, false);
+            }
+        }
         if (level().isClientSide) {
             animateWhen("idle", !isMoving(this) && !isSleeping());
             animateWhen("sleep", isSleeping());
@@ -216,7 +206,7 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
 
     @Override
     public Optional<AnimationState> getAnimationState(String animation) {
-        return Optional.ofNullable(getAnimations().get().get("animation.ceratosaurus." + animation));
+        return Optional.ofNullable(getAnimations().get().get(animation));
     }
 
     @Override

@@ -29,7 +29,7 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> DEAD_DANDELION = BLOCKS.registerBlock("dead_dandelion",props -> new FlowerBlock(
             MobEffects.WEAKNESS, 7, props), BlockBehaviour.Properties.ofFullCopy(Blocks.DANDELION));
 
-    public static final DeferredBlock<Block> COLORFUL_BUSH = BLOCKS.register("colorful_bush",
+    public static final DeferredBlock<SweetBerryBushBlock> COLORFUL_BUSH = BLOCKS.register("colorful_bush",
             () -> new ColorfulBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
 
     public static final DeferredBlock<Block> DEAD_GRASS = BLOCKS.registerBlock("dead_grass",

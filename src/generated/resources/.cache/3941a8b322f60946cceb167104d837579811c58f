@@ -1,12 +1,13 @@
-// 1.21.1	2025-08-05T23:01:04.2951929	Tags for minecraft:item mod id alternacraft
+// 1.21.1	2025-08-14T22:26:41.7829262	Tags for minecraft:item mod id alternacraft
 7a883fa331b5ba358c43a58409a85844a773e140 data/alternacraft/tags/item/blue_pastel_logs.json
 92ba13da97c7e3ab9741b3a8501d5d7131fdb54c data/alternacraft/tags/item/charred_logs.json
 e2a62d9ead72c5761e5b693962525f77367a4ad1 data/alternacraft/tags/item/copperwood_ores.json
 b9af6fcca6f7eaa2a9221fa81ac9d61d41d4e6f2 data/alternacraft/tags/item/dark_crystal_ores.json
 ec5ce07d121b6e71b9c8108db33250c49ecf865e data/alternacraft/tags/item/electree_logs.json
+b91083f79e44c96789a3bc9c9af5f4522538b11c data/alternacraft/tags/item/magnetic_ores.json
 732be04895425781b668f3d95e7775f44c86827d data/alternacraft/tags/item/painite_ores.json
 5b2499ec592af647ef3929de6474e0ae916a401f data/minecraft/tags/item/axes.json
-5a18faf905a1a86e7a02fd13f4e8cb07457f6801 data/minecraft/tags/item/dirt.json
+425a6243f1ba2ad54da4bb1c99fcfb18336082b8 data/minecraft/tags/item/dirt.json
 196283773ae8f9c065c0f0d81b8324c15c0503ce data/minecraft/tags/item/flowers.json
 e8bfd09a61a8a55d9bfb4b6ae8301d82a4f8dde3 data/minecraft/tags/item/hoes.json
 6e2cc364109fc1dff4f9e09e7522fa79ac92dfea data/minecraft/tags/item/leaves.json

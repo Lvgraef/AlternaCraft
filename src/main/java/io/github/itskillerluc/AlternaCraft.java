@@ -28,5 +28,7 @@ public class AlternaCraft {
         CreativeTabRegistry.CREATIVE_TABS.register(modEventBus);
         GlobalLootModifierRegistry.MODIFIERS.register(modEventBus);
         EnchantmentEffectRegistry.ENTITY_ENCHANTMENT_EFFECTS.register(modEventBus);
+        EffectRegistry.EFFECTS.register(modEventBus);
+        AttachmentTypeRegistry.ATTACHMENT_TYPES.register(modEventBus);
     }
 }
