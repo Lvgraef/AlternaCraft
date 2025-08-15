@@ -64,22 +64,4 @@ public class ModEvents {
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, AlternaCraft.MODID, SurfaceRuleData.overworld());
         });
     }
-
-    @SubscribeEvent
-    public static void registerEntityAttributes(final RegisterClientExtensionsEvent event) {
-        event.registerFluidType(new IClientFluidTypeExtensions() {
-            private static final ResourceLocation COOL_LAVA_STILL = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/cool_lava_still");
-            private static final ResourceLocation COOL_LAVA_FLOWING = ResourceLocation.fromNamespaceAndPath(AlternaCraft.MODID, "block/cool_lava_flowing");
-
-            @Override
-            public ResourceLocation getFlowingTexture(FluidStack stack) {
-                return COOL_LAVA_STILL;
-            }
-
-            @Override
-            public ResourceLocation getStillTexture(FluidStack stack) {
-                return COOL_LAVA_FLOWING;
-            }
-        }, FluidTypeRegistry.COOL_LAVA.get());
-    }
 }

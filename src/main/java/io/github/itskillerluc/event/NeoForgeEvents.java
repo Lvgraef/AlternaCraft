@@ -1,6 +1,7 @@
 package io.github.itskillerluc.event;
 
 import io.github.itskillerluc.AlternaCraft;
+import io.github.itskillerluc.effects.StunEffect;
 import io.github.itskillerluc.init.ArmorMaterialRegistry;
 import io.github.itskillerluc.init.BiomeInit;
 import io.github.itskillerluc.init.EffectRegistry;
@@ -61,7 +62,7 @@ public class NeoForgeEvents {
     public static void onEffectRemove(final MobEffectEvent.Remove event) {
         if (!event.isCanceled()) {
             if (event.getEffect().value().equals(EffectRegistry.STUNNED)) {
-                PacketDistributor.sendToPlayersTrackingEntityAndSelf(event.getEntity(), new SetStunnedPayload(event.getEntity().getId(), false));
+                StunEffect.unFreeze(event.getEntity());
             }
         }
     }
@@ -71,7 +72,7 @@ public class NeoForgeEvents {
         if (!event.isCanceled()) {
             if (event.getEffectInstance() == null) return;
             if (event.getEffectInstance().getEffect().value().equals(EffectRegistry.STUNNED)) {
-                PacketDistributor.sendToPlayersTrackingEntityAndSelf(event.getEntity(), new SetStunnedPayload(event.getEntity().getId(), false));
+                StunEffect.unFreeze(event.getEntity());
             }
         }
     }

@@ -130,8 +130,8 @@ public abstract class DinoEntity<T extends DinoEntity<?>> extends TamableAnimal 
             }
             timer--;
             if (timer % 5 == 0) {
-                Player player = level().getNearestPlayer(this, 3);
-                if (player != null) {
+                Player player = level().getNearestPlayer(this, 5);
+                if (player != null && !player.isCreative()) {
                     setTarget(player);
                 }
             }

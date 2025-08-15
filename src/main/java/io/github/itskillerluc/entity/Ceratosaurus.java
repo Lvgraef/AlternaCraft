@@ -65,8 +65,7 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
         return AgeableMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 55)
                 .add(Attributes.ATTACK_DAMAGE, 15)
-                //todo
-                .add(Attributes.MOVEMENT_SPEED, 0.23D)
+                .add(Attributes.MOVEMENT_SPEED, 0.30)
                 .add(Attributes.FOLLOW_RANGE, 20);
     }
 
@@ -177,22 +176,19 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
     @Override
     public void tick() {
         super.tick();
-//        if (getTarget() != null) {
-//            if (!getEntityData().get(RUNNING)) {
-//                getEntityData().set(RUNNING, true);
-//            }
-//        } else {
-//            if (getEntityData().get(RUNNING)) {
-//                getEntityData().set(RUNNING, false);
-//            }
-//        }
-//        if (level().isClientSide) {
-//            animateWhen("idle", !isMoving(this) && !isSleeping());
-//            animateWhen("sleep", isSleeping());
-//            animateWhen("sit", isInSittingPose());
-//        }
-        if (level().isClientSide()) {
-            animateWhen("walk", true);
+        if (getTarget() != null) {
+            if (!getEntityData().get(RUNNING)) {
+                getEntityData().set(RUNNING, true);
+            }
+        } else {
+            if (getEntityData().get(RUNNING)) {
+                getEntityData().set(RUNNING, false);
+            }
+        }
+        if (level().isClientSide) {
+            animateWhen("idle", !isMoving(this) && !isSleeping());
+            animateWhen("sleep", isSleeping());
+            animateWhen("sit", isInSittingPose());
         }
     }
 

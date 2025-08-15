@@ -38,7 +38,7 @@ public class StunEffect extends MobEffect {
         }
     }
 
-    private void unFreeze(LivingEntity livingEntity) {
+    public static void unFreeze(LivingEntity livingEntity) {
         if (livingEntity instanceof Mob mob) {
             mob.setNoAi(false);
         }
