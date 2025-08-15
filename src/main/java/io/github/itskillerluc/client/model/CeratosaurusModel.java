@@ -22,22 +22,13 @@ public class CeratosaurusModel extends AnimatableDucModel<Ceratosaurus> {
 
     @Override
     protected Set<String> excludeAnimations() {
-        return Set.of("walk", "run");
+        return Set.of(); //Set.of("walk", "run");
     }
 
     @Override
     public void setupAnim(@NotNull Ceratosaurus pEntity, float pLimbSwing, float pLimbSwingAmount, float pAgeInTicks, float pNetHeadYaw, float pHeadPitch) {
         super.setupAnim(pEntity, pLimbSwing, pLimbSwingAmount, pAgeInTicks, pNetHeadYaw, pHeadPitch);
-        if (pEntity.getEntityData().get(Ceratosaurus.RUNNING)) {
-            float maxAnimationSpeed = 1.125f;
-            synchronizeDummyState(pEntity, pLimbSwing, maxAnimationSpeed, "run");
-            animateWalk(pEntity.getAnimation().getAnimations().get("run").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1f);
-        } else {
-            float maxAnimationSpeed = 2;
-            //walk
-            synchronizeDummyState(pEntity, pLimbSwing, maxAnimationSpeed, "walk");
-            animateWalk(pEntity.getAnimation().getAnimations().get("walk").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1);
-        }
+//        h
     }
 
     private void synchronizeDummyState(Ceratosaurus pEntity, float limbSwing, float maxAnimationSpeed, String animation) {

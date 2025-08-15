@@ -27,6 +27,7 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -58,6 +59,15 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
         var tailEnd = new DinoPart<>(this, "tail", 0.8F, 0.8F, 0.5f, new Vec3(-2.2, 1.3, -2.2));
         this.subEntities = List.of(head, chest, tail, tailEnd);
         this.setId(ENTITY_COUNTER.getAndAdd(this.subEntities.size() + 1) + 1);
+    }
+
+    public static AttributeSupplier.Builder attributes() {
+        return AgeableMob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 55)
+                .add(Attributes.ATTACK_DAMAGE, 15)
+                //todo
+                .add(Attributes.MOVEMENT_SPEED, 0.23D)
+                .add(Attributes.FOLLOW_RANGE, 20);
     }
 
     @Override
@@ -122,15 +132,6 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
         return false;
     }
 
-    public static AttributeSupplier.Builder attributes() {
-        return AgeableMob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 55)
-                .add(Attributes.ATTACK_DAMAGE, 15)
-                //todo
-                .add(Attributes.MOVEMENT_SPEED, 0.25D)
-                .add(Attributes.FOLLOW_RANGE, 20);
-    }
-
     @Override
     public AABB getBoundingBoxForCulling() {
         return AABB.ofSize(position(), 8, 8, 8);
@@ -161,26 +162,37 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
         });
 
         targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, true, entity -> !(entity instanceof Ceratosaurus) && entity.isAttackable()));
+        targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, 10, true, true, entity -> {
+            if (entity instanceof Ceratosaurus || !entity.isAttackable()) {
+                return false;
+            }
+            if (entity instanceof Player player) {
+                return !player.isCreative();
+            }
+            return true;
+        }));
     }
 
 
     @Override
     public void tick() {
         super.tick();
-        if (getTarget() != null) {
-            if (!getEntityData().get(RUNNING)) {
-                getEntityData().set(RUNNING, true);
-            }
-        } else {
-            if (getEntityData().get(RUNNING)) {
-                getEntityData().set(RUNNING, false);
-            }
-        }
-        if (level().isClientSide) {
-            animateWhen("idle", !isMoving(this) && !isSleeping());
-            animateWhen("sleep", isSleeping());
-            animateWhen("sit", isInSittingPose());
+//        if (getTarget() != null) {
+//            if (!getEntityData().get(RUNNING)) {
+//                getEntityData().set(RUNNING, true);
+//            }
+//        } else {
+//            if (getEntityData().get(RUNNING)) {
+//                getEntityData().set(RUNNING, false);
+//            }
+//        }
+//        if (level().isClientSide) {
+//            animateWhen("idle", !isMoving(this) && !isSleeping());
+//            animateWhen("sleep", isSleeping());
+//            animateWhen("sit", isInSittingPose());
+//        }
+        if (level().isClientSide()) {
+            animateWhen("walk", true);
         }
     }
 
@@ -215,16 +227,14 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
     }
 
     @Override
-    public void setVariant(Variant pVariant) {
-        entityData.set(VARIANT, pVariant);
-    }
-
-    @Override
     public Variant getVariant() {
         return entityData.get(VARIANT);
     }
 
-
+    @Override
+    public void setVariant(Variant pVariant) {
+        entityData.set(VARIANT, pVariant);
+    }
 
     @Override
     public SleepingPattern getSleepingPattern() {
