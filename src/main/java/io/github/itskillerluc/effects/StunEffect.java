@@ -2,6 +2,7 @@ package io.github.itskillerluc.effects;
 
 import io.github.itskillerluc.init.AttachmentTypeRegistry;
 import io.github.itskillerluc.networking.SetStunnedPayload;
+import net.minecraft.client.Camera;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -50,5 +51,9 @@ public class StunEffect extends MobEffect {
                 PacketDistributor.sendToPlayersTrackingEntityAndSelf(livingEntity, new SetStunnedPayload(livingEntity.getId(), false));
             }
         }
+    }
+
+    public static void screenShake(float intensity, Camera camera, long gameTime, double partialTick) {
+
     }
 }

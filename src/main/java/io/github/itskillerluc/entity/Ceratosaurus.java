@@ -65,7 +65,7 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
         return AgeableMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 55)
                 .add(Attributes.ATTACK_DAMAGE, 15)
-                .add(Attributes.MOVEMENT_SPEED, 0.30)
+                .add(Attributes.MOVEMENT_SPEED, 0.130)
                 .add(Attributes.FOLLOW_RANGE, 20);
     }
 
