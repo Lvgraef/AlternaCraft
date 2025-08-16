@@ -61,7 +61,7 @@ public class NeoForgeEvents {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onEffectRemove(final MobEffectEvent.Remove event) {
         if (!event.isCanceled()) {
-            if (event.getEffect().value().equals(EffectRegistry.STUNNED)) {
+            if (event.getEffect().value().equals(EffectRegistry.STUNNED.get())) {
                 StunEffect.unFreeze(event.getEntity());
             }
         }
@@ -71,7 +71,7 @@ public class NeoForgeEvents {
     public static void onEffectExpire(final MobEffectEvent.Expired event) {
         if (!event.isCanceled()) {
             if (event.getEffectInstance() == null) return;
-            if (event.getEffectInstance().getEffect().value().equals(EffectRegistry.STUNNED)) {
+            if (event.getEffectInstance().getEffect().value().equals(EffectRegistry.STUNNED.get())) {
                 StunEffect.unFreeze(event.getEntity());
             }
         }

@@ -32,7 +32,7 @@ public class StunEffect extends MobEffect {
         }
         if (!livingEntity.getData(AttachmentTypeRegistry.STUNNED)) {
             livingEntity.setData(AttachmentTypeRegistry.STUNNED, true);
-            if (!livingEntity.level().isClientSide && !(livingEntity instanceof Player)) {
+            if (!livingEntity.level().isClientSide) {
                 PacketDistributor.sendToPlayersTrackingEntityAndSelf(livingEntity, new SetStunnedPayload(livingEntity.getId(), true));
             }
         }
@@ -47,9 +47,7 @@ public class StunEffect extends MobEffect {
                 livingEntity.setData(AttachmentTypeRegistry.STUNNED, false);
             } else {
                 livingEntity.setData(AttachmentTypeRegistry.STUNNED, false);
-                if (!(livingEntity instanceof Player)) {
-                    PacketDistributor.sendToPlayersTrackingEntityAndSelf(livingEntity, new SetStunnedPayload(livingEntity.getId(), false));
-                }
+                PacketDistributor.sendToPlayersTrackingEntityAndSelf(livingEntity, new SetStunnedPayload(livingEntity.getId(), false));
             }
         }
     }
