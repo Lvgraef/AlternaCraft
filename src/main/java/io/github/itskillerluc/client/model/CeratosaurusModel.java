@@ -33,7 +33,7 @@ public class CeratosaurusModel extends AnimatableDucModel<Ceratosaurus> {
             synchronizeDummyState(pEntity, pLimbSwing, maxAnimationSpeed, "run");
             animateWalk(pEntity.getAnimation().getAnimations().get("run").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 1f);
         } else {
-            float maxAnimationSpeed = 7f;
+            float maxAnimationSpeed = 8f;
             synchronizeDummyState(pEntity, pLimbSwing, maxAnimationSpeed, "walk");
             animateWalk(pEntity.getAnimation().getAnimations().get("walk").animation(), pLimbSwing, pLimbSwingAmount, maxAnimationSpeed, 3);
         }

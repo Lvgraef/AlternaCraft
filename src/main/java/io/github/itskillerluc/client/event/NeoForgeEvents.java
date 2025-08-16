@@ -4,11 +4,20 @@ package io.github.itskillerluc.client.event;
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.AttachmentTypeRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ChickenModel;
+import net.minecraft.client.model.geom.LayerDefinitions;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.animal.Chicken;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.CalculatePlayerTurnEvent;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
+import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 
 @EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.GAME, value = net.neoforged.api.distmarker.Dist.CLIENT)
 public class NeoForgeEvents {
@@ -45,5 +54,15 @@ public class NeoForgeEvents {
                 event.getInput().leftImpulse = 0;
             }
         }
+    }
+
+    private static final ResourceLocation CHICKEN_LOCATION = ResourceLocation.withDefaultNamespace("textures/entity/chicken.png");
+
+
+
+    @SubscribeEvent
+    public static void renderEvent(final RenderPlayerEvent.Post event) {
+        ModEvents.CHICKEN_MODEL.renderToBuffer(event.getPoseStack(), event.getMultiBufferSource().getBuffer(RenderType.entityCutout(CHICKEN_LOCATION)),
+                event.getPackedLight(), OverlayTexture.NO_OVERLAY);
     }
 }

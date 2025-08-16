@@ -117,12 +117,14 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putInt("variant", entityData.get(VARIANT).ordinal());
+        pCompound.putBoolean("running", entityData.get(RUNNING));
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         entityData.set(VARIANT, Variant.values()[pCompound.getInt("variant")]);
+        entityData.set(RUNNING, pCompound.getBoolean("running"));
     }
 
     @Override
@@ -138,7 +140,7 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
 
     @Override
     protected AABB getAttackBoundingBox() {
-        return super.getAttackBoundingBox();
+        return super.getAttackBoundingBox().inflate(2, 0, 2);
     }
 
 
@@ -176,15 +178,6 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
     @Override
     public void tick() {
         super.tick();
-        if (getTarget() != null) {
-            if (!getEntityData().get(RUNNING)) {
-                getEntityData().set(RUNNING, true);
-            }
-        } else {
-            if (getEntityData().get(RUNNING)) {
-                getEntityData().set(RUNNING, false);
-            }
-        }
         if (level().isClientSide) {
             animateWhen("idle", !isMoving(this) && !isSleeping());
             animateWhen("sleep", isSleeping());
