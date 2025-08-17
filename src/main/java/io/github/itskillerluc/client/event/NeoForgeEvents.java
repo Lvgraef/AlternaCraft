@@ -21,6 +21,7 @@ import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 import java.util.function.Supplier;
 
@@ -78,13 +79,15 @@ public class NeoForgeEvents {
                 poseStack.mulPose(new Quaternionf().rotateX(Mth.PI));
                 poseStack.mulPose(new Quaternionf().rotateY((Minecraft.getInstance().level.getGameTime() + event.getPartialTick())* 0.3f));
                 poseStack.translate(i, -3, j);
-                poseStack.mulPose(new Quaternionf().rotateY(Mth.HALF_PI - ((Minecraft.getInstance().level.getGameTime() + event.getPartialTick())* 0.3f)));
+                var camera =  Minecraft.getInstance().getEntityRenderDispatcher().cameraOrientation();
+                float fx = 2 * (camera.x * camera.z + camera.w * camera.y);
+                float fz = 1 - 2 * (camera.x * camera.x + camera.y * camera.y);
+                float yaw = (float) Math.atan2(fx, fz);
+                poseStack.mulPose(new Quaternionf().rotateY((-yaw) - ((Minecraft.getInstance().level.getGameTime() + event.getPartialTick())* 0.3f)));
                 CHICKEN_MODEL.get().renderToBuffer(poseStack, event.getMultiBufferSource().getBuffer(RenderType.entityCutout(CHICKEN_LOCATION)),
                         event.getPackedLight(), OverlayTexture.NO_OVERLAY);
                 poseStack.popPose();
             }
         }
-
-
     }
 }
