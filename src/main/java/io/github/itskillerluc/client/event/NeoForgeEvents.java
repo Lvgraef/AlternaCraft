@@ -72,13 +72,19 @@ public class NeoForgeEvents {
     @SubscribeEvent
     public static void renderEvent(final RenderPlayerEvent.Post event) {
         var poseStack = event.getPoseStack();
-        poseStack.pushPose();
-        poseStack.mulPose(new Quaternionf().rotateX(Mth.PI));
-        poseStack.mulPose(new Quaternionf().rotateY(Mth.lerp(event.getPartialTick() * 0.1f, 0, Mth.PI * 2)));
+        for (float i = -0.5f; i <= 0.5; i = i + 1) {
+            for (float j = -0.5f; j <= 0.5; j = j + 1) {
+                poseStack.pushPose();
+                poseStack.mulPose(new Quaternionf().rotateX(Mth.PI));
+                poseStack.mulPose(new Quaternionf().rotateY((Minecraft.getInstance().level.getGameTime() + event.getPartialTick())* 0.3f));
+                poseStack.translate(i, -3, j);
+                poseStack.mulPose(new Quaternionf().rotateY(Mth.HALF_PI - ((Minecraft.getInstance().level.getGameTime() + event.getPartialTick())* 0.3f)));
+                CHICKEN_MODEL.get().renderToBuffer(poseStack, event.getMultiBufferSource().getBuffer(RenderType.entityCutout(CHICKEN_LOCATION)),
+                        event.getPackedLight(), OverlayTexture.NO_OVERLAY);
+                poseStack.popPose();
+            }
+        }
 
-        poseStack.translate(-0.5, -3, 0);
-        CHICKEN_MODEL.get().renderToBuffer(poseStack, event.getMultiBufferSource().getBuffer(RenderType.entityCutout(CHICKEN_LOCATION)),
-                event.getPackedLight(), OverlayTexture.NO_OVERLAY);
-        poseStack.popPose();
+
     }
 }

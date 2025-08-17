@@ -49,11 +49,14 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
 
         // Items
         for (DeferredHolder<Item, ? extends Item> entry : ItemRegistry.ITEMS.getEntries()) {
-            if (EXCLUDED_ITEMS.contains(entry) || entry.get() instanceof BlockItem) continue;
+            if (EXCLUDED_ITEMS.contains(entry)) continue;
             var input = entry.getKey().location().getPath();
-            addItem(entry, Arrays.stream(input.split("_"))
-                    .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
-                    .collect(Collectors.joining(" ")));
+            var translation = getName(input);
+            if (entry.get() instanceof BlockItem) {
+                add("item." + AlternaCraft.MODID + "." + entry.getId().getPath(), translation);
+            } else {
+                addItem(entry, translation);
+            }
         }
 
         addItem(ItemRegistry.AIO_AXE, "All In One Axe");
@@ -123,18 +126,14 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
         for (DeferredHolder<Block, ? extends Block> entry : BlockRegistry.BLOCKS.getEntries()) {
             if (EXCLUDED_BLOCKS.contains(entry)) continue;
             var input = entry.getKey().location().getPath();
-            addBlock(entry, Arrays.stream(input.split("_"))
-                    .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
-                    .collect(Collectors.joining(" ")));
+            addBlock(entry, getName(input));
         }
 
         //Entities
         for (DeferredHolder<EntityType<?>, ? extends EntityType<?>> entry : EntityRegistry.ENTITY_TYPES.getEntries()) {
             if (EXCLUDED_ENTITIES.contains(entry)) continue;
             var input = entry.getKey().location().getPath();
-            addEntityType(entry, Arrays.stream(input.split("_"))
-                    .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
-                    .collect(Collectors.joining(" ")));
+            addEntityType(entry, getName(input));
         }
 
         //Painting
@@ -144,9 +143,13 @@ public class ModLanguageProvider extends net.neoforged.neoforge.common.data.Lang
         //Effects
         for (DeferredHolder<MobEffect, ? extends MobEffect> entry : EffectRegistry.EFFECTS.getEntries()) {
             var input = entry.getKey().location().getPath();
-            addEffect(entry, Arrays.stream(input.split("_"))
-                    .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
-                    .collect(Collectors.joining(" ")));
+            addEffect(entry, getName(input));
         }
+    }
+
+    private static String getName(String input) {
+        return Arrays.stream(input.split("_"))
+                .map(word -> Character.toTitleCase(word.charAt(0)) + word.substring(1))
+                .collect(Collectors.joining(" "));
     }
 }
