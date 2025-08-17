@@ -2,27 +2,14 @@ package io.github.itskillerluc.client.event;
 
 import io.github.itskillerluc.AlternaCraft;
 import io.github.itskillerluc.init.FluidTypeRegistry;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ChickenModel;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.animal.Chicken;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 
 @EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.MOD, value = net.neoforged.api.distmarker.Dist.CLIENT)
 public class ModEvents {
-    public static ChickenModel<Chicken> CHICKEN_MODEL;
-
-    @SubscribeEvent
-    public static void initializeClient(final ModelEvent.RegisterAdditional event) {
-        CHICKEN_MODEL = new ChickenModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.CHICKEN));
-
-    }
-
     @SubscribeEvent
     public static void RegisterClientExtensions(final RegisterClientExtensionsEvent event) {
         event.registerFluidType(new IClientFluidTypeExtensions() {

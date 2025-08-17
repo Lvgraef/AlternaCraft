@@ -128,6 +128,24 @@ public class Ceratosaurus extends DinoEntity<Ceratosaurus> implements Animatable
     }
 
     @Override
+    public void load(CompoundTag compound) {
+        super.load(compound);
+        if (compound.contains("variant")) {
+            entityData.set(VARIANT, Variant.values()[compound.getInt("variant")]);
+        }
+        if (compound.contains("running")) {
+            entityData.set(RUNNING, compound.getBoolean("running"));
+        }
+    }
+
+    @Override
+    public boolean save(CompoundTag compound) {
+        compound.putInt("variant", entityData.get(VARIANT).ordinal());
+        compound.putBoolean("running", entityData.get(RUNNING));
+        return super.save(compound);
+    }
+
+    @Override
     public boolean isFood(ItemStack pStack) {
         // todo dino meat
         return false;
