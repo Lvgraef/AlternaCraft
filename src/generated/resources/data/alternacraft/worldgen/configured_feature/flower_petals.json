@@ -22,8 +22,8 @@
         {
           "Name": "alternacraft:red_pastel_petals",
           "Properties": {
-            "facing": "west",
-            "flower_amount": "3"
+            "facing": "south",
+            "flower_amount": "2"
           }
         }
       ]

@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-14T22:26:41.7742981	Item Models: alternacraft
+// 1.21.1	2025-08-18T17:16:50.8750584	Item Models: alternacraft
 651b8c96c692186e52edf1515ff8c05376b2985b assets/alternacraft/models/item/aio_axe.json
 c7dd0e775a6f1c4aa540e7b51b58d3c380ebec6d assets/alternacraft/models/item/aio_boots.json
 aa9444f8d4102d6d29af2e7760564680f0b21bb1 assets/alternacraft/models/item/aio_boots_amethyst_trim.json
@@ -52,6 +52,7 @@ e21c1589330b34fce713bb38b767a71719214ff5 assets/alternacraft/models/item/aio_leg
 3afff7288f01fc36973851ed373bba66943c5336 assets/alternacraft/models/item/alternaberries.json
 313406057c568abbc6c58f940bde7df1c5387b1f assets/alternacraft/models/item/blue_pastelized_sapling.json
 bf45b59bf8648782adce8722da97b74287e3c0e9 assets/alternacraft/models/item/ceratosaurus_spawn_egg.json
+11a38bd798502809464d394b00e0fdcc5b4cb06e assets/alternacraft/models/item/cooked_dino.json
 d45396d0eb461211e29ab6b77a21ac0e401669c9 assets/alternacraft/models/item/cool_lava_bucket.json
 cccc5cd39a294eccb58694baa4c29665969f24da assets/alternacraft/models/item/copperwood_axe.json
 7fb6476597fab7634be50b58b557137e032aae14 assets/alternacraft/models/item/copperwood_boots.json
@@ -257,4 +258,8 @@ bd213b6ec16a05983af0ec905d9634c2c747b7c3 assets/alternacraft/models/item/painite
 89b7ca80081b4b5d1423ba05dce8a9567976ea8a assets/alternacraft/models/item/painite_sword.json
 0b8bdc40d3e57d4da78908479146c8971aa1e872 assets/alternacraft/models/item/prisamond_shard.json
 17a8fcc1b99230ac5f1f23cc7e2d1ab97748286f assets/alternacraft/models/item/prisma_stick.json
+94f02b2a6091e0f87022bb939efd67b16fd0ea02 assets/alternacraft/models/item/raw_dino.json
 a93031cae92fe7d79880c5dba6eaeae6e9f25146 assets/alternacraft/models/item/red_pastelized_sapling.json
+38fb5168af4a836aeb7bd99f0c0cc1b00fbc034d assets/alternacraft/models/item/ruby.json
+499c05be2cc16e0cf6b3359549b39e983c314546 assets/alternacraft/models/item/sapphire.json
+8d874faef5bca8394e6220b14dc90bbedabeaedf assets/alternacraft/models/item/shockberry.json

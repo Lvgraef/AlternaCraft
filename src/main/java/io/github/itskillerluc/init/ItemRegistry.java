@@ -26,6 +26,13 @@ public class ItemRegistry {
     public static final Supplier<Item> AIO_CRYSTAL = ITEMS.registerSimpleItem("aio_crystal");
     public static final Supplier<Item> MINI_STAR = ITEMS.registerSimpleItem("mini_star");
     public static final Supplier<Item> PAINITE_CRYSTAL = ITEMS.registerSimpleItem("painite_crystal");
+    public static final Supplier<Item> RUBY = ITEMS.registerSimpleItem("ruby");
+    public static final Supplier<Item> SAPPHIRE = ITEMS.registerSimpleItem("sapphire");
+
+    public static final Supplier<Item> SHOCKBERRY = ITEMS.registerItem("shockberry", Item::new, new Item.Properties().food(ConsumableProperties.SHOCKBERRY));
+    public static final Supplier<Item> RAW_DINO = ITEMS.registerItem("raw_dino", Item::new, new Item.Properties().food(ConsumableProperties.RAW_DINO));
+    public static final Supplier<Item> COOKED_DINO = ITEMS.registerItem("cooked_dino", Item::new, new Item.Properties().food(ConsumableProperties.COOKED_DINO));
+
     public static final Supplier<Item> PRISAMOND_SHARD = ITEMS.registerSimpleItem("prisamond_shard");
     public static final Supplier<Item> PRISMA_STICK = ITEMS.registerSimpleItem("prisma_stick");
 
