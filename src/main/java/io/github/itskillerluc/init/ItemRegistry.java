@@ -132,7 +132,7 @@ public class ItemRegistry {
 
     public static final Supplier<BlockItem> CHARRED_BARK = ITEMS.registerSimpleBlockItem(BlockRegistry.CHARRED_BARK);
     public static final Supplier<BlockItem> CHARRED_PLANKS = ITEMS.registerSimpleBlockItem(BlockRegistry.CHARRED_PLANKS);
-    public static final DeferredHolder<Item, BucketItem> COOL_LAVA_BUCKET = ITEMS.registerItem("cool_lava_bucket",
+    public static final DeferredHolder<Item, BucketItem> COOL_LAVA_BUCKET = ITEMS.registerItem("cerulean_lava_bucket",
             props -> new BucketItem(FluidRegistry.COOL_LAVA.get(), props), new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET));
     public static final Supplier<BlockItem> DEAD_DANDELION = ITEMS.registerSimpleBlockItem(BlockRegistry.DEAD_DANDELION);
     public static final Supplier<BlockItem> DEAD_POPPY = ITEMS.registerSimpleBlockItem(BlockRegistry.DEAD_POPPY);

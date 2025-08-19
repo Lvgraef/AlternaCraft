@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-19T16:36:34.6429261	Item Models: alternacraft
+// 1.21.1	2025-08-19T16:44:55.8027899	Item Models: alternacraft
 651b8c96c692186e52edf1515ff8c05376b2985b assets/alternacraft/models/item/aio_axe.json
 c7dd0e775a6f1c4aa540e7b51b58d3c380ebec6d assets/alternacraft/models/item/aio_boots.json
 aa9444f8d4102d6d29af2e7760564680f0b21bb1 assets/alternacraft/models/item/aio_boots_amethyst_trim.json
@@ -52,9 +52,9 @@ e21c1589330b34fce713bb38b767a71719214ff5 assets/alternacraft/models/item/aio_leg
 560fa4912d56ad78299f0c280b3ec95782335478 assets/alternacraft/models/item/alternaberry.json
 313406057c568abbc6c58f940bde7df1c5387b1f assets/alternacraft/models/item/blue_pastelized_sapling.json
 bf45b59bf8648782adce8722da97b74287e3c0e9 assets/alternacraft/models/item/ceratosaurus_spawn_egg.json
+40cf2abee4bc322a18cf5ca32976d1944bc87bb6 assets/alternacraft/models/item/cerulean_lava_bucket.json
 3f51ce81c0f4d4351a4d312a80f073cca75a87bf assets/alternacraft/models/item/cherries.json
 11a38bd798502809464d394b00e0fdcc5b4cb06e assets/alternacraft/models/item/cooked_dino.json
-d45396d0eb461211e29ab6b77a21ac0e401669c9 assets/alternacraft/models/item/cool_lava_bucket.json
 cccc5cd39a294eccb58694baa4c29665969f24da assets/alternacraft/models/item/copperwood_axe.json
 7fb6476597fab7634be50b58b557137e032aae14 assets/alternacraft/models/item/copperwood_boots.json
 1fbef08a636139be1ce9eff13ce04f2bcba54533 assets/alternacraft/models/item/copperwood_boots_amethyst_trim.json

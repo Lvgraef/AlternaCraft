@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-19T16:36:34.6555269	Registries
+// 1.21.1	2025-08-19T16:44:55.8109233	Registries
 2a74aa4fee9e9c59a7bb424c32ba147038637213 data/alternacraft/painting_variant/luc_when_coding.json
 23efa5b15b6ff6680506577e6683d9956591df8a data/alternacraft/worldgen/biome/colorful_forest.json
 30c9aea51cada70c99160859bc00db4abb72d9ea data/alternacraft/worldgen/biome/electric_swamp.json
@@ -15,7 +15,7 @@ b117c06afa0eaa0bccffa331798cf16c1c63f12f data/alternacraft/worldgen/configured_f
 1a87b707802a1b4ae4e5fe842322a1e8924577a3 data/alternacraft/worldgen/configured_feature/dead_grass.json
 e723ed9f2aa95b6e0ca5b97b2224efa97755e0c4 data/alternacraft/worldgen/configured_feature/electree.json
 e338a0e9db757e0091a92272e38807879d0b192e data/alternacraft/worldgen/configured_feature/flower_electric_swamp.json
-1134c59fe0c1e8249449f6b40277726c81f63ef7 data/alternacraft/worldgen/configured_feature/flower_petals.json
+a7d9bda9f5d5b8d54b44fe5019af32ea8237f128 data/alternacraft/worldgen/configured_feature/flower_petals.json
 f587406a36224b60be99aa408d2a6ac9563253c7 data/alternacraft/worldgen/configured_feature/magnetic_ore.json
 9a933eedf3a6ce1b072e177dc18e70c0e3688271 data/alternacraft/worldgen/configured_feature/painite_ore.json
 d6f72e3b2345dcde294c8673220fe7c17b19de66 data/alternacraft/worldgen/configured_feature/red_pastelized_tree.json
