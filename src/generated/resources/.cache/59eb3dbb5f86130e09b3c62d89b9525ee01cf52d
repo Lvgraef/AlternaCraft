@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-14T22:26:41.7690324	Loot Tables
+// 1.21.1	2025-08-19T16:21:15.2798913	Loot Tables
 eac55d89f6c5d0933ada60ccd2ebc44d6d6da103 data/alternacraft/loot_table/blocks/blue_bulb.json
 0ac944c6f03fd856d69cc2eba2b9be3e6192aaf4 data/alternacraft/loot_table/blocks/blue_colorful_flower.json
 f750519edd5b8561bb33a291452ca2f2b2c4da81 data/alternacraft/loot_table/blocks/blue_pastelized_sapling.json
@@ -8,7 +8,7 @@ fe79d3c5c1db707b2b9e5a0735a8bd15384e7816 data/alternacraft/loot_table/blocks/blu
 ef60cee3f0523563f9e406933b9a39a197e68790 data/alternacraft/loot_table/blocks/blue_pastel_planks.json
 baaaa0f69bd5d2aa69af10957aaa9cae9e240ca2 data/alternacraft/loot_table/blocks/charred_bark.json
 0196cef72af67f3625ee0fe4ec6f9a460ab625f9 data/alternacraft/loot_table/blocks/charred_planks.json
-be4b8ebed6a682c24670805107696fc4ee58fba3 data/alternacraft/loot_table/blocks/colorful_bush.json
+e5f6ac05f43bb72ad5e1d749507f2749ab3cd456 data/alternacraft/loot_table/blocks/colorful_bush.json
 4a7a7d02aad857559488ef5f2740751352f8330d data/alternacraft/loot_table/blocks/copperwood_ore.json
 65160cca7f865905a929e23d8bea7a20f48b6ef9 data/alternacraft/loot_table/blocks/cyan_colorful_flower.json
 e8d9859072f9570453d44cd2a15f4d9731f8c996 data/alternacraft/loot_table/blocks/dark_crystal_ore.json
