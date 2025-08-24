@@ -20,7 +20,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "alternacraft:alternaberries"
+          "name": "alternacraft:alternaberry"
         }
       ],
       "functions": [
@@ -58,7 +58,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "alternacraft:alternaberries"
+          "name": "alternacraft:alternaberry"
         }
       ],
       "functions": [

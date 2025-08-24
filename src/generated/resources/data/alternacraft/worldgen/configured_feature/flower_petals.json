@@ -15,15 +15,15 @@
         {
           "Name": "alternacraft:blue_pastel_petals",
           "Properties": {
-            "facing": "north",
-            "flower_amount": "3"
+            "facing": "south",
+            "flower_amount": "2"
           }
         },
         {
           "Name": "alternacraft:red_pastel_petals",
           "Properties": {
-            "facing": "west",
-            "flower_amount": "3"
+            "facing": "north",
+            "flower_amount": "4"
           }
         }
       ]
