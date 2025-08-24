@@ -1,0 +1,77 @@
+package io.github.itskillerluc.alternacraft.event;
+
+import io.github.itskillerluc.alternacraft.AlternaCraft;
+import io.github.itskillerluc.alternacraft.effects.StunEffect;
+import io.github.itskillerluc.alternacraft.init.ArmorMaterialRegistry;
+import io.github.itskillerluc.alternacraft.init.BiomeInit;
+import io.github.itskillerluc.alternacraft.init.EffectRegistry;
+import io.github.itskillerluc.alternacraft.init.ToolTiers;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.TieredItem;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingBreatheEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import org.apache.commons.lang3.stream.Streams;
+
+@EventBusSubscriber(modid = AlternaCraft.MODID, bus = EventBusSubscriber.Bus.GAME)
+public class NeoForgeEvents {
+    @SubscribeEvent
+    public static void livingAttackEvent(final LivingIncomingDamageEvent event) {
+        if (event.getSource().is(DamageTypes.FALL)) {
+            if (Streams.of(event.getEntity().getArmorSlots().iterator()).allMatch(stack ->
+                    stack.getItem() instanceof ArmorItem armorItem && (armorItem.getMaterial().value().equals(ArmorMaterialRegistry.MAGNET.value()) || armorItem.getMaterial().value().equals(ArmorMaterialRegistry.AIO.value())))) {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void entityDropEvent(final LivingDropsEvent event) {
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (player.getMainHandItem().getItem() instanceof TieredItem tieredItem && (tieredItem.getTier() == ToolTiers.MAGNETIC_TIER || tieredItem.getTier() == ToolTiers.AIO_TIER)) {
+                event.setCanceled(true);
+                for (ItemEntity drop : event.getDrops()) {
+                    if (!player.addItem(drop.getItem())) {
+                        player.drop(drop.getItem(), false);
+                    }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void livingBreatheEvent(final LivingBreatheEvent event) {
+        if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.ELECTRIC_SWAMP) && event.getEntity().isInWater()
+                && Streams.of(event.getEntity().getArmorSlots().iterator()).allMatch(item -> item.getItem() instanceof ArmorItem armor && (armor.getMaterial() == ArmorMaterialRegistry.AIO || armor.getMaterial() == ArmorMaterialRegistry.MAGNET))) {
+            event.getEntity().hurt(event.getEntity().damageSources().lightningBolt(), 1);
+        } else if (event.getEntity().level().getBiome(event.getEntity().blockPosition()).is(BiomeInit.FROZEN_DESERT) && event.getEntity().isInWater()) {
+            event.getEntity().setTicksFrozen(200);
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onEffectRemove(final MobEffectEvent.Remove event) {
+        if (!event.isCanceled()) {
+            if (event.getEffect().value().equals(EffectRegistry.STUNNED.get())) {
+                StunEffect.unFreeze(event.getEntity());
+            }
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onEffectExpire(final MobEffectEvent.Expired event) {
+        if (!event.isCanceled()) {
+            if (event.getEffectInstance() == null) return;
+            if (event.getEffectInstance().getEffect().value().equals(EffectRegistry.STUNNED.get())) {
+                StunEffect.unFreeze(event.getEntity());
+            }
+        }
+    }
+}
